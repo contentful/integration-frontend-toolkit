@@ -1,4 +1,5 @@
-  import React from "react";
+  // third party imports 
+  import React from 'react';
   import {
     Chart as ChartJS,
     CategoryScale,
@@ -12,6 +13,8 @@
   } from 'chart.js';
   import { Line } from 'react-chartjs-2';
   import tokens from '@contentful/f36-tokens';
+
+  // local imports
   import { parseRemToPxInt } from 'helpers/ParseStylingToken/ParseStylingToken';
   import { styles } from './LineChart.styles';
   
