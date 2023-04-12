@@ -75,5 +75,8 @@
     "prop-types": "^15.8.1",
     "storybook": "^7.0.2",
     "webpack": "^5.78.0"
+  },
+  "publishConfig": {
+    "@contentful:registry": "https://npm.pkg.github.com"
   }
 }
