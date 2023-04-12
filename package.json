@@ -1,7 +1,7 @@
 {
   "name": "@contentful/integration-component-library",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@contentful/f36-tokens": "^4.0.1",
     "@emotion/css": "^11.10.6",
