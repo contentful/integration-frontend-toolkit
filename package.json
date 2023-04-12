@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "@contentful/integration-component-library",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,19 +8,26 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^29.5.0",
+    "@types/node": "^18.15.11",
+    "@types/react": "^18.0.35",
+    "@types/react-dom": "^18.0.11",
     "chart.js": "^4.2.1",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "storybook-addon-designs": "^6.3.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --detectOpenHandles --forceExit",
+    "test:ci": "CI=true react-scripts test",
+    "lint": "eslint --max-warnings=0 .",
     "eject": "react-scripts eject",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6006 -s public",
     "build-storybook": "storybook build"
   },
   "eslintConfig": {
@@ -52,6 +59,7 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^7.0.4",
     "@storybook/addon-essentials": "^7.0.2",
     "@storybook/addon-interactions": "^7.0.2",
     "@storybook/addon-links": "^7.0.2",
@@ -60,7 +68,10 @@
     "@storybook/react": "^7.0.2",
     "@storybook/react-webpack5": "^7.0.2",
     "@storybook/testing-library": "^0.0.14-next.2",
+    "@typescript-eslint/eslint-plugin": "^5.58.0",
+    "@typescript-eslint/parser": "^5.58.0",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "eslint": "^8.38.0",
     "prop-types": "^15.8.1",
     "storybook": "^7.0.2",
     "webpack": "^5.78.0"

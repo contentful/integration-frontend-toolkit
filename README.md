@@ -26,7 +26,8 @@ npm run test
 
 ## Expectations of development: 
 
-Please refer ```LineChart``` component as an example. 
+Please refer to ```LineChart``` component as an example. 
 
 1. Each new component added to this library should be housed in its own directory, either under a certain Stack or under a general 'Common' directory. 
 2. Each new component should be accompanied by a spec. file. 
+3. Each new component should have the following general layout: 
