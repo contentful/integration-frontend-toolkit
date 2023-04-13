@@ -1,6 +1,6 @@
 {
   "name": "@contentful/integration-component-library",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "private": false,
   "dependencies": {
     "@contentful/f36-tokens": "^4.0.1",
@@ -17,7 +17,6 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "storybook-addon-designs": "^6.3.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -27,7 +26,7 @@
     "test:ci": "CI=true react-scripts test",
     "lint": "eslint --max-warnings=0 .",
     "eject": "react-scripts eject",
-    "storybook": "storybook dev -p 6006 -s public",
+    "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "chromatic --exit-zero-on-changes"
   },
