@@ -20,13 +20,12 @@ const meta: Meta<typeof LineChart> = {
 
 type Story = StoryObj<typeof LineChart>;
 
-export const Primary: Story = {
-};
+export const Primary: Story = {};
 
 Primary.args = {
-    dataValues: mockData,
-    xAxisLabels: mockLabels,
-    tooltipMetricLabel: 'Page views:',
+  dataValues: mockData,
+  xAxisLabels: mockLabels,
+  tooltipMetricLabel: 'Page views:',
 }
 
 Primary.parameters = {

@@ -3,7 +3,7 @@ import { configure } from '@testing-library/react';
 
 // suppress annoying jest error output by stubbing console.error during tests
 beforeEach(() => {
-  jest.spyOn(console, 'error').mockImplementation(() => {});
+  jest.spyOn(console, 'error').mockImplementation(() => null);
 });
 
 afterEach(() => {

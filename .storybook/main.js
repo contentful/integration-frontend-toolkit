@@ -1,5 +1,5 @@
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
-// const path = require('path');
+const path = require('path');
 // const { compilerOptions } = require('../tsconfig.json');
 
 const config = {
@@ -9,6 +9,8 @@ const config = {
     "@storybook/addon-essentials",
     "@storybook/preset-create-react-app",
     "@storybook/addon-interactions",
+    "storybook-addon-designs",
+    "@storybook/addon-a11y",
   ],
   typescript: {
     check: false,
@@ -28,21 +30,20 @@ const config = {
     autodocs: "tag",
   },
   staticDirs: ["../public"],
-  // resolve: {
-  //   modules: [
-  //     path.resolve(__dirname, 'node_modules'),
-  //     path.resolve(__dirname, compilerOptions.baseUrl),
-  //   ],
-  // },
+  
+  webpackFinal: async (config, { configType }) => {
+    // config.resolve.modules = [
+    //   // path.resolve(__dirname, 'node_modules'),
+    //   path.resolve(__dirname, "src/")
+    // ]
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "helpers": path.resolve(__dirname, "../src/helpers") // how do broadly???
+    };
+
+    return config;
+  }
   
 };
-export default config;
 
-// module.exports = {
-//   stories: ['../**/*.stories.mdx', '../**/*.stories.@(js|jsx|ts|tsx)'],
-//   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
-//   webpackFinal: async (config) => {
-//     config.resolve.plugins.push(new TsconfigPathsPlugin({}));
-//     return config;
-//   },
-// };
+export default config;
