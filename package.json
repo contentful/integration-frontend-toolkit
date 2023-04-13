@@ -1,6 +1,6 @@
 {
   "name": "@contentful/integration-component-library",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "private": false,
   "dependencies": {
     "@contentful/f36-tokens": "^4.0.1",
