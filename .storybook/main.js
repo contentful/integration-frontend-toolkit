@@ -1,7 +1,6 @@
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const path = require("path");
 // const { compilerOptions } = require("../tsconfig.json");
-const tsconfigPaths = require("vite-tsconfig-paths");
 
 const config = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
