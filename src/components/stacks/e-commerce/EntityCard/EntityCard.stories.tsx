@@ -20,7 +20,9 @@ type Story = StoryObj<typeof EntityCard>;
 export const Primary: Story = {};
 
 Primary.args = {
-
+    title: 'My Awesome Title',
+    description: 'My Awesome Description',
+    contentType: 'Blog',
 }
 
 Primary.parameters = {
