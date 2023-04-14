@@ -8,7 +8,7 @@
 
 ## Testing steps
 
-<!-- Do you have a happy path a user would run through to test this app or would help the reviewer get started bug testing -->
+<!-- Where can the user find this component to test its functionality? -->
 
 ## Breaking Changes
 
