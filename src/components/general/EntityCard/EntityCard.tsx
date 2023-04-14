@@ -9,16 +9,20 @@ export interface Props {
     contentType: string,
     loading?: boolean;
     thumbnail?: string;
+    withDragHandle?: boolean;
+    onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
 const EntityCard = (props: Props) => {
-    const { title, description, entityType, contentType, loading, thumbnail } = props;
+    const { title, description, entityType, contentType, loading, thumbnail, withDragHandle, onClick } = props;
     const card = title ?
         <EntryCard contentType={contentType}
             title={title}
             description={description}
             isLoading={loading}
-            thumbnailElement={<img alt="Thumbnail" src={thumbnail || Placeholder} />} />
+            thumbnailElement={<img alt="Thumbnail" src={thumbnail || Placeholder} />}
+            withDragHandle={withDragHandle}
+            onClick={onClick} />
         :
         <Card>
             <Badge variant="negative" className={styles.missingBadge}>Deleted</Badge>
