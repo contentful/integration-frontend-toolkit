@@ -17,12 +17,21 @@ const meta: Meta<typeof EntityCard> = {
 
 type Story = StoryObj<typeof EntityCard>;
 
-export const Primary: Story = {};
+export const EntityCardDefault: Story = {};
 
-Primary.args = {
+EntityCardDefault.args = {
+    title: 'My Awesome Title',
+    description: 'My Awesome Description',
+    contentType: 'Blog'
+}
+
+export const EntityCardLoading: Story = {};
+
+EntityCardLoading.args = {
     title: 'My Awesome Title',
     description: 'My Awesome Description',
     contentType: 'Blog',
+    loading: true
 }
 
 
