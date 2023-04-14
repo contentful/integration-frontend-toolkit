@@ -4,7 +4,7 @@ import EntityCard from './EntityCard';
 
 
 const meta: Meta<typeof EntityCard> = {
-    title: 'Stacks/Ecommerce/EntityCard',
+    title: 'General/EntityCard',
     component: EntityCard,
     decorators: [
         (Story) => (
@@ -25,11 +25,5 @@ Primary.args = {
     contentType: 'Blog',
 }
 
-Primary.parameters = {
-    design: {
-        type: 'figma',
-        url: 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File',
-    },
-};
 
 export default meta;
