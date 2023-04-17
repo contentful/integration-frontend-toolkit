@@ -1,10 +1,12 @@
 import { EntryCard, Card, Heading, Badge, Paragraph } from '@contentful/f36-components';
 import { styles } from './EntityCard.styles';
 import Placeholder from './assets/placeholder.png';
+import React from 'react';
 
 export interface Props {
     title?: string,
     description?: string,
+    className?: string,
     entityType: string;
     contentType: string,
     loading?: boolean;
@@ -18,17 +20,16 @@ const isMissingData = (title?: string): boolean => {
 }
 
 const EntityCard = (props: Props) => {
-    const { title, description, entityType, contentType, loading, thumbnail, withDragHandle, onClick } = props;
+    const { title, loading, entityType, thumbnail, className } = props;
     const card = isMissingData(title) ?
-        <EntryCard contentType={contentType}
-            title={title}
-            description={description}
+        <EntryCard
+            {...props}
+            className={className}
             isLoading={loading}
             thumbnailElement={<img alt="Thumbnail" src={thumbnail || Placeholder} />}
-            withDragHandle={withDragHandle}
-            onClick={onClick} />
+        />
         :
-        <Card>
+        <Card isLoading={loading} className={className}>
             <Badge variant="negative" className={styles.missingBadge}>Deleted</Badge>
             <Heading as="h2" data-test-id="title">
                 {entityType} Missing
