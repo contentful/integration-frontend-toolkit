@@ -45,14 +45,31 @@ type Story = StoryObj<typeof EntityCardList>;
 export const EntityCardListDefault: Story = {};
 
 EntityCardListDefault.args = {
+    entityType: 'Entry',
     list: defaultList
 }
 
 export const EntityCardListLoading: Story = {};
 
 EntityCardListLoading.args = {
+    entityType: 'Entry',
     list: defaultList,
     loading: true
+}
+
+export const EntityCardListFailed: Story = {};
+
+EntityCardListFailed.args = {
+    entityType: 'Product',
+    list: defaultList,
+    error: true
+}
+
+export const EntityCardListNone: Story = {};
+
+EntityCardListNone.args = {
+    entityType: 'Card',
+    list: []
 }
 
 export default meta;
