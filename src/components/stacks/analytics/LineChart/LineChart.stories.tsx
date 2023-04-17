@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import LineChart from './LineChart';
@@ -11,11 +11,11 @@ const meta: Meta<typeof LineChart> = {
   component: LineChart,
   decorators: [
     (Story) => (
-        <div style={{ width: '300px' }}>
-            <Story />
-        </div>
+      <div style={{ width: '300px' }}>
+        <Story />
+      </div>
     ),
-    ],
+  ],
 };
 
 type Story = StoryObj<typeof LineChart>;
@@ -26,13 +26,6 @@ Primary.args = {
   dataValues: mockData,
   xAxisLabels: mockLabels,
   tooltipMetricLabel: 'Page views:',
-}
-
-Primary.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File',
-  },
 };
 
 export default meta;
