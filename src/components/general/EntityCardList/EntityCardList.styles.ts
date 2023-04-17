@@ -7,5 +7,11 @@ export const styles = {
     }),
     missingBadge: css({
         marginBottom: tokens.spacingXs
+    }),
+    entityCard: css({
+        '&&': {
+            marginTop: tokens.spacingXs,
+            marginBottom: tokens.spacingXs,
+        }
     })
 };
