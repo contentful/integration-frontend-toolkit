@@ -13,9 +13,13 @@ export interface Props {
     onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
+const isMissingData = (title?: string): boolean => {
+    return !!title;
+}
+
 const EntityCard = (props: Props) => {
     const { title, description, entityType, contentType, loading, thumbnail, withDragHandle, onClick } = props;
-    const card = title ?
+    const card = isMissingData(title) ?
         <EntryCard contentType={contentType}
             title={title}
             description={description}
