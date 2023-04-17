@@ -14,6 +14,8 @@
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
     "chart.js": "^4.2.1",
+    "husky": "^8.0.3",
+    "prettier": "^2.8.7",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
@@ -30,7 +32,9 @@
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "chromatic --exit-zero-on-changes"
+    "chromatic": "chromatic --exit-zero-on-changes --exit-once-uploaded --onlyChanged",
+    "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
+    "prettier": "prettier --no-editorconfig --no-error-on-unmatched-pattern --write {apps,packages,examples}/**/*.{js,jsx,ts,tsx}"
   },
   "eslintConfig": {
     "extends": [
@@ -83,5 +87,15 @@
   },
   "publishConfig": {
     "@contentful:registry": "https://npm.pkg.github.com"
+  },
+  "lint-staged": {
+    "*.{t,j}s?(x)": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
