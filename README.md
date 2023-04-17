@@ -12,25 +12,25 @@ To install or update the app locally:
 npm i
 ```
 
-To run storybook locally: 
+To run storybook locally:
 
 ```sh
 npm run storybook
 ```
 
-To run tests: 
+To run tests:
 
 ```sh
 npm run test
 ```
 
-## Expectations of development: 
+## Expectations of development:
 
-Please refer to the ```LineChart``` component as an example. 
+Please refer to the `LineChart` component as an example.
 
-1. Each new component added to this library should be housed in its own directory, either under a certain Stack or under a general 'Common' directory. 
-2. Each new component should be accompanied by a spec. file.  
+1. Each new component added to this library should be housed in its own directory, either under a certain Stack or under a general 'Common' directory.
+2. Each new component should be accompanied by a spec. file.
 
-## Storybook 
+## Storybook
 
 [Documentation](https://storybook.js.org/docs/react/get-started/why-storybook)
