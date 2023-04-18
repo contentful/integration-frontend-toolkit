@@ -29,9 +29,11 @@ jobs:
           node-version: 18
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
-      - run: npx semantic-release
-          if: ${{ github.ref == 'refs/heads/master' }}
-      - run: npm publish
-          if: ${{ github.ref == 'refs/heads/master' }}
+      - name: Semantic Release
+        if: ${{ github.ref == 'refs/heads/main' }}
+        run: npx semantic-release
+      - name: Publish
+        if: ${{ github.ref == 'refs/heads/master' }}
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
