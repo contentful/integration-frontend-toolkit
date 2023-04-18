@@ -30,6 +30,8 @@ jobs:
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
       - run: npx semantic-release
+          if: ${{ github.ref == 'refs/heads/master' }}
       - run: npm publish
+          if: ${{ github.ref == 'refs/heads/master' }}
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
