@@ -98,5 +98,8 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "release": {
+    "branches": ["master"]
   }
 }
