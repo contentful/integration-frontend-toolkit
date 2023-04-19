@@ -41,11 +41,4 @@ const EntityCard = (props: Props) => {
             thumbnailElement={<img alt="Thumbnail" src={thumbnail || Placeholder} />}
         />
 
-    return (
-        <div className={styles.root} id='EntityCard'>
-            {card}
-        </div>
-    );
-}
-
-export default EntityCard;
+    export default EntityCard;
