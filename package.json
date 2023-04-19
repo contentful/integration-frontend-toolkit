@@ -1,6 +1,6 @@
 {
   "name": "@contentful/integration-component-library",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "private": false,
   "dependencies": {
     "@contentful/f36-components": "^4.35.0",
