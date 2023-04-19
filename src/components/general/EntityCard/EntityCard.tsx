@@ -1,4 +1,4 @@
-import { EntryCard, Card, Heading, Badge, Paragraph } from '@contentful/f36-components';
+import { EntryCard, Flex, Heading, Badge, Paragraph } from '@contentful/f36-components';
 import { styles } from './EntityCard.styles';
 import Placeholder from './assets/placeholder.png';
 import React from 'react';
@@ -16,28 +16,30 @@ export interface Props {
 }
 
 const isMissingData = (title?: string): boolean => {
-  return !!title;
+  return !title;
 };
 
 const EntityCard = (props: Props) => {
   const { title, loading, entityType, thumbnail, className } = props;
   const card = isMissingData(title) ? (
+    <EntryCard isLoading={loading} className={className}>
+      <Flex>
+        <Badge variant="negative" className={styles.missingBadge}>
+          Deleted
+        </Badge>
+      </Flex>
+      <Heading as="h2" data-test-id="title">
+        {entityType} Missing
+      </Heading>
+      <Paragraph>This {entityType} is missing. It may have been deleted or moved.</Paragraph>
+    </EntryCard>
+  ) : (
     <EntryCard
       {...props}
       className={className}
       isLoading={loading}
       thumbnailElement={<img alt="Thumbnail" src={thumbnail || Placeholder} />}
     />
-  ) : (
-    <Card isLoading={loading} className={className}>
-      <Badge variant="negative" className={styles.missingBadge}>
-        Deleted
-      </Badge>
-      <Heading as="h2" data-test-id="title">
-        {entityType} Missing
-      </Heading>
-      <Paragraph>This {entityType} is missing. It may have been deleted or moved.</Paragraph>
-    </Card>
   );
 
   return (
