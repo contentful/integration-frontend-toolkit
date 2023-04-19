@@ -13,9 +13,9 @@ interface ListItem {
 
 export interface Props {
     entityType: string,
-    error: boolean,
+    error?: boolean,
     list: ListItem[],
-    loading: boolean;
+    loading?: boolean;
 }
 
 
@@ -23,9 +23,9 @@ const EntityCardList = (props: Props) => {
     const { entityType, list, loading, error } = props;
 
     const listData = error ?
-        <Paragraph>We're sorry, but no {entityType.toLowerCase()}s could be loaded.</Paragraph>
+        <Paragraph date-test-id="cards-error">We're sorry, but no {entityType.toLowerCase()}s could be loaded.</Paragraph>
         : list.length === 0 ?
-            <Paragraph>There are no {entityType.toLowerCase()}s to show.</Paragraph>
+            <Paragraph data-test-id="no-cards">There are no {entityType.toLowerCase()}s to show.</Paragraph>
             : <>
                 {list.map((listItem: ListItem, index) => {
                     return <EntityCard key={index} className={`${styles.entityCard} entity-card-${index}`} loading={loading} {...listItem} />
@@ -33,7 +33,7 @@ const EntityCardList = (props: Props) => {
             </>
 
 
-    return <div className={styles.root} id='EntityCardList'>{listData}</div>;
+    return <div className={styles.root} id='EntityCardList' data-test-id="entity-card">{listData}</div>;
 }
 
 export default EntityCardList;

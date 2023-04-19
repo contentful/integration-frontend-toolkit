@@ -22,7 +22,7 @@ const isMissingData = (title?: string): boolean => {
 const EntityCard = (props: Props) => {
   const { title, loading, entityType, thumbnail, className } = props;
   const card = isMissingData(title) ? (
-    <EntryCard isLoading={loading} className={className}>
+    <EntryCard isLoading={loading} className={className} data-test-id="missing">
       <Flex>
         <Badge variant="negative" className={styles.missingBadge}>
           Deleted
