@@ -7,7 +7,6 @@ on:
     types: [opened, synchronize]
     branches: ['master']
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,6 +27,8 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v3
+      - name: Authenticate with private NPM package
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
       - uses: actions/setup-node@v3
         with:
           node-version: 18
