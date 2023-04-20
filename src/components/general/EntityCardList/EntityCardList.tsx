@@ -23,13 +23,18 @@ const EntityCardList = (props: Props) => {
     const { entityType, list, loading, error } = props;
 
     return (
-        <div className={styles.root} id='EntityCardList' data-test-id="entity-card">
+        <div className={styles.root} id='EntityCardList' >
             {error && <Note date-test-id="cards-error">We're sorry, but no {entityType.toLowerCase()}s could be loaded.</Note>}
 
             {list.length === 0 && <Note data-test-id="no-cards">There are no {entityType.toLowerCase()}s to show.</Note>}
 
             {!error && list.length > 0 && list.map((listItem: ListItem, index) => {
-                return <EntityCard key={index} className={`${styles.entityCard} entity-card-${index}`} loading={loading} {...listItem} />
+                return <EntityCard
+                    key={index}
+                    className={`${styles.entityCard} entity-card-${index}`}
+                    loading={loading}
+                    data-test-id="entity-card"
+                    {...listItem} />
             })}
         </div>);
 }
