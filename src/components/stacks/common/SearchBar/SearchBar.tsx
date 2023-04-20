@@ -7,11 +7,11 @@ import type { SearchFacet, SearchParams } from './SearchBar.types';
 import useSearchReducer from './useSearchReducer';
 
 export interface SearchBarProps {
-  groupFilters: SearchFacet[];
-  filterFacets: SearchFacet[];
+  groupFilters?: SearchFacet[];
+  filterFacets?: SearchFacet[];
   onSearch: (searchParams: SearchParams) => void;
-  searchTitle: string;
-  placeholder: string;
+  searchTitle?: string;
+  placeholder?: string;
 }
 
 /**
@@ -25,7 +25,7 @@ const SearchBar = (props: SearchBarProps) => {
   const { groupFilters, filterFacets, onSearch, searchTitle, placeholder } = props;
 
   const initialState: SearchParams = {
-    selectedGroupFilter: groupFilters[0]?.value || '',
+    selectedGroupFilter: !!groupFilters?.length ? groupFilters[0].value : '',
     searchValue: '',
     selectedFilterFacets: [] as SearchFacet[],
   };
@@ -43,7 +43,7 @@ const SearchBar = (props: SearchBarProps) => {
       id="search-input"
       type="text"
       value={searchState.searchValue}
-      placeholder={placeholder}
+      placeholder={placeholder || 'Search'}
       title={searchTitle || 'Search'}
       aria-label={searchTitle || 'Search'}
       onChange={onSearchInput}></TextInput>
