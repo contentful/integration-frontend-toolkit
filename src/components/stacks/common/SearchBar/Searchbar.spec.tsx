@@ -17,12 +17,12 @@ describe('SearchBar', () => {
 
   it('renders', () => {
     const { getByLabelText } = render(<SearchBar {...defaultProps} />);
-    expect(getByLabelText(defaultProps.searchTitle)).toBeInTheDocument();
+    expect(getByLabelText(defaultProps.searchTitle!)).toBeInTheDocument();
   });
 
   it('initializes with correct initial state', () => {
     const { getByLabelText } = render(<SearchBar {...defaultProps} />);
-    const searchInput = getByLabelText(defaultProps.searchTitle) as HTMLInputElement;
+    const searchInput = getByLabelText(defaultProps.searchTitle!) as HTMLInputElement;
 
     expect(searchInput.value).toBe('');
     expect(searchInput.placeholder).toBe(defaultProps.placeholder);
@@ -32,7 +32,7 @@ describe('SearchBar', () => {
     jest.useFakeTimers();
 
     const { getByLabelText } = render(<SearchBar {...defaultProps} />);
-    const searchInput = getByLabelText(defaultProps.searchTitle);
+    const searchInput = getByLabelText(defaultProps.searchTitle!);
 
     fireEvent.change(searchInput, { target: { value: 'test' } });
 
@@ -42,7 +42,7 @@ describe('SearchBar', () => {
 
     await waitFor(() => expect(mockOnSearch).toHaveBeenCalledTimes(2));
     expect(mockOnSearch).toHaveBeenCalledWith({
-      selectedGroupFilter: defaultProps.groupFilters[0].value,
+      selectedGroupFilter: defaultProps.groupFilters![0].value,
       searchValue: 'test',
       selectedFilterFacets: [],
     });
@@ -54,7 +54,7 @@ describe('SearchBar', () => {
     jest.useFakeTimers();
 
     const { getByLabelText } = render(<SearchBar {...defaultProps} />);
-    const searchInput = getByLabelText(defaultProps.searchTitle);
+    const searchInput = getByLabelText(defaultProps.searchTitle!);
 
     fireEvent.change(searchInput, { target: { value: 't' } });
     fireEvent.change(searchInput, { target: { value: 'te' } });
@@ -67,7 +67,7 @@ describe('SearchBar', () => {
 
     await waitFor(() => expect(mockOnSearch).toHaveBeenCalledTimes(2));
     expect(mockOnSearch).toHaveBeenCalledWith({
-      selectedGroupFilter: defaultProps.groupFilters[0].value,
+      selectedGroupFilter: defaultProps.groupFilters![0].value,
       searchValue: 'test',
       selectedFilterFacets: [],
     });
