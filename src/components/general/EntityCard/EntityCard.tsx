@@ -1,7 +1,7 @@
-import { EntryCard, Flex, Heading, Badge, Paragraph } from '@contentful/f36-components';
+import React from 'react';
+import { EntryCard } from '@contentful/f36-components';
 import { styles } from './EntityCard.styles';
 import Placeholder from './assets/placeholder.png';
-import React from 'react';
 
 export interface Props {
   title?: string;
@@ -20,30 +20,26 @@ const isMissingData = (title?: string): boolean => {
 };
 
 const EntityCard = (props: Props) => {
-  const { title, loading, entityType, thumbnail, className } = props;
+  const { title, contentType, loading, entityType, thumbnail, className } = props;
   const card = isMissingData(title) ? (
-    <EntryCard isLoading={loading} className={className} data-test-id="missing">
-      <Flex>
-        <Badge variant="negative" className={styles.missingBadge}>
-          Deleted
-        </Badge>
-      </Flex>
-      <Heading as="h2" data-test-id="title">
-        {entityType} Missing
-      </Heading>
-      <Paragraph>This {entityType} is missing. It may have been deleted or moved.</Paragraph>
-    </EntryCard>
+    <EntryCard
+      contentType={contentType}
+      status="deleted"
+      title={`${entityType} Missing`}
+      description={`This ${entityType} is missing. It may have been deleted or moved.`}
+      isLoading={loading}
+      data-test-id="missing"
+    />
   ) : (
     <EntryCard
       {...props}
-      className={className}
       isLoading={loading}
       thumbnailElement={<img alt="Thumbnail" src={thumbnail || Placeholder} />}
     />
   );
 
   return (
-    <div className={styles.root} id="EntityCard">
+    <div className={`${styles.root} ${className}`} id="EntityCard">
       {card}
     </div>
   );

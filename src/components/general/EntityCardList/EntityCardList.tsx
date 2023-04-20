@@ -1,4 +1,4 @@
-import { Paragraph } from '@contentful/f36-components';
+import { Note } from '@contentful/f36-components';
 import { styles } from './EntityCardList.styles';
 import EntityCard from '../EntityCard/EntityCard';
 
@@ -23,9 +23,9 @@ const EntityCardList = (props: Props) => {
     const { entityType, list, loading, error } = props;
 
     const listData = error ?
-        <Paragraph date-test-id="cards-error">We're sorry, but no {entityType.toLowerCase()}s could be loaded.</Paragraph>
+        <Note date-test-id="cards-error">We're sorry, but no {entityType.toLowerCase()}s could be loaded.</Note>
         : list.length === 0 ?
-            <Paragraph data-test-id="no-cards">There are no {entityType.toLowerCase()}s to show.</Paragraph>
+            <Note data-test-id="no-cards">There are no {entityType.toLowerCase()}s to show.</Note>
             : <>
                 {list.map((listItem: ListItem, index) => {
                     return <EntityCard key={index} className={`${styles.entityCard} entity-card-${index}`} loading={loading} {...listItem} />
