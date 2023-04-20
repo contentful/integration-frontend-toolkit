@@ -1,17 +1,14 @@
-import { ChangeEvent, useCallback, useReducer } from "react";
+import { ChangeEvent, useCallback, useReducer } from 'react';
 import {
   SearchActionTypes,
   SearchFacet,
   SearchParams,
   SearchReducerAction,
-} from "./SearchBar.types";
+} from './SearchBar.types';
 
-const { SET_SEARCH, SET_FILTER_FACETS, SET_CONTENT_TYPE } = SearchActionTypes;
+const { SET_SEARCH, SET_FILTER_FACETS, SET_GROUP_FILTER } = SearchActionTypes;
 
-const searchReducer = (
-  state: SearchParams,
-  action: SearchReducerAction
-): SearchParams => {
+const searchReducer = (state: SearchParams, action: SearchReducerAction): SearchParams => {
   switch (action.type) {
     case SET_SEARCH:
       return {
@@ -23,10 +20,10 @@ const searchReducer = (
         ...state,
         selectedFilterFacets: action.payload,
       };
-    case SET_CONTENT_TYPE:
+    case SET_GROUP_FILTER:
       return {
         ...state,
-        selectedContentType: action.payload,
+        selectedGroupFilter: action.payload,
       };
     default:
       return state;
@@ -52,9 +49,7 @@ const useSearchReducer = (initialState: SearchParams) => {
 
       const { selectedFilterFacets } = searchState;
 
-      const existingIndex = selectedFilterFacets.findIndex(
-        (f) => f.label === newFacet.label
-      );
+      const existingIndex = selectedFilterFacets.findIndex((f) => f.label === newFacet.label);
 
       if (existingIndex > -1) {
         const updatedFacets = [...selectedFilterFacets];
@@ -74,9 +69,9 @@ const useSearchReducer = (initialState: SearchParams) => {
     [dispatch]
   );
 
-  const onContentTypeChange = useCallback(
+  const onGroupFilterChange = useCallback(
     (e: ChangeEvent<HTMLSelectElement>) => {
-      dispatch({ type: SET_CONTENT_TYPE, payload: e.target.value });
+      dispatch({ type: SET_GROUP_FILTER, payload: e.target.value });
     },
     [dispatch]
   );
@@ -85,7 +80,7 @@ const useSearchReducer = (initialState: SearchParams) => {
     searchState,
     onSearchInput,
     onFilterChange,
-    onContentTypeChange,
+    onGroupFilterChange,
   };
 };
 

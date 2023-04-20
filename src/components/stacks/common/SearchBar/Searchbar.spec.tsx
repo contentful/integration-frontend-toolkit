@@ -4,7 +4,7 @@ import SearchBar, { SearchBarProps } from './SearchBar';
 describe('SearchBar', () => {
   const mockOnSearch = jest.fn();
   const defaultProps: SearchBarProps = {
-    contentTypes: [{ label: 'All', value: 'all' }],
+    groupFilters: [{ label: 'All', value: 'all' }],
     filterFacets: [],
     onSearch: mockOnSearch,
     searchTitle: 'Search',
@@ -42,7 +42,7 @@ describe('SearchBar', () => {
 
     await waitFor(() => expect(mockOnSearch).toHaveBeenCalledTimes(2));
     expect(mockOnSearch).toHaveBeenCalledWith({
-      selectedContentType: defaultProps.contentTypes[0].value,
+      selectedGroupFilter: defaultProps.groupFilters[0].value,
       searchValue: 'test',
       selectedFilterFacets: [],
     });
@@ -67,7 +67,7 @@ describe('SearchBar', () => {
 
     await waitFor(() => expect(mockOnSearch).toHaveBeenCalledTimes(2));
     expect(mockOnSearch).toHaveBeenCalledWith({
-      selectedContentType: defaultProps.contentTypes[0].value,
+      selectedGroupFilter: defaultProps.groupFilters[0].value,
       searchValue: 'test',
       selectedFilterFacets: [],
     });

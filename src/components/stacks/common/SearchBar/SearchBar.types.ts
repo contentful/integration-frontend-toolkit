@@ -1,6 +1,6 @@
 export enum SearchActionTypes {
   SET_SEARCH,
-  SET_CONTENT_TYPE,
+  SET_GROUP_FILTER,
   SET_FILTER_FACETS,
 }
 
@@ -10,7 +10,7 @@ export interface SearchFacet {
 }
 
 export interface SearchParams {
-  selectedContentType: string;
+  selectedGroupFilter: string;
   searchValue: string;
   selectedFilterFacets: SearchFacet[];
 }
@@ -20,8 +20,8 @@ export interface SetSearchAction {
   payload: string;
 }
 
-export interface SetContentTypeAction {
-  type: SearchActionTypes.SET_CONTENT_TYPE;
+export interface SetGroupFilterAction {
+  type: SearchActionTypes.SET_GROUP_FILTER;
   payload: string;
 }
 
@@ -30,7 +30,4 @@ export interface SetFilterFacetsAction {
   payload: SearchFacet[];
 }
 
-export type SearchReducerAction =
-  | SetSearchAction
-  | SetContentTypeAction
-  | SetFilterFacetsAction;
+export type SearchReducerAction = SetSearchAction | SetGroupFilterAction | SetFilterFacetsAction;
