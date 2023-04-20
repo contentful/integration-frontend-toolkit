@@ -25,7 +25,7 @@ const SearchBar = (props: SearchBarProps) => {
   const { groupFilters, filterFacets, onSearch, searchTitle, placeholder } = props;
 
   const initialState: SearchParams = {
-    selectedGroupFilter: groupFilters?.length ? groupFilters[0].value : '',
+    selectedGroupFilter: !!groupFilters?.length ? groupFilters[0].value : '',
     searchValue: '',
     selectedFilterFacets: [] as SearchFacet[],
   };
