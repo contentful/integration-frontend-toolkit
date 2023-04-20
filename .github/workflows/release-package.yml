@@ -36,6 +36,10 @@ jobs:
           node-version: 18
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
+      - name: Setup package.json
+        run: echo '{"name":"demo", "devDependencies":{"@semantic-release/git":"^10.0.1","@semantic-release/exec":"^6.0.3","semantic-release":"^21.0.1"}}' > package.json
+      - name: Install dependencies
+        run: npm install
       - name: Semantic Release
         run: npx semantic-release
         env:
