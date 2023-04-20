@@ -88,7 +88,7 @@
     "vite": "^4.2.0"
   },
   "publishConfig": {
-    "@contentful:registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com"
   },
   "lint-staged": {
     "*.{t,j}s?(x)": [
