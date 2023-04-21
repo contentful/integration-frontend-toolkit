@@ -1,4 +1,3 @@
-import React from 'react';
 import { EntryCard } from '@contentful/f36-components';
 import { styles } from './EntityCard.styles';
 import Placeholder from './assets/placeholder.png';

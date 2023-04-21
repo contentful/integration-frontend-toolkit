@@ -6,12 +6,12 @@ describe('EntityCard component', () => {
     it('Renders', () => {
         render(
             <EntityCardList
+                selected={[]}
                 entityType='Some Entity Type'
                 list={[{
                     title: 'Some Test Title',
                     description: 'Some Test Description',
                     entityType: 'Some Test Entity Type',
-                    contentType: 'Some Test Content Type',
                     thumbnail: ''
                 }]}
             />
@@ -24,12 +24,12 @@ describe('EntityCard component', () => {
     it('If no title is provided, show a card with missing label', () => {
         render(
             <EntityCardList
+                selected={[]}
                 entityType='Failed'
                 list={[{
                     title: '',
                     description: 'Some Test Description',
                     entityType: 'Some Test Entity Type',
-                    contentType: 'Some Test Content Type',
                     thumbnail: ''
                 }]}
             />
@@ -42,26 +42,24 @@ describe('EntityCard component', () => {
     it('Shows several cards', () => {
         render(
             <EntityCardList
+                selected={[]}
                 entityType='Failed'
                 list={[{
                     title: 'Some Test Title',
                     description: 'Some Test Description',
                     entityType: 'Some Test Entity Type',
-                    contentType: 'Some Test Content Type',
                     thumbnail: ''
                 },
                 {
                     title: 'Some Test Title 2',
                     description: 'Some Test Description 2',
                     entityType: 'Some Test Entity Type 2',
-                    contentType: 'Some Test Content Type 2',
                     thumbnail: ''
                 },
                 {
                     title: 'Some Test Title 3',
                     description: 'Some Test Description 3',
                     entityType: 'Some Test Entity Type 3',
-                    contentType: 'Some Test Content Type 3',
                     thumbnail: ''
                 }]}
             />
@@ -74,6 +72,7 @@ describe('EntityCard component', () => {
     it('Shows a message if no data is available', () => {
         render(
             <EntityCardList
+                selected={[]}
                 entityType='Failed'
                 list={[]}
             />
@@ -88,6 +87,7 @@ describe('EntityCard component', () => {
     it('Shows an error if an error is provided', () => {
         render(
             <EntityCardList
+                selected={[]}
                 entityType='Failed'
                 list={[{
                     title: '',
