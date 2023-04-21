@@ -37,13 +37,15 @@ const defaultList: Product[] = [
         entityType: 'Product',
     },
     {
-        ...defaultProduct,
-        entityType: 'Entry',
+        title: 'My Awesome Sweats',
+        description: 'My Awesome Sweats Description',
+        entityType: 'Product',
         thumbnail: 'https://fastly.picsum.photos/id/666/200/200.jpg?hmac=keuaJ7nJC5hkHIEyee1b6jdEMbHBZbozYQ9NClt2_lk'
     },
     {
-        ...defaultProduct,
-        entityType: 'Page',
+        title: 'My Awesome Hat',
+        description: 'My Awesome Hat Description',
+        entityType: 'Product',
     },
 ]
 
