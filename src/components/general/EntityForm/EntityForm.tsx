@@ -3,6 +3,8 @@ import { styles } from './EntityForm.styles';
 import SearchBar from 'components/stacks/common/SearchBar/SearchBar';
 import EntityCardList from '../EntityCardList/EntityCardList';
 import { Entity } from '../Entity.types';
+import { useEffect, useState } from 'react';
+import { SearchParams } from 'components/stacks/common/SearchBar/SearchBar.types';
 
 
 export interface Props<T> {
@@ -13,16 +15,29 @@ export interface Props<T> {
 
 
 const EntityForm = <T extends Entity>(props: Props<T>) => {
-    const { entityType, onSubmit } = props;
-    debugger;
+    const { entityType, list, onSubmit } = props;
+    const [searchableList, setSearchableList] = useState(list)
+
+    const onSearch = (searchQuery: SearchParams) => {
+        console.log(searchQuery.searchValue)
+        const newList = searchQuery.searchValue ? searchableList.filter((entity: Entity) => {
+            return entity.title.toLowerCase().includes(searchQuery.searchValue.toLowerCase());
+        }) : list
+
+        setSearchableList(newList)
+    }
+
     return (
         <div className={styles.root} id='EntityForm' >
             <Form onSubmit={onSubmit}>
                 <Caption>Search for a {entityType}</Caption>
-                <SearchBar onSearch={() => { console.log('searched') }} />
+                <SearchBar
+                    onSearch={onSearch}
+                    placeholder={`Type to search for ${entityType}s`}
+                    searchTitle={`Search for ${entityType}s`} />
 
                 <Flex>
-                    <EntityCardList {...props} />
+                    <EntityCardList entityType={entityType} list={searchableList} />
                 </Flex>
             </Form>
         </div>);
