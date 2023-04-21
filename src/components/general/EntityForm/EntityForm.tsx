@@ -47,7 +47,7 @@ const EntityForm = <T extends Entity>(props: Props<T>) => {
 
             <Form onSubmit={onSubmit}>
                 <Flex className={styles.heading} alignItems='center' justifyContent='space-between'>
-                    <Text >Search for a {entityType}: </Text>
+                    <Text id="search-input-helptext">Search for a {entityType}: </Text>
                     <TextLink onClick={() => setShowSelected(!showSelected)}>
                         {showSelected ? 'Show all' : `Show Selected (${selected.length})`}
                     </TextLink>
