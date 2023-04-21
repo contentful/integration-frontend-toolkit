@@ -7,7 +7,7 @@ describe('EntityCard component', () => {
   it('Renders', () => {
     render(
       <EntityCard
-        contentType="Some Content Type"
+        description="Some description"
         entityType="Some Entity Type"
         title="Some test title"
       />
@@ -22,7 +22,7 @@ describe('EntityCard component', () => {
   });
 
   it('Shows Missing text if title is missing', () => {
-    render(<EntityCard contentType="Some Content Type" entityType="Some Entity Type" title="" />);
+    render(<EntityCard description="Some Description" entityType="Some Entity Type" title="" />);
 
     const testTitle = document.querySelector('[data-test-id="title"]');
     expect(testTitle).toHaveTextContent('Some Entity Type Missing');
@@ -31,7 +31,7 @@ describe('EntityCard component', () => {
   it('Shows loading skeleton if loading', () => {
     render(
       <EntityCard
-        contentType="Some Content Type"
+        description="Some Description"
         entityType="Some Entity Type"
         title="Some Title"
         loading={true}

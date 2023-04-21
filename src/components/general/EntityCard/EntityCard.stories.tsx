@@ -6,7 +6,6 @@ import EntityCard from './EntityCard';
 const defaultData = {
   title: 'My Awesome Title',
   description: 'My Awesome Description',
-  contentType: 'Blog',
 };
 
 const meta: Meta<typeof EntityCard> = {
