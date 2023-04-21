@@ -1,6 +1,6 @@
 {
   "name": "@contentful/integration-component-library",
-  "version": "0.9.5",
+  "version": "0.9.8",
   "private": false,
   "dependencies": {
     "@contentful/f36-components": "^4.35.0",
@@ -88,7 +88,7 @@
     "vite": "^4.2.0"
   },
   "publishConfig": {
-    "@contentful:registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com"
   },
   "lint-staged": {
     "*.{t,j}s?(x)": [

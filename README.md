@@ -26,12 +26,11 @@ To run tests:
 npm run test
 ```
 
-## Expectations of development: 
+## Expectations of development:  
 
-Please refer to the ```LineChart``` component as an example. 
-
-1. Each new component added to this library should be housed in its own directory, either under a certain Stack or under a general 'Common' directory. 
-2. Each new component should be accompanied by a spec. file.  
+1. Each new component added to this library should be housed in its own directory, either under a certain Stack or under a general 'General' directory. 
+2. Each new component should be accompanied by a spec. file. 
+3. Keep in mind the various iterations of a component i.e if it might be usuful to create a story for each iteration? and if the story is self-explantory to other developers? Sometimes it is useful to add details, actions, decorators to describe the story and component. 
 
 ## Storybook 
 
