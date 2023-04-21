@@ -52,7 +52,7 @@ const meta: Meta<typeof EntityForm> = {
     component: EntityForm,
     decorators: [
         (Story) => (
-            <div style={{ width: '300px' }}>
+            <div style={{ width: '400px' }}>
                 <Story />
             </div>
         ),
