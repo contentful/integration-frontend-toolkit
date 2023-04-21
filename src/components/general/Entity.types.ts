@@ -4,3 +4,11 @@ export interface Entity {
     description: string;
     thumbnail?: string;
 }
+
+export interface ListCard {
+    className?: string,
+    loading?: boolean,
+    withDragHandle?: boolean,
+    isSelected?: boolean,
+    onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+}

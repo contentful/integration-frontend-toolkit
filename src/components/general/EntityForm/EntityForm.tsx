@@ -1,4 +1,4 @@
-import { Caption, EntityList, Flex, Form, Paragraph } from '@contentful/f36-components';
+import { Caption, TextLink, Flex, Form, Paragraph, Text } from '@contentful/f36-components';
 import { styles } from './EntityForm.styles';
 import SearchBar from 'components/stacks/common/SearchBar/SearchBar';
 import EntityCardList from '../EntityCardList/EntityCardList';
@@ -17,7 +17,8 @@ export interface Props<T> {
 const EntityForm = <T extends Entity>(props: Props<T>) => {
     const { entityType, list, onSubmit } = props;
     const [searchableList, setSearchableList] = useState(list)
-
+    const [selected, setSelected] = useState([] as Entity[]);
+    const [showSelected, setShowSelected] = useState(false)
     const onSearch = (searchQuery: SearchParams) => {
         const newList = searchQuery.searchValue ? searchableList.filter((entity: Entity) => {
             return entity.title.toLowerCase().includes(searchQuery.searchValue.toLowerCase());
@@ -26,10 +27,30 @@ const EntityForm = <T extends Entity>(props: Props<T>) => {
         setSearchableList(newList)
     }
 
+    const onSelect = (item: Entity) => {
+        if (selected.length === 0) {
+            setSelected([item])
+        } else {
+            const index = selected.findIndex((e: Entity) => e.title === item.title);
+            if (index > -1) {
+                const newList = selected.filter((e: Entity) => e.title !== item.title)
+                setSelected(newList)
+            } else {
+                setSelected([...selected, item])
+            }
+        }
+    }
+
     return (
         <div className={styles.root} id='EntityForm' >
+
             <Form onSubmit={onSubmit}>
-                <Paragraph className={styles.heading}>Search for a {entityType}: </Paragraph>
+                <Flex className={styles.heading} alignItems='center' justifyContent='space-between'>
+                    <Text >Search for a {entityType}: </Text>
+                    <TextLink onClick={() => setShowSelected(!showSelected)}>
+                        {showSelected ? 'Show all' : `Show Selected (${selected.length})`}
+                    </TextLink>
+                </Flex>
                 <Flex className={styles.searchBox}>
                     <SearchBar
                         onSearch={onSearch}
@@ -37,10 +58,17 @@ const EntityForm = <T extends Entity>(props: Props<T>) => {
                         searchTitle={`Search for ${entityType}s`} />
                 </Flex>
 
-
-                <Flex className={styles.searchResults}>
-                    <EntityCardList entityType={entityType} list={searchableList} />
-                </Flex>
+                {showSelected &&
+                    <Flex className={styles.searchResults}>
+                        <EntityCardList entityType={entityType} list={selected} selected={selected} />
+                    </Flex>
+                }
+                {
+                    !showSelected &&
+                    <Flex className={styles.searchResults}>
+                        <EntityCardList entityType={entityType} list={searchableList} selected={selected} onSelect={onSelect} />
+                    </Flex>
+                }
             </Form>
         </div>);
 }
