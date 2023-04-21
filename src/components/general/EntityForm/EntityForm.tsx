@@ -1,4 +1,4 @@
-import { Caption, TextLink, Flex, Form, Paragraph, Text } from '@contentful/f36-components';
+import { Caption, TextLink, Flex, Form, Paragraph, Text, Button } from '@contentful/f36-components';
 import { styles } from './EntityForm.styles';
 import SearchBar from 'components/stacks/common/SearchBar/SearchBar';
 import EntityCardList from '../EntityCardList/EntityCardList';
@@ -10,12 +10,13 @@ import { SearchParams } from 'components/stacks/common/SearchBar/SearchBar.types
 export interface Props<T> {
     entityType: string;
     list: T[];
-    onSubmit?: React.FormEventHandler<HTMLFormElement>;
+    onCancel?: () => void;
+    onSubmit?: () => void;
 }
 
 
 const EntityForm = <T extends Entity>(props: Props<T>) => {
-    const { entityType, list, onSubmit } = props;
+    const { entityType, list, onCancel, onSubmit } = props;
     const [searchableList, setSearchableList] = useState(list)
     const [selected, setSelected] = useState([] as Entity[]);
     const [showSelected, setShowSelected] = useState(false)
@@ -69,6 +70,11 @@ const EntityForm = <T extends Entity>(props: Props<T>) => {
                         <EntityCardList entityType={entityType} list={searchableList} selected={selected} onSelect={onSelect} />
                     </Flex>
                 }
+
+                <Flex className={styles.actions} alignItems='center' justifyContent='flex-end'>
+                    <Button onClick={onCancel}>Cancel</Button>
+                    <Button variant="primary" type="submit" isDisabled={!selected.length}>Select {entityType}s</Button>
+                </Flex>
             </Form>
         </div>);
 }

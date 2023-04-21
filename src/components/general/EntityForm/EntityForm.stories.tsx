@@ -67,7 +67,9 @@ export const EntityFormDefault: Story = {};
 
 EntityFormDefault.args = {
     entityType: 'Product',
-    list: defaultList
+    list: defaultList,
+    onCancel: () => { console.log('cancelled') },
+    onSubmit: () => { console.log('submitted') }
 }
 
 export default meta;
