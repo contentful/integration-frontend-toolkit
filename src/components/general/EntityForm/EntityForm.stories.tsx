@@ -3,11 +3,13 @@ import type { Meta, StoryObj } from '@storybook/react';
 import EntityForm from './EntityForm';
 import { Entity } from '../Entity.types';
 
-interface Product extends Entity { }
+interface Product extends Entity {
+    sku?: 'someSkuId'
+}
 
-interface ProductVariant extends Entity { }
-
-interface Collection extends Entity { }
+interface ProductVariant extends Entity {
+    variant_id?: 'someVariantId'
+}
 
 const defaultProduct: Product = {
     entityType: 'Product',
@@ -19,12 +21,6 @@ const defaultProductVariant: ProductVariant = {
     entityType: 'Product Variant',
     title: 'My Awesome Blue T-Shirt',
     description: 'My Awesome Shirt',
-}
-
-const defaultCollection: Collection = {
-    entityType: 'Collection',
-    title: 'Shirts',
-    description: 'My Awesome Shirts'
 }
 
 const defaultList: Product[] = [
