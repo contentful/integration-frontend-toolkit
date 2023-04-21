@@ -14,7 +14,7 @@ export interface Props<T> {
 
 
 const EntityCardList = <T extends Entity>(props: Props<T>) => {
-    const { entityType, list, error, selected, onSelect } = props;
+    const { entityType, list, loading, error, selected, onSelect } = props;
 
     const isSelected = (e: Entity): boolean => {
         return selected?.findIndex((entity) => entity.title === e.title) > -1
@@ -33,6 +33,7 @@ const EntityCardList = <T extends Entity>(props: Props<T>) => {
                     data-test-id="entity-card"
                     onClick={() => onSelect && onSelect(listItem)}
                     isSelected={isSelected(listItem)}
+                    loading={loading}
                     {...listItem} />
             })}
         </div>);
