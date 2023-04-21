@@ -64,7 +64,7 @@ type Story = StoryObj<typeof EntityForm>;
 export const EntityFormDefault: Story = {};
 
 EntityFormDefault.args = {
-    entityType: 'Entry',
+    entityType: 'Product',
     list: defaultList
 }
 

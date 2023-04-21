@@ -13,7 +13,6 @@ export interface Props<T> {
 
 const EntityCardList = <T extends Entity>(props: Props<T>) => {
     const { entityType, list, error } = props;
-    debugger;
 
     return (
         <div className={styles.root} id='EntityCardList' >
