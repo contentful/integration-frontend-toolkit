@@ -17,7 +17,13 @@ export const styles = {
     }),
     searchResults: css({
         overflowY: 'scroll',
-        padding: '0 15px',
+        padding: `0 ${tokens.spacingXs}`,
         boxSizing: 'border-box'
+    }),
+    actions: css({
+        marginTop: tokens.spacingM,
+        'button:first-child': {
+            marginRight: tokens.spacingM
+        }
     })
 };
