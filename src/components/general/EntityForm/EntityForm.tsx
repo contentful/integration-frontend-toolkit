@@ -1,4 +1,4 @@
-import { Caption, EntityList, Flex, Form } from '@contentful/f36-components';
+import { Caption, EntityList, Flex, Form, Paragraph } from '@contentful/f36-components';
 import { styles } from './EntityForm.styles';
 import SearchBar from 'components/stacks/common/SearchBar/SearchBar';
 import EntityCardList from '../EntityCardList/EntityCardList';
@@ -19,7 +19,6 @@ const EntityForm = <T extends Entity>(props: Props<T>) => {
     const [searchableList, setSearchableList] = useState(list)
 
     const onSearch = (searchQuery: SearchParams) => {
-        console.log(searchQuery.searchValue)
         const newList = searchQuery.searchValue ? searchableList.filter((entity: Entity) => {
             return entity.title.toLowerCase().includes(searchQuery.searchValue.toLowerCase());
         }) : list
@@ -30,13 +29,16 @@ const EntityForm = <T extends Entity>(props: Props<T>) => {
     return (
         <div className={styles.root} id='EntityForm' >
             <Form onSubmit={onSubmit}>
-                <Caption>Search for a {entityType}</Caption>
-                <SearchBar
-                    onSearch={onSearch}
-                    placeholder={`Type to search for ${entityType}s`}
-                    searchTitle={`Search for ${entityType}s`} />
+                <Paragraph className={styles.heading}>Search for a {entityType}: </Paragraph>
+                <Flex className={styles.searchBox}>
+                    <SearchBar
+                        onSearch={onSearch}
+                        placeholder={`Type to search for ${entityType}s`}
+                        searchTitle={`Search for ${entityType}s`} />
+                </Flex>
 
-                <Flex>
+
+                <Flex className={styles.searchResults}>
                     <EntityCardList entityType={entityType} list={searchableList} />
                 </Flex>
             </Form>
