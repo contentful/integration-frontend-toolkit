@@ -22,7 +22,7 @@ type Story = StoryObj<typeof HyperLink>;
 export const Primary: Story = {};
 
 Primary.args = {
-  body: 'Please contact support if you are having issues.',
+  body: 'Please contact support if you are having issues!',
   substring: 'contact support',
 };
 
