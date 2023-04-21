@@ -1,6 +1,6 @@
 
 
-import { fireEvent, getByLabelText, render, waitFor } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import EntityForm from './EntityForm';
 import { act } from 'react-dom/test-utils';

@@ -1,9 +1,9 @@
-import { Caption, TextLink, Flex, Form, Paragraph, Text, Button } from '@contentful/f36-components';
+import { TextLink, Flex, Form, Text, Button } from '@contentful/f36-components';
 import { styles } from './EntityForm.styles';
 import SearchBar from 'components/stacks/common/SearchBar/SearchBar';
 import EntityCardList from '../EntityCardList/EntityCardList';
 import { Entity } from '../Entity.types';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { SearchParams } from 'components/stacks/common/SearchBar/SearchBar.types';
 
 
