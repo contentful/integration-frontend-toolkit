@@ -1,10 +1,15 @@
 
 
-import { render } from '@testing-library/react';
+import { fireEvent, getByLabelText, render, waitFor } from '@testing-library/react';
 
 import EntityForm from './EntityForm';
+import { act } from 'react-dom/test-utils';
 
 describe('EntityForm component', () => {
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+
     it('Renders', () => {
         render(
             <EntityForm
@@ -14,6 +19,46 @@ describe('EntityForm component', () => {
         );
 
         const form = document.querySelector('#EntityForm');
+        const searchBar = document.querySelector('[data-test-id="cf-ui-text-input"]')
         expect(form).toBeVisible();
+        expect(searchBar).toBeVisible()
     });
+
+    it('On search input, show list of cards', async () => {
+        jest.useFakeTimers();
+
+        const { getByTestId, getAllByTestId } = render(
+            <EntityForm
+                entityType="Some Entity Type"
+                list={[{
+                    title: 'Some matched Title',
+                    description: 'some descriptions',
+                    entityType: 'Some Entity Type'
+                },
+                {
+                    title: 'Some regular Title',
+                    description: 'some descriptions',
+                    entityType: 'Some Entity Type'
+                },
+                {
+                    title: 'Some matched Title',
+                    description: 'some descriptions',
+                    entityType: 'Some Entity Type'
+                }]}
+            />
+        );
+
+        const searchInput = getByTestId('cf-ui-text-input');
+        fireEvent.change(searchInput, { target: { value: 'matched' } });
+
+        act(() => {
+            jest.advanceTimersByTime(400);
+        });
+
+        const cards = getAllByTestId('entity-card');
+        expect(cards.length).toBeLessThanOrEqual(2);
+
+        jest.useRealTimers();
+
+    })
 });

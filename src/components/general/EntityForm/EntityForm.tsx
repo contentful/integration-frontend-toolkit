@@ -52,11 +52,12 @@ const EntityForm = <T extends Entity>(props: Props<T>) => {
                         {showSelected ? 'Show all' : `Show Selected (${selected.length})`}
                     </TextLink>
                 </Flex>
-                <Flex className={styles.searchBox}>
+                <Flex className={styles.searchBox} data-test-id="search-bar">
                     <SearchBar
                         onSearch={onSearch}
                         placeholder={`Type to search for ${entityType}s`}
-                        searchTitle={`Search for ${entityType}s`} />
+                        searchTitle={`Search for ${entityType}s`}
+                    />
                 </Flex>
 
                 {showSelected &&
