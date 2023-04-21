@@ -43,7 +43,7 @@ const EntityForm = <T extends Entity>(props: Props<T>) => {
     }
 
     return (
-        <div className={styles.root} id='EntityForm' >
+        <div className={styles.root} id='EntityForm'>
 
             <Form onSubmit={onSubmit}>
                 <Flex className={styles.heading} alignItems='center' justifyContent='space-between'>
@@ -65,8 +65,7 @@ const EntityForm = <T extends Entity>(props: Props<T>) => {
                         <EntityCardList entityType={entityType} list={selected} selected={selected} />
                     </Flex>
                 }
-                {
-                    !showSelected &&
+                {!showSelected &&
                     <Flex className={styles.searchResults}>
                         <EntityCardList entityType={entityType} list={searchableList} selected={selected} onSelect={onSelect} />
                     </Flex>
@@ -77,7 +76,8 @@ const EntityForm = <T extends Entity>(props: Props<T>) => {
                     <Button variant="primary" type="submit" isDisabled={!selected.length}>Select {entityType}s</Button>
                 </Flex>
             </Form>
-        </div>);
+        </div>
+    );
 }
 
 export default EntityForm;
