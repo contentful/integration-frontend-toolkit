@@ -13,7 +13,7 @@ describe('EntityCard component', () => {
       />
     );
 
-    const card = document.querySelector('#EntityCard');
+    const card = document.querySelector('[data-test-id="entity-card-single"]');
     const testTitle = document.querySelector('[data-test-id="title"]');
     const loadingSkel = document.querySelector('[data-test-id="cf-ui-skeleton-form"]');
     expect(card).toBeVisible();

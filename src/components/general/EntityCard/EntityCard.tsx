@@ -17,6 +17,7 @@ const EntityCard = (props: Props) => {
       title={`${entityType} Missing`}
       description={`This ${entityType} is missing. It may have been deleted or moved.`}
       isLoading={loading}
+      role="article"
       data-test-id="missing"
     />
   ) : (
@@ -24,11 +25,12 @@ const EntityCard = (props: Props) => {
       {...props}
       isLoading={loading}
       thumbnailElement={<img alt="Thumbnail" src={thumbnail || Placeholder} />}
+      role="article"
     />
   );
 
   return (
-    <div className={`${styles.root} ${className}`} id="EntityCard">
+    <div className={`${styles.root} ${className}`} data-test-id="entity-card-single">
       {card}
     </div>
   );
