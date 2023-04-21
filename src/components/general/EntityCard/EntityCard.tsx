@@ -2,15 +2,13 @@ import React from 'react';
 import { EntryCard } from '@contentful/f36-components';
 import { styles } from './EntityCard.styles';
 import Placeholder from './assets/placeholder.png';
+import { Entity } from '../Entity.types';
 
-export interface Props {
-    title?: string,
-    description?: string,
+export interface Props extends Entity {
     className?: string,
     entityType: string;
-    contentType: string,
+    contentType?: string,
     loading?: boolean;
-    thumbnail?: string;
     withDragHandle?: boolean;
     onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
