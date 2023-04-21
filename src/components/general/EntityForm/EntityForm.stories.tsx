@@ -49,6 +49,28 @@ const defaultList: Product[] = [
     },
 ]
 
+const defaultProductVariantList: ProductVariant[] = [
+    {
+        ...defaultProductVariant,
+    },
+    {
+        title: '',
+        description: '',
+        entityType: 'Product Variant',
+    },
+    {
+        title: 'My Awesome Grey Sweats',
+        description: 'My Awesome Grey Sweats Description',
+        entityType: 'Product Variant',
+        thumbnail: 'https://fastly.picsum.photos/id/666/200/200.jpg?hmac=keuaJ7nJC5hkHIEyee1b6jdEMbHBZbozYQ9NClt2_lk'
+    },
+    {
+        title: 'My Awesome Red Hat',
+        description: 'My Awesome Red Hat Description',
+        entityType: 'Product Variant',
+    },
+]
+
 const meta: Meta<typeof EntityForm> = {
     title: 'General/EntityForm',
     component: EntityForm,
@@ -68,6 +90,15 @@ export const EntityFormDefault: Story = {};
 EntityFormDefault.args = {
     entityType: 'Product',
     list: defaultList,
+    onCancel: () => { console.log('cancelled') },
+    onSubmit: () => { console.log('submitted') }
+}
+
+export const EntityFormVariants: Story = {};
+
+EntityFormVariants.args = {
+    entityType: 'Product Variant',
+    list: defaultProductVariantList,
     onCancel: () => { console.log('cancelled') },
     onSubmit: () => { console.log('submitted') }
 }
