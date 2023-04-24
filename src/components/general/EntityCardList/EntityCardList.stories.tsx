@@ -71,7 +71,7 @@ EntityCardListFailed.args = {
 export const EntityCardListNone: Story = {};
 
 EntityCardListNone.args = {
-    entityType: 'Card',
+    entityType: 'Product',
     list: []
 }
 
