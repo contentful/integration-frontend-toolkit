@@ -6,10 +6,9 @@ import { Entity, SELECT_TYPE } from '../Entity.types';
 import { useState } from 'react';
 import { SearchParams } from 'components/stacks/common/SearchBar/SearchBar.types';
 
-
 export interface Props<T> {
     entityType: string;
-    selectType: 'multiple' | 'single';
+    selectType: SELECT_TYPE;
     list: T[];
     onCancel?: () => void;
     onSubmit?: (selected: Entity | Entity[]) => void;
@@ -39,29 +38,29 @@ const EntityForm = <T extends Entity>(props: Props<T>) => {
     }
 
     const onSelect = (item: Entity) => {
-    if (!isMultiSelect()) {
-        if (selected.title === item.title) {
-            setSelected({} as Entity);
-        } else {
-            setSelected(item);
+        if (!isMultiSelect()) {
+            if (selected.title === item.title) {
+                setSelected({} as Entity);
+            } else {
+                setSelected(item);
+            }
+
+            return;
         }
 
-        return;
-    }
+        if (selectedMultiple.length !== 0) {
+            const index = selectedMultiple.findIndex((e: Entity) => e.title === item.title);
+            if (index > -1) {
+                const newList = selectedMultiple.filter((e: Entity) => e.title !== item.title);
+                setSelectedMultiple(newList);
+            } else {
+                setSelectedMultiple([...selectedMultiple, item]);
+            }
 
-    if (selectedMultiple.length !== 0) {
-        const index = selectedMultiple.findIndex((e: Entity) => e.title === item.title);
-        if (index > -1) {
-            const newList = selectedMultiple.filter((e: Entity) => e.title !== item.title);
-            setSelectedMultiple(newList);
-        } else {
-            setSelectedMultiple([...selectedMultiple, item]);
+            return;
         }
 
-        return;
-    }
-
-    setSelectedMultiple([item]);
+        setSelectedMultiple([item]);
     }
 
     const clearSelected = () => {

@@ -9,7 +9,7 @@ export interface Props<T> {
     list: T[],
     loading?: boolean,
     selected: Entity[],
-    selectType: 'multiple' | 'single';
+    selectType: SELECT_TYPE;
     onSelect?: (card: Entity) => void;
 }
 

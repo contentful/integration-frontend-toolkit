@@ -4,6 +4,7 @@ import { fireEvent, render } from '@testing-library/react';
 
 import EntityForm from './EntityForm';
 import { act } from 'react-dom/test-utils';
+import { SELECT_TYPE } from '../Entity.types';
 
 describe('EntityForm component', () => {
     afterEach(() => {
@@ -15,7 +16,7 @@ describe('EntityForm component', () => {
             <EntityForm
                 entityType="Some Entity Type"
                 list={[]}
-                selectType='multiple'
+                selectType={SELECT_TYPE.MULTIPLE}
             />
         );
         const form = getByTestId('cf-ui-form-label');
@@ -46,7 +47,7 @@ describe('EntityForm component', () => {
                     description: 'some descriptions',
                     entityType: 'Some Entity Type'
                 }]}
-                selectType='multiple'
+                selectType={SELECT_TYPE.MULTIPLE}
             />
         );
 

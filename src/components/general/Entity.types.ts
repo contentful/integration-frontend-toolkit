@@ -13,7 +13,7 @@ export interface ListCard {
     onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
-export const SELECT_TYPE = {
-    MULTIPLE: 'multiple',
-    SINGLE: 'single'
+export enum SELECT_TYPE {
+    MULTIPLE = 'multiple',
+    SINGLE = 'single'
 }
