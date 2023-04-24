@@ -11,16 +11,16 @@ describe('EntityForm component', () => {
     });
 
     it('Renders', () => {
-        render(
+        const { getByTestId } = render(
             <EntityForm
                 entityType="Some Entity Type"
                 list={[]}
                 selectType='multiple'
             />
         );
+        const form = getByTestId('cf-ui-form-label');
+        const searchBar = getByTestId('cf-ui-text-input')
 
-        const form = document.querySelector('#EntityForm');
-        const searchBar = document.querySelector('[data-test-id="cf-ui-text-input"]')
         expect(form).toBeVisible();
         expect(searchBar).toBeVisible()
     });
