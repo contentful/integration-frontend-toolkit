@@ -39,26 +39,29 @@ const EntityForm = <T extends Entity>(props: Props<T>) => {
     }
 
     const onSelect = (item: Entity) => {
-        if (isMultiSelect()) {
-
-            if (selectedMultiple.length === 0) {
-                setSelectedMultiple([item])
-            } else {
-                const index = selectedMultiple.findIndex((e: Entity) => e.title === item.title);
-                if (index > -1) {
-                    const newList = selectedMultiple.filter((e: Entity) => e.title !== item.title)
-                    setSelectedMultiple(newList)
-                } else {
-                    setSelectedMultiple([...selectedMultiple, item])
-                }
-            }
+    if (!isMultiSelect()) {
+        if (selected.title === item.title) {
+            setSelected({} as Entity);
         } else {
-            if (selected.title === item.title) {
-                setSelected({} as Entity)
-            } else {
-                setSelected(item);
-            }
+            setSelected(item);
         }
+
+        return;
+    }
+
+    if (selectedMultiple.length !== 0) {
+        const index = selectedMultiple.findIndex((e: Entity) => e.title === item.title);
+        if (index > -1) {
+            const newList = selectedMultiple.filter((e: Entity) => e.title !== item.title);
+            setSelectedMultiple(newList);
+        } else {
+            setSelectedMultiple([...selectedMultiple, item]);
+        }
+
+        return;
+    }
+
+    setSelectedMultiple([item]);
     }
 
     const clearSelected = () => {
