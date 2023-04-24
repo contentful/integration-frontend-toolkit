@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import EntityForm from './EntityForm';
-import { Entity } from '../Entity.types';
+import { Entity, SELECT_TYPE } from '../Entity.types';
 
 interface Product extends Entity {
     sku?: 'someSkuId'
@@ -86,7 +86,7 @@ export const EntityFormDefault: Story = {};
 EntityFormDefault.args = {
     entityType: 'Product',
     list: defaultList,
-    selectType: 'multiple',
+    selectType: SELECT_TYPE.MULTIPLE,
     onCancel: () => { console.log('cancelled') },
     onSubmit: () => { console.log('submitted') }
 }
@@ -96,7 +96,7 @@ export const EntityFormVariants: Story = {};
 EntityFormVariants.args = {
     entityType: 'Product Variant',
     list: defaultProductVariantList,
-    selectType: 'multiple',
+    selectType: SELECT_TYPE.MULTIPLE,
     onCancel: () => { console.log('cancelled') },
     onSubmit: (selected) => { console.log(selected) }
 }
@@ -106,7 +106,7 @@ export const EntityFormSingleSelect: Story = {};
 EntityFormSingleSelect.args = {
     entityType: 'Product',
     list: defaultProductVariantList,
-    selectType: 'single',
+    selectType: SELECT_TYPE.MULTIPLE,
     onCancel: () => { console.log('cancelled') },
     onSubmit: (selected) => { console.log(selected) }
 }

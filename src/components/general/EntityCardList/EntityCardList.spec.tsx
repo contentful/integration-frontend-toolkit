@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 
 import EntityCardList from './EntityCardList';
+import { SELECT_TYPE } from '../Entity.types';
 
 describe('EntityCard component', () => {
     it('Renders', () => {
@@ -8,7 +9,7 @@ describe('EntityCard component', () => {
             <EntityCardList
                 selected={[]}
                 entityType='Some Entity Type'
-                selectType='multiple'
+                selectType={SELECT_TYPE.MULTIPLE}
                 list={[{
                     title: 'Some Test Title',
                     description: 'Some Test Description',
@@ -27,7 +28,7 @@ describe('EntityCard component', () => {
             <EntityCardList
                 selected={[]}
                 entityType='Failed'
-                selectType='multiple'
+                selectType={SELECT_TYPE.MULTIPLE}
                 list={[{
                     title: '',
                     description: 'Some Test Description',
@@ -46,7 +47,7 @@ describe('EntityCard component', () => {
             <EntityCardList
                 selected={[]}
                 entityType='Failed'
-                selectType='multiple'
+                selectType={SELECT_TYPE.MULTIPLE}
                 list={[{
                     title: 'Some Test Title',
                     description: 'Some Test Description',
@@ -78,7 +79,7 @@ describe('EntityCard component', () => {
                 selected={[]}
                 entityType='Failed'
                 list={[]}
-                selectType='multiple'
+                selectType={SELECT_TYPE.MULTIPLE}
             />
         );
 
@@ -93,7 +94,7 @@ describe('EntityCard component', () => {
             <EntityCardList
                 selected={[]}
                 entityType='Failed'
-                selectType='multiple'
+                selectType={SELECT_TYPE.MULTIPLE}
                 list={[{
                     title: '',
                     description: 'Some Test Description',
