@@ -23,7 +23,7 @@ const EntityCardList = <T extends Entity>(props: Props<T>) => {
     const { entityType, list, loading, error, selected, selectType, onSelect } = props;
 
     const isSelected = (e: Entity): boolean => {
-        return selected?.findIndex((entity) => entity.title === e.title) > -1
+        return selected.findIndex((entity) => entity.title === e.title) > -1
     }
 
     const isSelectable = (): boolean => {
