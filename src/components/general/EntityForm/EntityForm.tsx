@@ -91,9 +91,9 @@ const EntityForm = <T extends Entity>(props: Props<T>) => {
                         searchTitle={`Search for ${entityType}s`}
                     />
                 </Flex>
-                <Flex alignItems='center' justifyContent='space-between'>
+                <Flex className={styles.controls} alignItems='center' justifyContent='space-between'>
                     <TextLink onClick={() => setShowSelected(!showSelected)}>
-                        {showSelected ? 'Show all' : `Show Selected (${selectedMultiple.length})`}
+                        {showSelected ? 'Show all' : `Show Selected ${isMultiSelect() ? '(' + selectedMultiple.length + ')' : ''}`}
                     </TextLink>
                     <TextLink onClick={clearSelected}>
                         Clear Selected
