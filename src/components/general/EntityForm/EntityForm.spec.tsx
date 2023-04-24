@@ -15,6 +15,7 @@ describe('EntityForm component', () => {
             <EntityForm
                 entityType="Some Entity Type"
                 list={[]}
+                selectType='multiple'
             />
         );
 
@@ -45,6 +46,7 @@ describe('EntityForm component', () => {
                     description: 'some descriptions',
                     entityType: 'Some Entity Type'
                 }]}
+                selectType='multiple'
             />
         );
 
@@ -56,7 +58,7 @@ describe('EntityForm component', () => {
         });
 
         const cards = getAllByTestId('entity-card');
-        expect(cards.length).toBeLessThanOrEqual(2);
+        expect(cards.length).toEqual(2);
 
         jest.useRealTimers();
 

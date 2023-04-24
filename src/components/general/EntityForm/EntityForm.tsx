@@ -16,8 +16,8 @@ export interface Props<T> {
     entityType: string;
     selectType: 'multiple' | 'single';
     list: T[];
-    onCancel: () => void;
-    onSubmit: (selected: Entity | Entity[]) => void;
+    onCancel?: () => void;
+    onSubmit?: (selected: Entity | Entity[]) => void;
 }
 
 
@@ -77,7 +77,7 @@ const EntityForm = <T extends Entity>(props: Props<T>) => {
     return (
         <div className={styles.root} id='EntityForm'>
 
-            <Form onSubmit={() => onSubmit(isMultiSelect() ? selectedMultiple : selected)}>
+            <Form onSubmit={() => onSubmit && onSubmit(isMultiSelect() ? selectedMultiple : selected)}>
                 <Flex className={styles.heading} alignItems='center' justifyContent='space-between'>
                     <Text id="search-input-helptext">Search for a {entityType}: </Text>
 
@@ -117,8 +117,13 @@ const EntityForm = <T extends Entity>(props: Props<T>) => {
                     }
                 </Flex>
                 <Flex className={styles.actions} alignItems='center' justifyContent='flex-end'>
-                    <Button onClick={onCancel}>Cancel</Button>
-                    <Button variant="primary" type="submit" isDisabled={isDisabled()}>Select {entityType}s</Button>
+                    {onCancel && <Button onClick={onCancel}>Cancel</Button>}
+                    {onSubmit &&
+                        <Button
+                            variant="primary"
+                            type="submit"
+                            isDisabled={isDisabled()}>Select {entityType}s</Button>
+                    }
                 </Flex>
             </Form>
         </div>
