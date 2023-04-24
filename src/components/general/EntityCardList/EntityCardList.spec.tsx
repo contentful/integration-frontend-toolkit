@@ -8,6 +8,7 @@ describe('EntityCard component', () => {
             <EntityCardList
                 selected={[]}
                 entityType='Some Entity Type'
+                selectType='multiple'
                 list={[{
                     title: 'Some Test Title',
                     description: 'Some Test Description',
@@ -26,6 +27,7 @@ describe('EntityCard component', () => {
             <EntityCardList
                 selected={[]}
                 entityType='Failed'
+                selectType='multiple'
                 list={[{
                     title: '',
                     description: 'Some Test Description',
@@ -44,6 +46,7 @@ describe('EntityCard component', () => {
             <EntityCardList
                 selected={[]}
                 entityType='Failed'
+                selectType='multiple'
                 list={[{
                     title: 'Some Test Title',
                     description: 'Some Test Description',
@@ -66,7 +69,7 @@ describe('EntityCard component', () => {
         );
 
         const missingCards = document.querySelectorAll('[data-test-id="entity-card"]')
-        expect(missingCards.length).toBeLessThanOrEqual(3);
+        expect(missingCards.length).toEqual(3);
     })
 
     it('Shows a message if no data is available', () => {
@@ -75,12 +78,13 @@ describe('EntityCard component', () => {
                 selected={[]}
                 entityType='Failed'
                 list={[]}
+                selectType='multiple'
             />
         );
 
         const missingCards = document.querySelectorAll('[data-test-id="entity-card"]')
         const noCardsMessage = document.querySelectorAll('[data-test-id="no-cards"]')
-        expect(missingCards.length).toBeLessThanOrEqual(0);
+        expect(missingCards.length).toEqual(0);
         expect(noCardsMessage).not.toBeNull();
     })
 
@@ -89,6 +93,7 @@ describe('EntityCard component', () => {
             <EntityCardList
                 selected={[]}
                 entityType='Failed'
+                selectType='multiple'
                 list={[{
                     title: '',
                     description: 'Some Test Description',
@@ -102,7 +107,7 @@ describe('EntityCard component', () => {
 
         const missingCards = document.querySelectorAll('[data-test-id="entity-card"]')
         const cardsError = document.querySelectorAll('[data-test-id="cards-error"]')
-        expect(missingCards.length).toBeLessThanOrEqual(0);
+        expect(missingCards.length).toEqual(0);
         expect(cardsError).not.toBeNull();
     })
 });
