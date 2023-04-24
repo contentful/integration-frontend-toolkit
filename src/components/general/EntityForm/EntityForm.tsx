@@ -74,6 +74,8 @@ const EntityForm = <T extends Entity>(props: Props<T>) => {
         }
     }
 
+    const listContent = showSelected ? isMultiSelect() ? selectedMultiple : [selected] : searchableList;
+
     return (
         <div className={styles.root} id='EntityForm'>
 
@@ -99,22 +101,13 @@ const EntityForm = <T extends Entity>(props: Props<T>) => {
                 </Flex>
                 <Flex className={styles.searchResults}>
 
-                    {showSelected &&
-                        <EntityCardList
-                            entityType={entityType}
-                            list={isMultiSelect() ? selectedMultiple : [selected]}
-                            selected={isMultiSelect() ? selectedMultiple : [selected]}
-                            selectType={selectType} />
-                    }
-                    {!showSelected &&
-                        <EntityCardList
-                            entityType={entityType}
-                            list={searchableList}
-                            selected={isMultiSelect() ? selectedMultiple : [selected]}
-                            onSelect={onSelect}
-                            selectType={selectType} />
+                    <EntityCardList
+                        entityType={entityType}
+                        list={listContent}
+                        selected={isMultiSelect() ? selectedMultiple : [selected]}
+                        onSelect={onSelect}
+                        selectType={selectType} />
 
-                    }
                 </Flex>
                 <Flex className={styles.actions} alignItems='center' justifyContent='flex-end'>
                     {onCancel && <Button onClick={onCancel}>Cancel</Button>}
