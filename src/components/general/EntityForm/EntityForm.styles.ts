@@ -15,6 +15,9 @@ export const styles = {
     searchBox: css({
         marginBottom: tokens.spacingM
     }),
+    controls: css({
+        marginBottom: tokens.spacingM
+    }),
     searchResults: css({
         overflowY: 'scroll',
         padding: `0 ${tokens.spacingXs}`,
