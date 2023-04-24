@@ -2,14 +2,9 @@ import { TextLink, Flex, Form, Text, Button } from '@contentful/f36-components';
 import { styles } from './EntityForm.styles';
 import SearchBar from 'components/stacks/common/SearchBar/SearchBar';
 import EntityCardList from '../EntityCardList/EntityCardList';
-import { Entity } from '../Entity.types';
+import { Entity, SELECT_TYPE } from '../Entity.types';
 import { useState } from 'react';
 import { SearchParams } from 'components/stacks/common/SearchBar/SearchBar.types';
-
-const SELECT_TYPE = {
-    MULTIPLE: 'multiple',
-    SINGLE: 'single'
-}
 
 
 export interface Props<T> {

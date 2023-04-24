@@ -12,3 +12,8 @@ export interface ListCard {
     isSelected?: boolean,
     onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
+
+export const SELECT_TYPE = {
+    MULTIPLE: 'multiple',
+    SINGLE: 'single'
+}

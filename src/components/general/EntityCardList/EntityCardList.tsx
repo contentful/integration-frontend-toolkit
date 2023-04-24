@@ -1,12 +1,7 @@
 import { Note } from '@contentful/f36-components';
 import { styles } from './EntityCardList.styles';
 import EntityCard from '../EntityCard/EntityCard';
-import { Entity } from '../Entity.types';
-
-const SELECT_TYPE = {
-    MULTIPLE: 'multiple',
-    SINGLE: 'single'
-}
+import { Entity, SELECT_TYPE } from '../Entity.types';
 
 export interface Props<T> {
     entityType: string,
