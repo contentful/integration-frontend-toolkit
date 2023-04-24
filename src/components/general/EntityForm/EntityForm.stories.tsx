@@ -86,6 +86,7 @@ export const EntityFormDefault: Story = {};
 EntityFormDefault.args = {
     entityType: 'Product',
     list: defaultList,
+    selectType: 'multiple',
     onCancel: () => { console.log('cancelled') },
     onSubmit: () => { console.log('submitted') }
 }
@@ -95,8 +96,19 @@ export const EntityFormVariants: Story = {};
 EntityFormVariants.args = {
     entityType: 'Product Variant',
     list: defaultProductVariantList,
+    selectType: 'multiple',
     onCancel: () => { console.log('cancelled') },
-    onSubmit: () => { console.log('submitted') }
+    onSubmit: (selected) => { console.log(selected) }
+}
+
+export const EntityFormSingleSelect: Story = {};
+
+EntityFormSingleSelect.args = {
+    entityType: 'Product',
+    list: defaultProductVariantList,
+    selectType: 'single',
+    onCancel: () => { console.log('cancelled') },
+    onSubmit: (selected) => { console.log(selected) }
 }
 
 export default meta;
