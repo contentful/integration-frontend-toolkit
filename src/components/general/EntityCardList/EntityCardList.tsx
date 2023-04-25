@@ -1,26 +1,33 @@
 import { Note } from '@contentful/f36-components';
 import { styles } from './EntityCardList.styles';
 import EntityCard from '../EntityCard/EntityCard';
+import { Entity, SELECT_TYPE } from '../Entity.types';
 
-interface ListItem {
-    title?: string,
-    description?: string,
-    entityType: string;
-    contentType: string,
-    thumbnail?: string;
-}
-
-
-export interface Props {
+export interface Props<T> {
     entityType: string,
     error?: boolean,
-    list: ListItem[],
-    loading?: boolean;
+    list: T[],
+    loading?: boolean,
+    selected: Entity[],
+    selectType: SELECT_TYPE;
+    onSelect?: (card: Entity) => void;
 }
 
 
-const EntityCardList = (props: Props) => {
-    const { entityType, list, loading, error } = props;
+const EntityCardList = <T extends Entity>(props: Props<T>) => {
+    const { entityType, list, loading, error, selected, selectType, onSelect } = props;
+
+    const isSelected = (e: Entity): boolean => {
+        return selected.findIndex((entity) => entity.title === e.title) > -1
+    }
+
+    const isSelectable = (): boolean => {
+        if (selectType === SELECT_TYPE.SINGLE) {
+            return !selected[0].title;
+        } else {
+            return selectType === SELECT_TYPE.MULTIPLE
+        }
+    }
 
     return (
         <div className={styles.root} id='EntityCardList' >
@@ -28,12 +35,14 @@ const EntityCardList = (props: Props) => {
 
             {list.length === 0 && <Note variant='negative' data-test-id="no-cards">There are no {entityType.toLowerCase()}s to show.</Note>}
 
-            {!error && list.length > 0 && list.map((listItem: ListItem, index) => {
+            {!error && list.length > 0 && list.map((listItem: T, index) => {
                 return <EntityCard
                     key={index}
                     className={`${styles.entityCard} entity-card-${index}`}
-                    loading={loading}
                     data-test-id="entity-card"
+                    onClick={() => isSelectable() ? onSelect && onSelect(listItem) : null}
+                    isSelected={isSelected(listItem)}
+                    loading={loading}
                     {...listItem} />
             })}
         </div>);

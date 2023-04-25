@@ -5,7 +5,6 @@ import EntityCardList from './EntityCardList';
 const defaultData = {
     title: 'My Awesome Title',
     description: 'My Awesome Description',
-    contentType: 'Blog'
 }
 
 const defaultList = [
@@ -14,7 +13,8 @@ const defaultList = [
         entityType: 'Entry',
     },
     {
-        contentType: 'Blog',
+        title: '',
+        description: '',
         entityType: 'Product',
     },
     {
@@ -46,7 +46,8 @@ export const EntityCardListDefault: Story = {};
 
 EntityCardListDefault.args = {
     entityType: 'Entry',
-    list: defaultList
+    list: defaultList,
+    selected: [],
 }
 
 export const EntityCardListLoading: Story = {};
@@ -54,6 +55,7 @@ export const EntityCardListLoading: Story = {};
 EntityCardListLoading.args = {
     entityType: 'Entry',
     list: defaultList,
+    selected: [],
     loading: true
 }
 
@@ -62,13 +64,14 @@ export const EntityCardListFailed: Story = {};
 EntityCardListFailed.args = {
     entityType: 'Product',
     list: defaultList,
+    selected: [],
     error: true
 }
 
 export const EntityCardListNone: Story = {};
 
 EntityCardListNone.args = {
-    entityType: 'Card',
+    entityType: 'Product',
     list: []
 }
 
