@@ -9,7 +9,7 @@ const defaultData = {
 };
 
 const meta: Meta<typeof EntityCard> = {
-  title: 'General/EntityCard',
+  title: 'Stacks/Ecommerce/EntitySelector/EntityCard',
   component: EntityCard,
   decorators: [
     (Story) => (
