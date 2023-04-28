@@ -68,7 +68,7 @@ const defaultProductVariantList: ProductVariant[] = [
 ]
 
 const meta: Meta<typeof EntityForm> = {
-    title: 'General/EntityForm',
+    title: 'Stacks/Ecommerce/ProductPicker/EntityForm',
     component: EntityForm,
     decorators: [
         (Story) => (

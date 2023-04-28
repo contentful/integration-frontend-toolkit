@@ -29,7 +29,7 @@ const defaultList = [
 ]
 
 const meta: Meta<typeof EntityCardList> = {
-    title: 'General/EntityCardList',
+    title: 'Stacks/Ecommerce/ProductPicker/EntityCardList',
     component: EntityCardList,
     decorators: [
         (Story) => (
