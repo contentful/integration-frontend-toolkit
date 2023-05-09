@@ -17,26 +17,34 @@ jobs:
           node-version: 18
       - run: npm ci
       - run: npm test
-  publish-gpr:
-    needs: build
-    if: github.ref == 'refs/heads/master'
+  release:
+    name: Release
     runs-on: ubuntu-latest
     permissions:
-      packages: write
-      contents: write
-      pull-requests: write
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
     steps:
-      - uses: actions/checkout@v3
-      - name: Authenticate with private NPM package
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
         run: |
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
           echo "@contentful:registry=https://npm.pkg.github.com" >> .npmrc
-      - uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: "lts/*"
           registry-url: https://npm.pkg.github.com/
-      - run: npm ci
-      - name: Publish
-        run: npm publish
+      - name: Install dependencies
+        run: npm clean-install
+      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
+        run: npm audit signatures
+      - name: Release
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx semantic-release
+
