@@ -12,7 +12,6 @@ interface Props {
 
 const HyperLink = (props: Props) => {
   const { body, substring, onClick = () => {}, hyperLinkHref, icon, alignIcon } = props;
-  // test change
   const textLinkComponent = (index: number) => (
     <TextLink
       onClick={onClick}
