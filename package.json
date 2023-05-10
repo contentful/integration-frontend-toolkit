@@ -8,8 +8,7 @@
     ".": {
       "import": "./dist/@contentful/integration-component-library.es.js",
       "require": "./dist/@contentful/integration-component-library.umd.js"
-    },
-    "./dist/style.css": "./dist/style.css"
+    }
   },
   "type": "module",
   "main": "./dist/@contentful/integration-component-library.umd.js",
