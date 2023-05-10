@@ -1,8 +1,15 @@
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-
 import * as packageJson from './package.json';
+
+const aliases = {
+  helpers: 'src/helpers',
+};
+
+const resolvedAliases = Object.fromEntries(
+  Object.entries(aliases).map(([key, value]) => [key, resolve(__dirname, value)])
+);
 
 // https://vitejs.dev/config/
 export default defineConfig((configEnv) => ({
@@ -17,14 +24,21 @@ export default defineConfig((configEnv) => ({
     reportCompressedSize: true,
     lib: {
       entry: resolve('lib', 'main.js'),
-      name: '@contentful/integration-component-library',
-      fileName: (format) => `@contentful/integration-component-library.${format}.js`,
+      name: 'integration-component-library',
+      fileName: (format) => `integration-component-library.${format}.js`,
       // exclude node modules + package.json
       // add build step
       // a way to use the package locally
+      // adjust dependencies
+      // remove semantic yml
     },
     rollupOptions: {
       external: [...Object.keys(packageJson.peerDependencies)],
+    },
+  },
+  resolve: {
+    alias: {
+      ...resolvedAliases,
     },
   },
 }));
