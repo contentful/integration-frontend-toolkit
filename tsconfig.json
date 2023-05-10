@@ -27,12 +27,14 @@
   },
   "rootDir": "src",
   "include": [
-    "src"
-, "lib"  ],
+    "src", "lib"
+  ],
   "exclude": ["node_modules"],
   "references": [
     {
       "path": "./tsconfig.node.json"
     }
-  ]
+  ],
+  "outDir": "dist",
+  "declaration": true
 }
