@@ -1,0 +1,7 @@
+{
+  "lib/main.js": {
+    "file": "@contentful/integration-component-library.umd.js",
+    "isEntry": true,
+    "src": "lib/main.js"
+  }
+}

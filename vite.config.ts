@@ -8,7 +8,7 @@ import * as packageJson from './package.json';
 export default defineConfig((configEnv) => ({
   plugins: [
     dts({
-      include: ['src/components/**'],
+      include: ['src/**'],
     }),
   ],
   build: {
