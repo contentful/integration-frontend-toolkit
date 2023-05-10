@@ -19,6 +19,9 @@ export default defineConfig((configEnv) => ({
       entry: resolve('lib', 'main.js'),
       name: '@contentful/integration-component-library',
       fileName: (format) => `@contentful/integration-component-library.${format}.js`,
+      // exclude node modules + package.json
+      // add build step
+      // a way to use the package locally
     },
     rollupOptions: {
       external: [...Object.keys(packageJson.peerDependencies)],
