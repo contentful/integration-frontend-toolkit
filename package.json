@@ -6,13 +6,13 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/@contentful/integration-component-library.es.js",
-      "require": "./dist/@contentful/integration-component-library.umd.js"
+      "import": "./dist/integration-component-library.es.js",
+      "require": "./dist/integration-component-library.umd.js"
     }
   },
   "type": "module",
-  "main": "./dist/@contentful/integration-component-library.umd.js",
-  "module": "./dist/@contentful/integration-component-library.es.js",
+  "main": "./dist/integration-component-library.umd.js",
+  "module": "./dist/integration-component-library.es.js",
   "types": "./dist/index.d.ts",
   "private": false,
   "dependencies": {
