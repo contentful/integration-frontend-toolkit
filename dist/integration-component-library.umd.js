@@ -4,7 +4,7 @@
     : typeof define == 'function' && define.amd
     ? define(['exports', 'react'], L)
     : ((ve = typeof globalThis < 'u' ? globalThis : ve || self),
-      L((ve['@contentful/integration-component-library'] = {}), ve.r__default));
+      L((ve['integration-component-library'] = {}), ve.r__default));
 })(this, function (ve, L) {
   'use strict';
   function Xr(n) {
