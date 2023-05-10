@@ -42,6 +42,7 @@ jobs:
           registry-url: https://npm.pkg.github.com/
       - name: Install dependencies
         run: npm clean-install
+      - name: Build packages
         run: npm build
       - name: Release
         env:
