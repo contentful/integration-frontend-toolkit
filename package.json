@@ -1,19 +1,19 @@
 {
-  "name": "@contentful/integration-component-library",
+  "name": "integration-component-library",
   "version": "0.0.0-semantic-release",
   "files": [
     "dist"
   ],
   "exports": {
     ".": {
-      "import": "./dist/components.es.js",
-      "require": "./dist/components.cjs.js"
+      "import": "./dist/integration-component-library.es.js",
+      "require": "./dist/integration-component-library.cjs.js"
     }
   },
   "type": "module",
-  "main": "./dist/components.cjs.js",
-  "module": "./dist/components.es.js",
-  "types": "./dist/components.d.ts",
+  "main": "./dist/integration-component-library.cjs.js",
+  "module": "./dist/integration-component-library.es.js",
+  "types": "./dist/integration-component-library.d.ts",
   "private": false,
   "dependencies": {
     "@contentful/f36-components": "^4.35.0",
