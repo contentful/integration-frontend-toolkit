@@ -5,6 +5,7 @@ import * as packageJson from './package.json';
 
 const aliases = {
   helpers: 'src/helpers',
+  components: 'src/components',
 };
 
 const resolvedAliases = Object.fromEntries(
