@@ -25,9 +25,9 @@ export default defineConfig((configEnv) => ({
     reportCompressedSize: true,
     lib: {
       entry: resolve('lib', 'main.js'),
-      name: 'integration-component-library',
+      name: '@contentful/integration-component-library',
       formats: ['es', 'cjs'],
-      fileName: 'integration-component-library',
+      fileName: '@contentful/integration-component-library',
       // exclude node modules + package.json
       // add build step
       // a way to use the package locally
