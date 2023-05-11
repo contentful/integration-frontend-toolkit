@@ -13,7 +13,7 @@
   "type": "module",
   "main": "./dist/components.cjs.js",
   "module": "./dist/components.es.js",
-  "typings": "./dist/components.d.ts",
+  "types": "./dist/components.d.ts",
   "private": false,
   "dependencies": {
     "@contentful/f36-components": "^4.35.0",
@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && mv dist/components dist/types",
     "test": "react-scripts test --detectOpenHandles --forceExit",
     "test:ci": "CI=true react-scripts test",
     "lint": "eslint --max-warnings=0 .",
