@@ -14,7 +14,7 @@
   "main": "./dist/integration-component-library.umd.js",
   "module": "./dist/integration-component-library.es.js",
   "types": "./dist/index.d.ts",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@contentful/f36-components": "^4.35.0",
     "@contentful/f36-tokens": "^4.0.1",
