@@ -8,7 +8,6 @@
       "ESNext"
     ],
     "allowJs": false,
-    "baseUrl": "src",
     "skipLibCheck": true,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
@@ -23,18 +22,17 @@
     "types": [
       "vite/client",
       "node"
-    ]
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "~/*": ["src/*"]
+    }
   },
-  "rootDir": "src",
-  "include": [
-    "src", "lib"
-  ],
+  "include": ["src"],
   "exclude": ["node_modules"],
   "references": [
     {
       "path": "./tsconfig.node.json"
     }
-  ],
-  "outDir": "dist",
-  "declaration": true
+  ]
 }
