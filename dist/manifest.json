@@ -1,7 +1,7 @@
 {
-  "lib/main.js": {
+  "lib/index.ts": {
     "file": "components.cjs",
     "isEntry": true,
-    "src": "lib/main.js"
+    "src": "lib/index.ts"
   }
 }
