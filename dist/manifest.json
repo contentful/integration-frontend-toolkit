@@ -1,6 +1,6 @@
 {
   "lib/main.js": {
-    "file": "components.cjs",
+    "file": "integration-component-library.cjs",
     "isEntry": true,
     "src": "lib/main.js"
   }
