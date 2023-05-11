@@ -13,7 +13,7 @@
   "type": "module",
   "main": "./dist/components.cjs.js",
   "module": "./dist/components.es.js",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/lib/index.d.ts",
   "private": false,
   "dependencies": {
     "@contentful/f36-components": "^4.35.0",
