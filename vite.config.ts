@@ -31,7 +31,6 @@ export default defineConfig((configEnv) => ({
       // add build step
       // a way to use the package locally
       // adjust dependencies
-      // remove semantic yml
     },
     rollupOptions: {
       external: [...Object.keys(packageJson.peerDependencies)],
