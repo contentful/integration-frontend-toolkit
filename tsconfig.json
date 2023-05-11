@@ -24,9 +24,6 @@
       "node"
     ],
     "baseUrl": "src",
-    "paths": {
-      "~/*": ["src/*"]
-    }
   },
   "include": ["src"],
   "exclude": ["node_modules"],
@@ -34,5 +31,7 @@
     {
       "path": "./tsconfig.node.json"
     }
-  ]
+  ],
+  "outDir": "dist",
+  "declaration": true
 }
