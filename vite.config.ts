@@ -30,7 +30,6 @@ export default defineConfig((configEnv) => ({
       // exclude node modules + package.json
       // add build step
       // a way to use the package locally
-      // adjust dependencies
     },
     rollupOptions: {
       external: [...Object.keys(packageJson.peerDependencies)],
