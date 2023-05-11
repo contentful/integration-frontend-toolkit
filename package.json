@@ -13,7 +13,7 @@
   "type": "module",
   "main": "./dist/components.cjs.js",
   "module": "./dist/components.es.js",
-  "types": "./dist/components.d.ts",
+  "types": "./dist/index.d.ts",
   "private": false,
   "dependencies": {
     "@contentful/f36-components": "^4.35.0",
@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "vite",
-    "build": "vite build && tsc --emitDeclarationOnly",
+    "build": "tsc && vite build",
     "test": "react-scripts test --detectOpenHandles --forceExit",
     "test:ci": "CI=true react-scripts test",
     "lint": "eslint --max-warnings=0 .",
@@ -105,14 +105,7 @@
     "react-dom": "16.8.0 || >=17.x"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com",
-    "exports": {
-      ".": {
-        "import": "./dist/components.es.js",
-        "require": "./dist/components.cjs.js"
-      },
-      "types": "./dist/components.d.ts"
-    }
+    "registry": "https://npm.pkg.github.com"
   },
   "lint-staged": {
     "*.{t,j}s?(x)": [

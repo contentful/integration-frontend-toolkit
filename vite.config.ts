@@ -24,7 +24,7 @@ export default defineConfig(() => ({
     minify: true,
     reportCompressedSize: true,
     lib: {
-      entry: resolve('lib', 'main.js'),
+      entry: resolve(__dirname, 'lib/index.ts'),
       name: 'components',
       formats: ['es', 'cjs'],
       fileName: 'components',
