@@ -1,6 +1,6 @@
 {
   "lib/main.js": {
-    "file": "@contentful/integration-component-library.cjs",
+    "file": "components.cjs",
     "isEntry": true,
     "src": "lib/main.js"
   }
