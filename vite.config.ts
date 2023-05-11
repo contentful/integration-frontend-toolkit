@@ -16,7 +16,7 @@ const resolvedAliases = Object.fromEntries(
 export default defineConfig((configEnv) => ({
   plugins: [
     dts({
-      include: ['src/**'],
+      insertTypesEntry: true,
     }),
   ],
   build: {
@@ -25,8 +25,9 @@ export default defineConfig((configEnv) => ({
     reportCompressedSize: true,
     lib: {
       entry: resolve('lib', 'main.js'),
-      name: 'integration-component-library',
-      fileName: (format) => `integration-component-library.${format}.js`,
+      name: 'components',
+      formats: ['es', 'cjs'],
+      fileName: 'components',
       // exclude node modules + package.json
       // add build step
       // a way to use the package locally
