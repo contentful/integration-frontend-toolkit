@@ -13,7 +13,7 @@ const resolvedAliases = Object.fromEntries(
 );
 
 // https://vitejs.dev/config/
-export default defineConfig((configEnv) => ({
+export default defineConfig(() => ({
   plugins: [
     dts({
       insertTypesEntry: true,
@@ -25,9 +25,9 @@ export default defineConfig((configEnv) => ({
     reportCompressedSize: true,
     lib: {
       entry: resolve('lib', 'main.js'),
-      name: '@contentful/integration-component-library',
+      name: 'components',
       formats: ['es', 'cjs'],
-      fileName: '@contentful/integration-component-library',
+      fileName: 'components',
       // exclude node modules + package.json
       // add build step
       // a way to use the package locally

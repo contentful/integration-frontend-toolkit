@@ -6,25 +6,25 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/@contentful/integration-component-library.es.js",
-      "require": "./dist/@contentful/integration-component-library.cjs.js"
+      "import": "./dist/components.es.js",
+      "require": "./dist/components.cjs.js"
     }
   },
   "type": "module",
-  "main": "./dist/@contentful/integration-component-library.cjs.js",
-  "module": "./dist/@contentful/integration-component-library.es.js",
-  "types": "./dist/@contentful/integration-component-library.d.ts",
+  "main": "./dist/components.cjs.js",
+  "module": "./dist/components.es.js",
+  "types": "./dist/components.d.ts",
   "private": false,
   "dependencies": {
     "@contentful/f36-components": "^4.35.0",
     "@contentful/f36-tokens": "^4.0.1",
     "@emotion/css": "^11.10.6",
-    "react-chartjs-2": "^5.2.0",
-    "chart.js": "^4.2.1"
+    "chart.js": "^4.2.1",
+    "react-chartjs-2": "^5.2.0"
   },
   "scripts": {
     "start": "vite",
-    "build": "tsc && vite build && mv dist/components dist/types",
+    "build": "vite build && tsc --emitDeclarationOnly",
     "test": "react-scripts test --detectOpenHandles --forceExit",
     "test:ci": "CI=true react-scripts test",
     "lint": "eslint --max-warnings=0 .",
@@ -72,6 +72,11 @@
     "@storybook/react": "^7.0.4",
     "@storybook/react-vite": "^7.0.4",
     "@storybook/testing-library": "^0.0.14-next.2",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^29.5.0",
+    "@types/node": "^18.16.7",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
@@ -79,24 +84,19 @@
     "babel-plugin-named-exports-order": "^0.0.2",
     "chromatic": "^6.17.3",
     "eslint": "^8.38.0",
+    "husky": "^8.0.3",
+    "prettier": "^2.8.7",
     "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
     "semantic-release": "^21.0.2",
     "storybook": "^7.0.2",
     "typescript": "^4.9.3",
+    "usehooks-ts": "^2.9.1",
     "vite": "^4.2.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "vite-plugin-dts": "^2.3.0",
     "vite-plugin-linter": "^2.0.2",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^29.5.0",
-    "@types/node": "^18.15.11",
-    "husky": "^8.0.3",
-    "prettier": "^2.8.7",
-    "react-scripts": "5.0.1",
-    "usehooks-ts": "^2.9.1",
     "vite-tsconfig-paths": "^4.2.0",
     "web-vitals": "^2.1.4"
   },
@@ -105,7 +105,14 @@
     "react-dom": "16.8.0 || >=17.x"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com",
+    "exports": {
+      ".": {
+        "import": "./dist/components.es.js",
+        "require": "./dist/components.cjs.js"
+      },
+      "types": "./dist/components.d.ts"
+    }
   },
   "lint-staged": {
     "*.{t,j}s?(x)": [
