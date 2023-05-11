@@ -24,6 +24,8 @@ export interface SearchBarProps {
 const SearchBar = (props: SearchBarProps) => {
   const { groupFilters, filterFacets, onSearch, searchTitle, placeholder } = props;
 
+  // not an empty commit
+
   const initialState: SearchParams = {
     selectedGroupFilter: !!groupFilters?.length ? groupFilters[0].value : '',
     searchValue: '',
