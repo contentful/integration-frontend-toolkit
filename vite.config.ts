@@ -18,7 +18,7 @@ export default defineConfig(() => ({
       entry: resolve('src', 'index.ts'),
       name: 'components',
       formats: ['es', 'cjs'],
-      fileName: 'components',
+      fileName: (format) => `components.${format === 'cjs' ? 'cjs' : 'es.js'}`,
       // exclude node modules + package.json
       // add build step
       // a way to use the package locally
