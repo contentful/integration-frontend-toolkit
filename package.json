@@ -104,9 +104,6 @@
     "react": "16.8.0 || >=17.x",
     "react-dom": "16.8.0 || >=17.x"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "lint-staged": {
     "*.{t,j}s?(x)": [
       "prettier --write"
