@@ -19,9 +19,6 @@ export default defineConfig(() => ({
       name: 'components',
       formats: ['es', 'cjs'],
       fileName: (format) => `components.${format === 'cjs' ? 'cjs' : 'es.js'}`,
-      // exclude node modules + package.json
-      // add build step
-      // a way to use the package locally
     },
     optimizeDeps: {
       exclude: Object.keys(packageJson.peerDependencies),

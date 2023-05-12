@@ -1,4 +1,3 @@
-import React from 'react';
 import HyperLink from './HyperLink';
 import { render, screen } from '@testing-library/react';
 

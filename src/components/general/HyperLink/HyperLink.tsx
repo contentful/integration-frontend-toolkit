@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react';
+import { MouseEventHandler } from 'react';
 import { TextLink, TextLinkProps } from '@contentful/f36-components';
 
 interface Props {
