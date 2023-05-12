@@ -17,9 +17,8 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "declarationMap": true,
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
-      "@/*": ["src/*", "helpers/*"],
       "components": ["src/index.ts"],
     },
     "typeRoots": ["node_modules/@types", "src/index.d.ts"],
