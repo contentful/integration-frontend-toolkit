@@ -16,11 +16,6 @@
   "types": "./dist/index.d.ts",
   "private": false,
   "dependencies": {
-    "@contentful/f36-components": "^4.35.0",
-    "@contentful/f36-tokens": "^4.0.1",
-    "@emotion/css": "^11.10.6",
-    "chart.js": "^4.2.1",
-    "react-chartjs-2": "^5.2.0"
   },
   "scripts": {
     "start": "vite",
@@ -102,7 +97,12 @@
   },
   "peerDependencies": {
     "react": "16.8.0 || >=17.x",
-    "react-dom": "16.8.0 || >=17.x"
+    "react-dom": "16.8.0 || >=17.x",
+    "@contentful/f36-components": "^4.35.0",
+    "@contentful/f36-tokens": "^4.0.1",
+    "@emotion/css": "^11.10.6",
+    "chart.js": "^4.2.1",
+    "react-chartjs-2": "^5.2.0"
   },
   "lint-staged": {
     "*.{t,j}s?(x)": [
