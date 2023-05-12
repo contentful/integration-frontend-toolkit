@@ -56,6 +56,11 @@ Chore: A change to the build process of auxiliary tools and libraries
 3. Each new component should be accompanied by a stories. file.
 4. Keep in mind the various iterations of a component i.e if it might be usuful to create a story for each iteration? and if the story is self-explantory to other developers? Sometimes it is useful to add details, actions, decorators to describe the story and component. 
 
+## In progress improvements: 
+1. Automating the build process so there is no need for the build file to be manually contributed as part of the PR. 
+2. Adjusting Chromatic approval process per team feedback and use. How do we want to compare diffs, and visual changes, and how do we want this to reflect within the PR build and approval process?
+3. There is a known issue with the import of the LineChart component. It is not importing correctly within the apps repository, whereas other components are. Thinking it may be a dependency issue. 
+
 ## Storybook 
 
 [Documentation](https://storybook.js.org/docs/react/get-started/why-storybook)
