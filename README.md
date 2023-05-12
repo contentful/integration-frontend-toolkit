@@ -24,6 +24,29 @@ To run tests:
 npm run test
 ```
 
+### When you are ready to publish a new component, for now, it is imperative that you do the following:
+
+Add the new component to the src/index.js file.
+
+```sh
+npm run build
+```
+
+And include the dist file within the PR itself. (this will be automated in the future ideally)
+
+Lastly follow standard Semantic Versioning commit messages (when you squash or commit to master) in order to version the package correctly.
+
+Examples:
+
+Feat: A new feature
+Fix: A bug fix
+Docs: A documentation change
+Style: A change that does not affect meaning of code (styling)
+Refactor: A change that neither fixes a bug nor adds a feature
+Perf: A code change that improves performance
+Test: An adjustment to tests
+Chore: A change to the build process of auxiliary tools and libraries
+
 ## Expectations of development:
 
 1. Each new component added to this library should be housed in its own directory, either under a certain Stack or under a general 'General' directory.
