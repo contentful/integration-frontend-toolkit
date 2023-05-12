@@ -26,15 +26,17 @@ npm run test
 
 ### When you are ready to publish a new component, for now, it is imperative that you do the following:
 
-Add the new component to the src/index.js file.
+1. Add the new component to the src/index.js file.
+
+2. Run:
 
 ```sh
 npm run build
 ```
 
-And include the dist file within the PR itself. (this will be automated in the future ideally)
+3. And include the dist file within the PR itself. (this will be automated in the future ideally)
 
-Lastly follow standard Semantic Versioning commit messages (when you squash or commit to master) in order to version the package correctly.
+4. Lastly follow standard Semantic Versioning commit messages (when you squash or commit to master) in order to version the package correctly.
 
 Examples:
 
@@ -51,7 +53,8 @@ Chore: A change to the build process of auxiliary tools and libraries
 
 1. Each new component added to this library should be housed in its own directory, either under a certain Stack or under a general 'General' directory.
 2. Each new component should be accompanied by a spec. file.
-3. Keep in mind the various iterations of a component i.e if it might be usuful to create a story for each iteration? and if the story is self-explantory to other developers? Sometimes it is useful to add details, actions, decorators to describe the story and component.
+3. Each new component should be accompanied by a stories. file.
+4. Keep in mind the various iterations of a component i.e if it might be usuful to create a story for each iteration? and if the story is self-explantory to other developers? Sometimes it is useful to add details, actions, decorators to describe the story and component.
 
 ## Storybook
 
