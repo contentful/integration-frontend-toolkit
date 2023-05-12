@@ -1,30 +1,21 @@
+import react from '@vitejs/plugin-react';
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
+import tsConfigPaths from 'vite-tsconfig-paths';
 import dts from 'vite-plugin-dts';
 import * as packageJson from './package.json';
 
-const aliases = {
-  helpers: 'src/helpers',
-  components: 'src/components',
-};
-
-const resolvedAliases = Object.fromEntries(
-  Object.entries(aliases).map(([key, value]) => [key, resolve(__dirname, value)])
-);
-
-// https://vitejs.dev/config/
 export default defineConfig(() => ({
   plugins: [
+    react(),
+    tsConfigPaths(),
     dts({
-      insertTypesEntry: true,
+      include: ['src'],
     }),
   ],
   build: {
-    manifest: true,
-    minify: true,
-    reportCompressedSize: true,
     lib: {
-      entry: resolve(__dirname, 'lib/index.ts'),
+      entry: resolve('src', 'index.ts'),
       name: 'components',
       formats: ['es', 'cjs'],
       fileName: 'components',
@@ -32,13 +23,11 @@ export default defineConfig(() => ({
       // add build step
       // a way to use the package locally
     },
-    rollupOptions: {
-      external: [...Object.keys(packageJson.peerDependencies)],
+    optimizeDeps: {
+      exclude: Object.keys(packageJson.peerDependencies),
     },
-  },
-  resolve: {
-    alias: {
-      ...resolvedAliases,
+    esbuild: {
+      minify: true,
     },
   },
 }));

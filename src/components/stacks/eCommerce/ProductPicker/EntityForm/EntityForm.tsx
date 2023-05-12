@@ -1,10 +1,10 @@
 import { TextLink, Flex, Form, Text, Button } from '@contentful/f36-components';
 import { styles } from './EntityForm.styles';
-import SearchBar from 'components/general/SearchBar/SearchBar';
+import SearchBar from '@/components/general/SearchBar/SearchBar';
 import EntityCardList from '../EntityCardList/EntityCardList';
 import { Entity, SELECT_TYPE } from '../Entity.types';
 import { useState } from 'react';
-import { SearchParams } from 'components/general/SearchBar/SearchBar.types';
+import { SearchParams } from '@/components/general/SearchBar/SearchBar.types';
 
 export interface Props<T> {
   entityType: string;
