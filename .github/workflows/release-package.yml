@@ -35,7 +35,7 @@ jobs:
       - name: Authenticate npm package 
         run: |
           echo $'@contentful:registry=https://registry.npmjs.org/
-          //registry.npmjs.org/:_authToken=${NPM_TOKEN}' >> ~/.npmrc
+          //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}' >> ~/.npmrc
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
