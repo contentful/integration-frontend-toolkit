@@ -34,13 +34,12 @@ jobs:
           fetch-depth: 0
       - name: Authenticate npm package 
         run: |
-          //registry.npmjs.org/:_authToken=${NPM_TOKEN}' >> ~/.npmrc
           echo $'@contentful:registry=https://registry.npmjs.org/
+          //registry.npmjs.org/:_authToken=${NPM_TOKEN}' >> ~/.npmrc
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "lts/*"
-          registry-url: https://npm.pkg.github.com/
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
