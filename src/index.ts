@@ -5,3 +5,4 @@ export { default as EntityCard } from './components/stacks/eCommerce/ProductPick
 export { default as EntityCardList } from './components/stacks/eCommerce/ProductPicker/EntityCardList/EntityCardList';
 export { default as EntityForm } from './components/stacks/eCommerce/ProductPicker/EntityForm/EntityForm';
 export { default as LocalHostWarning } from './components/general/LocalHostWarning/LocalHostWarning';
+export { default as ProductPicker } from './components/stacks/eCommerce/ProductPicker/';
