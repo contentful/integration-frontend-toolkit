@@ -7,8 +7,6 @@ This repository is a home to a documented component library, primarily used to s
 
 The library itself offers the Integrations team a place to develop components outside of the app itself, to support reusability as well as customizability. If deemed necessary and valid, these components can be escalated to a process of inclusion within the F36 or the experience-packages repository.
 
-Please refer to [this](https://contentful.atlassian.net/wiki/spaces/ECO/pages/4206232072/Storybook+processes+and+expectations+of+use+on+the+Integrations+team) documentation for more details on Storybook development within the Integrations team.
-
 ## Local development
 
 To install or update the app locally:
