@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import tsConfigPaths from 'vite-tsconfig-paths';
 import dts from 'vite-plugin-dts';
+import pkg from './package.json';
 import * as packageJson from './package.json';
 
 export default defineConfig(() => ({
@@ -14,11 +15,21 @@ export default defineConfig(() => ({
     }),
   ],
   build: {
-    lib: {
-      entry: resolve('src', 'index.ts'),
-      name: 'components',
-      formats: ['es', 'cjs'],
-      fileName: (format) => `components.${format === 'cjs' ? 'cjs' : 'es.js'}`,
+    rollupOptions: {
+      preserveEntrySignatures: 'strict',
+      input: ['src/index.ts'],
+      external: [...Object.keys(pkg.peerDependencies)],
+      output: [
+        {
+          dir: 'dist',
+          format: 'esm',
+          preserveModules: true,
+          preserveModulesRoot: 'src',
+          entryFileNames: ({ name: fileName }) => {
+            return `${fileName}.js`;
+          },
+        },
+      ],
     },
     optimizeDeps: {
       exclude: Object.keys(packageJson.peerDependencies),
