@@ -31,7 +31,8 @@
     "build-storybook": "storybook build",
     "chromatic": "chromatic --exit-zero-on-changes --exit-once-uploaded --onlyChanged",
     "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
-    "prettier": "prettier --no-editorconfig --no-error-on-unmatched-pattern --write {apps,packages,examples}/**/*.{js,jsx,ts,tsx}"
+    "prettier": "prettier --no-editorconfig --no-error-on-unmatched-pattern --write {apps,packages,examples}/**/*.{js,jsx,ts,tsx}",
+    "prepublishOnly": "npm run build"
   },
   "eslintConfig": {
     "extends": [
