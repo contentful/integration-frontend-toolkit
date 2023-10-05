@@ -13,7 +13,7 @@ export default defineConfig({
       fileName: (format) => `index.${format === 'cjs' ? 'cjs' : 'es.js'}`,
     },
     rollupOptions: {
-      external: ['react/jsx-runtime', ...Object.keys(pkg.peerDependencies)],
+      external: [...Object.keys(pkg.peerDependencies)],
     },
   },
 });
