@@ -9,13 +9,11 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      formats: ['es'],
+      formats: ['es', 'cjs'],
+      fileName: (format) => `index.${format === 'cjs' ? 'cjs' : 'es.js'}`,
     },
     rollupOptions: {
       external: ['react/jsx-runtime', ...Object.keys(pkg.peerDependencies)],
-      output: {
-        entryFileNames: '[name].js',
-      },
     },
   },
 });
