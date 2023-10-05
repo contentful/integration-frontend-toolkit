@@ -5,17 +5,17 @@ interface Props {
   body: string;
   substring: string;
   onClick?: MouseEventHandler<HTMLAnchorElement>;
-  hyperLinkHref?: string;
+  href?: string;
   icon?: JSX.Element;
   alignIcon?: TextLinkProps['alignIcon'];
 }
 
 const HyperLink = (props: Props) => {
-  const { body, substring, onClick = () => {}, hyperLinkHref, icon, alignIcon } = props;
+  const { body, substring, onClick = () => {}, href, icon, alignIcon } = props;
   const textLinkComponent = (index: number) => (
     <TextLink
       onClick={onClick}
-      href={hyperLinkHref}
+      href={href}
       target="_blank"
       rel="noopener noreferer"
       key={`textLink-${index}`}
