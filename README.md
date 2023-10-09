@@ -29,13 +29,9 @@ npm run test
 
 ### When you are ready to publish a new component, for now, it is imperative that you do the following:
 
-1. Add the new component to the src/index.js file.
+1. Add the new component to the src/index.ts file.
 
-2. Run: `npm run build`
-
-3. And include the `dist` directory within the PR itself. (this will be automated in the future ideally)
-
-4. Lastly follow standard Semantic Versioning commit messages (when you squash or commit to master) in order to version the package correctly.
+2. Lastly follow standard Semantic Versioning commit messages (when you squash or commit to master) in order to version the package correctly.
 
 Examples commit messages:
 
@@ -65,9 +61,7 @@ If you are encountering an error after running `npm i @contentful/integration-co
 
 ## In progress improvements:
 
-1. Automating the build process so there is no need for the build file to be manually contributed as part of the PR.
-2. Adjusting Chromatic approval process per team feedback and use. How do we want to compare diffs, and visual changes, and how do we want this to reflect within the PR build and approval process?
-3. There is a known issue with the import of the LineChart component. It is not importing correctly as a component within the apps repository, despite the successful import of other components. Thinking it may be a dependency issue.
+1. Adjusting Chromatic approval process per team feedback and use. How do we want to compare diffs, and visual changes, and how do we want this to reflect within the PR build and approval process?
 
 ## Storybook
 
