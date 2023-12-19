@@ -9,7 +9,6 @@ export default defineConfig({
   build: {
     lib: {
       entry: {
-        main: resolve(__dirname, 'src/index.ts'),
         components: resolve(__dirname, './src/components'),
         providers: resolve(__dirname, './src/providers'),
       },
