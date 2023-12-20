@@ -1,5 +1,5 @@
 {
-  "name": "@contentful/integration-component-library",
+  "name": "@contentful/integration-frontend-toolkit",
   "version": "0.0.0-semantic-release",
   "type": "module",
   "files": [
@@ -125,7 +125,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/contentful/integration-component-library.git"
+    "url": "https://github.com/contentful/integration-frontend-toolkit.git"
   },
   "publishConfig": {
     "access": "public"
