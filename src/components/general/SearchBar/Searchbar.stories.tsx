@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import SearchBar from './SearchBar.js';
-import type { SearchParams } from './SearchBar.types.js';
+import SearchBar from './SearchBar';
+import type { SearchParams } from './SearchBar.types';
 
 export default {
   title: 'General/SearchBar',

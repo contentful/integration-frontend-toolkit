@@ -1,1 +1,1 @@
-export { default as LineChart } from './LineChart.js';
+export { default as LineChart } from './LineChart';

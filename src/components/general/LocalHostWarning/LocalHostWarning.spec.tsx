@@ -1,4 +1,4 @@
-import LocalHostWarning from './LocalHostWarning.js';
+import LocalHostWarning from './LocalHostWarning';
 import { render, screen } from '@testing-library/react';
 
 const { getByText, getAllByTestId } = screen;

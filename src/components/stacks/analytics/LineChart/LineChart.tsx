@@ -14,8 +14,8 @@ import { Line } from 'react-chartjs-2';
 import tokens from '@contentful/f36-tokens';
 
 // local imports
-import { parseRemToPxInt } from '../../../helpers/ParseStylingToken/ParseStylingToken.js';
-import { styles } from './LineChart.styles.js';
+import { parseRemToPxInt } from '../../../helpers/ParseStylingToken/ParseStylingToken';
+import { styles } from './LineChart.styles';
 
 const ACCESSIBILITY_LABEL = 'Analytics line chart';
 const defaultFontSize = parseRemToPxInt(tokens.fontSizeS);

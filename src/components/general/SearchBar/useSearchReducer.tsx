@@ -4,7 +4,7 @@ import {
   SearchFacet,
   SearchParams,
   SearchReducerAction,
-} from './SearchBar.types.js';
+} from './SearchBar.types';
 
 const { SET_SEARCH, SET_FILTER_FACETS, SET_GROUP_FILTER } = SearchActionTypes;
 
