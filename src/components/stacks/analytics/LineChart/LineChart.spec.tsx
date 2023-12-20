@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import LineChart from './LineChart.js';
+import LineChart from './LineChart';
 
 const mockDataValues = [1000, -500, 500, 230];
 const mockXAxisLabels = ['January', 'February', 'March', 'April'];

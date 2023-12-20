@@ -12,7 +12,8 @@ export default defineConfig({
         components: resolve(__dirname, './src/components'),
         providers: resolve(__dirname, './src/providers'),
       },
-      fileName: (format, fileName) => `${fileName}-index.${format === 'cjs' ? 'cjs' : 'es.js'}`,
+      formats: ['es'],
+      fileName: (_format, fileName) => `${fileName}-index.es.js`,
     },
     rollupOptions: {
       external: [...Object.keys(pkg.peerDependencies)],
