@@ -5,16 +5,8 @@
   "files": [
     "dist"
   ],
-  "exports": {
-    "./components": {
-      "import": "./dist/components-index.es.js",
-      "types": "./dist/components/index.d.ts"
-    },
-    "./providers": {
-      "import": "./dist/providers-index.es.js",
-      "types": "./dist/providers/index.d.ts"
-    }
-  },
+  "module": "./index.js",
+  "types": "./index.d.ts",
   "private": false,
   "dependencies": {
     "@contentful/f36-components": "^4.35.0",
