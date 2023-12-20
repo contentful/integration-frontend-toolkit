@@ -1,5 +1,5 @@
 import { render, fireEvent, waitFor, act } from '@testing-library/react';
-import SearchBar, { SearchBarProps } from './SearchBar';
+import SearchBar, { SearchBarProps } from './SearchBar.js';
 
 describe('SearchBar', () => {
   const mockOnSearch = jest.fn();

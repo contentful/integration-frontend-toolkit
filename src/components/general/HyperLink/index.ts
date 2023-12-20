@@ -1,1 +1,1 @@
-export { default as HyperLink } from './HyperLink';
+export { default as HyperLink } from './HyperLink.js';

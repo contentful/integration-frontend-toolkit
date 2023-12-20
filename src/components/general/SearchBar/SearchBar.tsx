@@ -3,8 +3,8 @@ import { useDebounce } from 'usehooks-ts';
 
 import { TextInput } from '@contentful/f36-components';
 
-import type { SearchFacet, SearchParams } from './SearchBar.types';
-import useSearchReducer from './useSearchReducer';
+import type { SearchFacet, SearchParams } from './SearchBar.types.js';
+import useSearchReducer from './useSearchReducer.js';
 
 export interface SearchBarProps {
   groupFilters?: SearchFacet[];

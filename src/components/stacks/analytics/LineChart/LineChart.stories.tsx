@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import LineChart from './LineChart';
+import LineChart from './LineChart.js';
 
 const mockData = [1000, -500, 500, 230];
 const mockLabels = ['January', 'February', 'March', 'April'];

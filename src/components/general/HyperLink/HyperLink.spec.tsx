@@ -1,4 +1,4 @@
-import HyperLink from './HyperLink';
+import HyperLink from './HyperLink.js';
 import { render, screen } from '@testing-library/react';
 
 const BODY = 'Have a great day!';

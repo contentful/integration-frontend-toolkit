@@ -1,1 +1,1 @@
-export { testFunction } from './sentry/test';
+export { testFunction } from './sentry/test.js';

@@ -1,1 +1,1 @@
-export { default as LocalHostWarning } from './LocalHostWarning';
+export { default as LocalHostWarning } from './LocalHostWarning.js';

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Paragraph } from '@contentful/f36-components';
 
-import HyperLink from './HyperLink';
+import HyperLink from './HyperLink.js';
 
 const meta: Meta<typeof HyperLink> = {
   title: 'General/HyperLink',
