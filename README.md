@@ -1,4 +1,4 @@
-# integration-component-library
+# integration-frontend-toolkit
 
 > **Warning**
 > This library is under active development and is subject to significant changes. At any time components may be updated, depricated, or entirely removed based on our internal development of the [Apps](https://github.com/contentful/apps) repo.
@@ -53,7 +53,7 @@ Examples commit messages:
 
 ## Troubleshooting the installation of this package
 
-If you are encountering an error after running `npm i @contentful/integration-component-library`, perhaps a 401 error around access to the package itself, please try the following:
+If you are encountering an error after running `npm i @contentful/integration-frontend-toolkit`, perhaps a 401 error around access to the package itself, please try the following:
 
 1. Adjust the npm registry either within your local config or in a repository `.npmrc` file. To check your local config, run `npm config ls`. The regsitry should be the following:
    `registry = "https://registry.npmjs.org/"`.
