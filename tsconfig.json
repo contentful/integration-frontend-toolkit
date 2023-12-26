@@ -7,7 +7,7 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "target": "ESNext",
-    "sourceMap": true,
+    "sourceMap": false,
     "baseUrl": "./src",
     "outDir": ".",
     "incremental": true,
