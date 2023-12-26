@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
+    "module": "ESNext",
     "moduleResolution": "Node",
     "declaration": true,
     "removeComments": true,
@@ -14,6 +14,10 @@
     "incremental": true,
     "jsx": "react-jsx",
     "skipLibCheck": true,
+    "strict": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "esModuleInterop": true,
   },
   "include": ["src/"],
   "exclude": ["!src/"],
