@@ -18,7 +18,6 @@ import { parseRemToPxInt } from '../../../helpers/ParseStylingToken/ParseStyling
 import { styles } from './LineChart.styles';
 
 const ACCESSIBILITY_LABEL = 'Analytics line chart';
-const defaultFontSize = parseRemToPxInt(tokens.fontSizeS);
 
 export interface Props {
   dataValues: number[];
@@ -31,6 +30,8 @@ const Y_AXIS_SCALAR = 1.2;
 
 const LineChart = (props: Props) => {
   const { dataValues, xAxisLabels, tooltipMetricLabel, accessibilityLabel } = props;
+
+  const defaultFontSize = parseRemToPxInt(tokens.fontSizeS);
   ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip);
   ChartJS.defaults.font.size = defaultFontSize;
   ChartJS.defaults.font.family = tokens.fontStackPrimary;
