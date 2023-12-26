@@ -8,12 +8,9 @@ export default defineConfig({
   plugins: [react(), dts({ include: ['src'] })],
   build: {
     lib: {
-      entry: {
-        components: resolve(__dirname, './src/components'),
-        providers: resolve(__dirname, './src/providers'),
-      },
+      entry: resolve(__dirname, './src/index.ts'),
       formats: ['es'],
-      fileName: (_format, fileName) => `${fileName}-index.es.js`,
+      fileName: () => 'index.es.js',
     },
     rollupOptions: {
       external: [...Object.keys(pkg.peerDependencies)],
