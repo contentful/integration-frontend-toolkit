@@ -7,7 +7,7 @@
     "components",
     "providers"
   ],
-  "module": "./dist/index.es.js",
+  "module": "./index.js",
   "types": "./index.d.ts",
   "private": false,
   "dependencies": {
