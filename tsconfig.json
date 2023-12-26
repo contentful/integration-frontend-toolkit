@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "module": "commonjs",
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
@@ -16,7 +15,6 @@
     "skipLibCheck": true,
     "strict": true,
     "isolatedModules": true,
-    "esModuleInterop": true,
   },
   "include": ["src/"],
   "exclude": ["!src/"],
