@@ -3,7 +3,9 @@
   "version": "0.0.0-semantic-release",
   "type": "module",
   "files": [
-    "dist"
+    "dist",
+    "components",
+    "providers"
   ],
   "module": "./index.js",
   "types": "./index.d.ts",
