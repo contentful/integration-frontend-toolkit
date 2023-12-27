@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "ESNext",
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
@@ -15,6 +15,9 @@
     "skipLibCheck": true,
     "strict": true,
     "isolatedModules": true,
+    "emitDeclarationOnly": true,
+    "allowImportingTsExtensions": true,
+    "moduleResolution": "Bundler",
   },
   "include": ["src/"],
   "exclude": ["!src/"],
