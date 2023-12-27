@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj, Story } from '@storybook/react';
 import SearchBar from './SearchBar';
 import type { SearchParams } from './SearchBar.types';
 
-export default {
+const meta: Meta<typeof SearchBar> = {
   title: 'General/SearchBar',
   component: SearchBar,
-} as Meta;
-
+  decorators: [(Story) => <Story />],
+};
 type Story = StoryObj<typeof SearchBar>;
 
 export const Default: Story = {};
@@ -33,3 +33,5 @@ Default.args = {
   searchTitle: '',
   placeholder: 'Search Placeholder Text',
 };
+
+export default meta;

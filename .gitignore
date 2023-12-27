@@ -14,8 +14,8 @@ dist/
 /*.map
 /*.d.ts
 /*.tsbuildinfo
-components/
-providers/
+/components/
+/providers/
 
 # misc
 .DS_Store
