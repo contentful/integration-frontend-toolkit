@@ -4,7 +4,8 @@
   "files": [
     "dist",
     "components",
-    "providers"
+    "providers",
+    "types"
   ],
   "main": "./index.js",
   "types": "./index.d.ts",
@@ -12,8 +13,11 @@
   "dependencies": {
     "@contentful/f36-components": "^4.35.0",
     "@contentful/f36-tokens": "^4.0.1",
+    "@contentful/react-apps-toolkit": "^1.2.16",
     "@emotion/css": "^11.10.6",
-    "chart.js": "^4.4.1",
+    "@sentry/react": "^7.91.0",
+    "chart.js": "^4.2.1",
+    "lodash": "^4.17.21",
     "react-chartjs-2": "^5.2.0",
     "usehooks-ts": "^2.9.1"
   },
