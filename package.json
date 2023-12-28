@@ -11,9 +11,9 @@
   "types": "./index.d.ts",
   "private": false,
   "dependencies": {
+    "@contentful/app-sdk": "^4.23.1",
     "@contentful/f36-components": "^4.35.0",
     "@contentful/f36-tokens": "^4.0.1",
-    "@contentful/react-apps-toolkit": "^1.2.16",
     "@emotion/css": "^11.10.6",
     "@sentry/react": "^7.91.0",
     "chart.js": "^4.2.1",
