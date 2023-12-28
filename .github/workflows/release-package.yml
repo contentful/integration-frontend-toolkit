@@ -24,7 +24,7 @@ jobs:
           fetch-depth: 0
       - name: Authenticate npm package 
         run: |
-          echo "//npm.pkg.github.com/:_authToken=${GITHUB_PACKAGES_READ_TOKEN}" > ~/.npmrc
+          echo "/npm.pkg.github.com/{ORG}:_authToken={PERSONAL_ACCESS_TOKEN}" > ~/.npmrc
           echo "@contentful:registry=https://npm.pkg.github.com" >> ~/.npmrc
       - name: Setup Node.js
         uses: actions/setup-node@v3
