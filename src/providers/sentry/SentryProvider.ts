@@ -1,7 +1,7 @@
 import * as Sentry from '@sentry/react';
 import { KnownAppSDK } from '@contentful/app-sdk';
 import { upperFirst } from 'lodash';
-import { contentfulContext } from 'helpers/contentful-context/contentful-context';
+import { contentfulContext } from '../../internal-toolkit-helpers/contentful-context/contentful-context';
 
 interface SentryProvider {
   init: (configOptions?: Sentry.BrowserOptions) => void;

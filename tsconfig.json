@@ -18,5 +18,6 @@
     "isolatedModules": true,
   },
   "include": ["src/"],
-  "exclude": ["!src/"],
+  // exclude the following directories from the final build
+  "exclude": ["!src/", "internal-toolkit-helpers/"],
 }
