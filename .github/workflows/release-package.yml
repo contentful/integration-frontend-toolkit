@@ -31,10 +31,7 @@ jobs:
         with:
           node-version: 18
       - name: Install dependencies
-        run: | 
-          echo "//npm.pkg.github.com/:_authToken=${GITHUB_PACKAGES_READ_TOKEN}" > ~/.npmrc
-          echo "@contentful:registry=https://npm.pkg.github.com" >> ~/.npmrc
-          npm ci
+        run: npm ci
       - name: Build
         run: npm run build
       - name: Test
