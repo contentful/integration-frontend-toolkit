@@ -22,16 +22,31 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Authenticate npm package 
+      - name: "Create NPM .npmrc"
+        shell: bash
         run: |
-          echo "//npm.pkg.github.com/:_authToken=${GITHUB_PACKAGES_READ_TOKEN}" > ~/.npmrc
-          echo "@contentful:registry=https://npm.pkg.github.com" >> ~/.npmrc
+          echo -e "//registry.npmjs.org/:_authToken=${NPM_TOKEN}\n@contentful:registry=https://registry.npmjs.org\nalways-auth=true" > ~/.npmrc
+        env:
+          NPM_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_READ_TOKEN }}
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
+      - name: "Retrieve NPM Token"
+        id: vault
+        uses: hashicorp/vault-action@v2.4.3
+        with:
+          url: ${{ secrets.VAULT_URL }}
+          role: ${{ github.event.repository.name }}-github-action
+          method: jwt
+          path: github-actions
+          exportEnv: false
+          secrets: |
+            secret/data/github/github_packages_read GITHUB_PACKAGES_READ_TOKEN | GITHUB_PACKAGES_READ_TOKEN ;
       - name: Install dependencies
         run: npm ci
+        env:
+          GITHUB_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_READ_TOKEN }}
       - name: Build
         run: npm run build
       - name: Test
