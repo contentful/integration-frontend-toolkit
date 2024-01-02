@@ -35,7 +35,7 @@ const LineChart = (props: Props) => {
   ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip);
   ChartJS.defaults.font.size = defaultFontSize;
   ChartJS.defaults.font.family = tokens.fontStackPrimary;
-  ChartJS.defaults.font.weight = tokens.fontWeightMedium;
+  // ChartJS.defaults.font.weight = tokens.fontWeightMedium;
   ChartJS.defaults.borderColor = tokens.gray200;
   ChartJS.defaults.datasets.line.borderColor = tokens.colorPrimary;
 
@@ -71,7 +71,7 @@ const LineChart = (props: Props) => {
         bodyFont: {
           size: defaultFontSize,
           // TO:DO once font weight is added to F36, replace with token
-          weight: 700,
+          // weight: "700",
         },
         displayColors: false,
         callbacks: {
