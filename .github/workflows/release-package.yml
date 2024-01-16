@@ -37,6 +37,12 @@ jobs:
           exportEnv: false
           secrets: |
             secret/data/github/github_packages_read GITHUB_PACKAGES_READ_TOKEN | GITHUB_PACKAGES_READ_TOKEN ;
+      - name: "Create GH .npmrc"
+        shell: bash
+        run: |
+          echo -e "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}\n@contentful:registry=https://npm.pkg.github.com\nalways-auth=true" > ~/.npmrc
+        env:
+          GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
       - name: "Create NPM .npmrc"
         shell: bash
         run: |
