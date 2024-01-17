@@ -1,7 +1,7 @@
 import * as Sentry from '@sentry/react';
 import { KnownAppSDK } from '@contentful/app-sdk';
 import { upperFirst } from 'lodash';
-import { consolidateContentfulAppInfo } from './fakeAgain/fakeAgain';
+import { consolidateContentfulAppInfo } from './consolidateContentfulAppInfo/consolidateContentfulAppInfo';
 
 interface SentryMarketplaceAppSdk {
   init: (configOptions?: Sentry.BrowserOptions) => void;
