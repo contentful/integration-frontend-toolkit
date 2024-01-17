@@ -1,10 +1,10 @@
 {
   "name": "@contentful/integration-frontend-toolkit",
-  "version": "0.0.0-semantic-release",
+  "version": "0.0.1-semantic-release",
   "files": [
     "dist",
     "components",
-    "providers",
+    "sdks",
     "types"
   ],
   "main": "./index.js",

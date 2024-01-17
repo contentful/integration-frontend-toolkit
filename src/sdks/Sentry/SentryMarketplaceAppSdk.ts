@@ -3,9 +3,12 @@ import { KnownAppSDK } from '@contentful/app-sdk';
 import { upperFirst } from 'lodash';
 import { contentfulContext } from '../../internal-toolkit-helpers/contentful-context/contentful-context';
 
-interface SentryProvider {
+interface SentryMarketplaceAppSdk {
   init: (configOptions?: Sentry.BrowserOptions) => void;
-  setContentfulSentryContext: (sdk: KnownAppSDK) => void;
+  setContentfulSentryContext: (
+    sdkIds: KnownAppSDK['ids'],
+    sdkLocation: KnownAppSDK['location']
+  ) => void;
   client: typeof Sentry;
 }
 
@@ -19,12 +22,19 @@ const init = (configOptions?: Sentry.BrowserOptions) =>
     ...configOptions,
   });
 
-const setContentfulSentryContext = (sdk: KnownAppSDK) => {
+const setContentfulSentryContext = (
+  sdkIds: KnownAppSDK['ids'],
+  sdkLocation: KnownAppSDK['location']
+) => {
   const scope = Sentry.getCurrentScope();
-  if (sdk.ids.user) scope.setUser({ id: sdk.ids.user });
-  for (const [key, value] of Object.entries(contentfulContext(sdk))) {
+  if (sdkIds.user) scope.setUser({ id: sdkIds.user });
+  for (const [key, value] of Object.entries(contentfulContext(sdkIds, sdkLocation))) {
     if (value) scope.setTag(`X-Contentful-${upperFirst(key)}`, value);
   }
 };
 
-export const SentryProvider: SentryProvider = { init, setContentfulSentryContext, client: Sentry };
+export const SentryMarketplaceAppSdk: SentryMarketplaceAppSdk = {
+  init,
+  setContentfulSentryContext,
+  client: Sentry,
+};

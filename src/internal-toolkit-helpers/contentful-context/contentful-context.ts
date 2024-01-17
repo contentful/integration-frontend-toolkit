@@ -18,9 +18,12 @@ const Locations = [
   locations.LOCATION_HOME,
 ];
 
-export const contentfulContext = (sdk: KnownAppSDK): ContentfulContext => {
+export const contentfulContext = (
+  sdkIds: KnownAppSDK['ids'],
+  sdkLocation: KnownAppSDK['location']
+): ContentfulContext => {
   return {
-    ...sdk.ids,
-    location: Locations.find((location) => sdk.location.is(location)),
+    ...sdkIds,
+    location: Locations.find((location) => sdkLocation.is(location)),
   };
 };

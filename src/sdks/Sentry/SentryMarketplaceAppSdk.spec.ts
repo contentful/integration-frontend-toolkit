@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/react';
 import { KnownAppSDK } from '@contentful/app-sdk';
-import { SentryProvider } from './SentryProvider';
+import { SentryMarketplaceAppSdk } from './SentryMarketplaceAppSdk';
 
 jest.mock('@sentry/react', () => ({
   init: jest.fn(),
@@ -12,12 +12,12 @@ jest.mock('@sentry/react', () => ({
   }),
 }));
 
-describe('SentryProvider', () => {
+describe('SentryMarketplaceAppSdk', () => {
   it('can initialize Sentry', () => {
     const initSpy = jest.spyOn(Sentry, 'init');
     const browserTracingSpy = jest.spyOn(Sentry, 'BrowserTracing');
 
-    SentryProvider.init();
+    SentryMarketplaceAppSdk.init();
 
     expect(initSpy).toHaveBeenCalled();
     expect(browserTracingSpy).toHaveBeenCalled();
@@ -25,11 +25,9 @@ describe('SentryProvider', () => {
 
   it('can set Sentry context', () => {
     const getCurrentScopeSpy = jest.spyOn(Sentry, 'getCurrentScope');
-
-    SentryProvider.setContentfulSentryContext({
-      ids: { user: 1 },
-      location: { is: () => 'SIDEBAR' },
-    } as unknown as KnownAppSDK);
+    const sdkIds = { user: 1 } as unknown as KnownAppSDK['ids'];
+    const sdkLocations = { is: () => 'SIDEBAR' } as unknown as KnownAppSDK['location'];
+    SentryMarketplaceAppSdk.setContentfulSentryContext(sdkIds, sdkLocations);
 
     expect(getCurrentScopeSpy).toHaveBeenCalled();
   });

@@ -17,7 +17,7 @@ dist/
 
 # exported build directories
 /components/
-/providers/
+/sdks/
 /types/
 
 # internal build directories
