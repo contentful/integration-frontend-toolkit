@@ -1,7 +1,7 @@
 import * as Sentry from '@sentry/react';
 import { KnownAppSDK } from '@contentful/app-sdk';
 import { upperFirst } from 'lodash';
-import { contentfulContext } from '../../internal-toolkit-helpers/contentful-context/contentful-context';
+import { consolidateContentfulAppInfo } from './consolidateContentfulAppInfo/consolidateContentfulAppInfo';
 
 interface SentryMarketplaceAppSdk {
   init: (configOptions?: Sentry.BrowserOptions) => void;
@@ -28,12 +28,12 @@ const setContentfulSentryContext = (
 ) => {
   const scope = Sentry.getCurrentScope();
   if (sdkIds.user) scope.setUser({ id: sdkIds.user });
-  for (const [key, value] of Object.entries(contentfulContext(sdkIds, sdkLocation))) {
+  for (const [key, value] of Object.entries(consolidateContentfulAppInfo(sdkIds, sdkLocation))) {
     if (value) scope.setTag(`X-Contentful-${upperFirst(key)}`, value);
   }
 };
 
-export const SentryMarketplaceAppSdk: SentryMarketplaceAppSdk = {
+export const sentryMarketplaceAppSdk: SentryMarketplaceAppSdk = {
   init,
   setContentfulSentryContext,
   client: Sentry,

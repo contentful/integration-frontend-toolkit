@@ -6,6 +6,7 @@ interface ContentfulContext {
   contentType?: string;
   entry?: string;
   field?: string;
+  user?: string;
 }
 
 const Locations = [
@@ -18,7 +19,7 @@ const Locations = [
   locations.LOCATION_HOME,
 ];
 
-export const contentfulContext = (
+export const consolidateContentfulAppInfo = (
   sdkIds: KnownAppSDK['ids'],
   sdkLocation: KnownAppSDK['location']
 ): ContentfulContext => {

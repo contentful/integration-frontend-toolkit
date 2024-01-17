@@ -1,1 +1,1 @@
-export { SentryMarketplaceAppSdk } from './Sentry/SentryMarketplaceAppSdk';
+export { sentryMarketplaceAppSdk } from './sentry/sentryMarketplaceAppSdk';

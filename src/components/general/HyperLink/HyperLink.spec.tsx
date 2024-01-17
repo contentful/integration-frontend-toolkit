@@ -1,5 +1,5 @@
-import HyperLink from './HyperLink';
 import { render, screen } from '@testing-library/react';
+import HyperLink from './HyperLink';
 
 const BODY = 'Have a great day!';
 const SUBSTRING = 'great';
