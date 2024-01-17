@@ -1,6 +1,6 @@
 import { KnownAppSDK, locations } from '@contentful/app-sdk';
 
-interface ContentfulContext {
+interface ContentfulAppInfo {
   app?: string;
   location?: string;
   contentType?: string;
@@ -22,7 +22,7 @@ const Locations = [
 export const consolidateContentfulAppInfo = (
   sdkIds: KnownAppSDK['ids'],
   sdkLocation: KnownAppSDK['location']
-): ContentfulContext => {
+): ContentfulAppInfo => {
   return {
     ...sdkIds,
     location: Locations.find((location) => sdkLocation.is(location)),

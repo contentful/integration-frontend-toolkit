@@ -1,4 +1,4 @@
-export interface ContentfulContextHeaders {
+export interface ContentfulNetworkHeaders {
   'X-Contentful-App'?: string;
   'X-Contentful-ContentType'?: string;
   'X-Contentful-Entry'?: string;
