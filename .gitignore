@@ -20,6 +20,9 @@ dist/
 /providers/
 /types/
 
+# internal build directories
+/internal-toolkit-helpers/
+
 # misc
 .DS_Store
 .env.local
