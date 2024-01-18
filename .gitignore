@@ -17,7 +17,8 @@ dist/
 
 # exported build directories
 /components/
-/providers/
+/sdks/
+/types/
 
 # misc
 .DS_Store
