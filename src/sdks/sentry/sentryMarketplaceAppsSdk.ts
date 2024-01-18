@@ -12,6 +12,11 @@ interface SentryMarketplaceAppSdk {
   client: typeof Sentry;
 }
 
+/**
+ * Init function to instantiate Sentry
+ * @param {object} configOptions - options to pass the Sentry init function
+ */
+
 const init = (configOptions?: Sentry.BrowserOptions) =>
   Sentry.init({
     dsn: 'https://b8f524eae7c446fb8071476431426640@o2239.ingest.sentry.io/4504725335834624',
@@ -21,6 +26,12 @@ const init = (configOptions?: Sentry.BrowserOptions) =>
     replaysOnErrorSampleRate: 1.0,
     ...configOptions,
   });
+
+/**
+ * Method to add Contentful specific details to the Sentry scope
+ * @param {object} sdkIds - ids associated with app installation
+ * @param {object} sdkLocation - locatio associated with app installation
+ */
 
 const setContentfulSentryContext = (
   sdkIds: KnownAppSDK['ids'],
@@ -33,7 +44,7 @@ const setContentfulSentryContext = (
   }
 };
 
-export const sentryMarketplaceAppSdk: SentryMarketplaceAppSdk = {
+export const sentryMarketplaceAppsSDK: SentryMarketplaceAppSdk = {
   init,
   setContentfulSentryContext,
   client: Sentry,

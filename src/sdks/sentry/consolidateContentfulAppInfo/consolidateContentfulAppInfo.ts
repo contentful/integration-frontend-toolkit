@@ -1,12 +1,13 @@
 import { KnownAppSDK, locations } from '@contentful/app-sdk';
 
 interface ContentfulAppInfo {
-  app?: string;
+  user: string;
+  space: string;
+  environmentAlias?: string;
+  environment: string;
+  organization: string;
   location?: string;
-  contentType?: string;
-  entry?: string;
-  field?: string;
-  user?: string;
+  app?: string;
 }
 
 const Locations = [
