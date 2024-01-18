@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/react';
 import { KnownAppSDK } from '@contentful/app-sdk';
-import { sentryMarketplaceAppsSDK } from './sentryMarketplaceAppsSDK';
+import { sentryMarketplaceAppsSDK } from './fake';
 
 jest.mock('@sentry/react', () => ({
   init: jest.fn(),
