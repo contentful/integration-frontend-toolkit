@@ -1,11 +1,11 @@
 # integration-frontend-toolkit
 
 > **Warning**
-> This library is under active development and is subject to significant changes. At any time components may be updated, depricated, or entirely removed based on our internal development of the [Apps](https://github.com/contentful/apps) repo.
+> This library is under active development and is subject to significant changes. At any time code may be updated, depricated, or entirely removed based on our internal development of the [Apps](https://github.com/contentful/apps) repo.
 
-This repository is a home to a documented component library, primarily used to support integration (app) development.
+This repository is a home to frontend tooling, primarily used to support integration (app) development.
 
-The library itself offers the Integrations team a place to develop components outside of the app itself, to support reusability as well as customizability. If deemed necessary and valid, these components can be escalated to a process of inclusion within the F36 or the experience-packages repository.
+The library itself offers the Integrations team a place to develop components outside of the app itself, as well as to house highly repeated code, to support reusability as well as customizability.
 
 ## Local development
 
@@ -27,11 +27,60 @@ To run tests:
 npm run test
 ```
 
-### When you are ready to publish a new component, for now, it is imperative that you do the following:
+### Testing package locally
 
-1. Add the new component to the src/index.ts file.
+Option 1: Link the package using the global node module namespace
 
-2. Lastly follow standard Semantic Versioning commit messages (when you squash or commit to master) in order to version the package correctly.
+```sh 
+npm link 
+```
+
+Option 2: Use npm pack to create a tgz file locally that mimics a fully packed library structure
+
+```sh 
+npm build 
+```
+
+```sh 
+npm pack --pack-destination ~
+```
+
+import the packed file, i.e "file:~/integration-frontend-toolkit-0.0.0.tgz", into another library for testing
+
+and within the testing library run:
+
+```sh 
+npm install 
+```
+to actually install the tgz packed file. 
+
+You may need to continually update the version in your local package, and repack the tgz file, and reimport it with the new version, when updates are made. 
+
+
+### Creating new submodule directories: 
+
+The current build of this toolkit creates build directories directly reflecting the directories under the src directory. You will notice upon building the toolkit, that these directories are created, and this supports submodule imports of the toolkit i.e: 
+
+```sh 
+import { HyperLink } from "@contentful/integration-frontend-toolkit/components" 
+import { sentryMarketplaceAppsSDK } from "@contentful/integration-frontend-toolkit/sdks" 
+```
+
+When creating a new directory, you will need to add the directory name to the package.json "files" section in order for it to be exposed as a submodule.  
+
+### Expectations of development
+
+1. Each new entity added to this library should be housed in its own directory
+2. Each new entity should be accompanied by a spec. file.
+3. Each new component created should be accompanied by a stories. file. Keep in mind the various iterations of an entity. Questions to ask: if it might be useful to create a story for each iteration? and if the story is self-explantory to other developers? Sometimes it is useful to add details, actions, decorators to describe the story and component.
+4. Each new entity needs to be added to the respective parent directory index.ts file. 
+5. Directories are lower-cased unless they house a set of files related to a React component
+6. File names are lower-cased unless they house a React component
+
+
+## Commiting 
+
+Follow standard Semantic Versioning commit messages (when you squash or commit to master) in order to version the package correctly.
 
 Examples commit messages:
 
@@ -44,25 +93,17 @@ Examples commit messages:
 - Test: An adjustment to tests
 - Chore: A change to the build process of auxiliary tools and libraries
 
-## Expectations of development:
+By default in this library right now, FIX is a patch release, FEATURE is a minor, and the label BREAKING CHANGE is a major release. 
 
-1. Each new component added to this library should be housed in its own directory, either under a certain Stack or under the 'General' directory.
-2. Each new component should be accompanied by a spec. file.
-3. Each new component should be accompanied by a stories. file.
-4. Keep in mind the various iterations of a component. Questions to ask: if it might be usuful to create a story for each iteration? and if the story is self-explantory to other developers? Sometimes it is useful to add details, actions, decorators to describe the story and component.
 
-## Troubleshooting the installation of this package
+## In progress improvements and known limitations:
 
-If you are encountering an error after running `npm i @contentful/integration-frontend-toolkit`, perhaps a 401 error around access to the package itself, please try the following:
+1. Currently it is challenging to create a directory that is just internal to the toolkit itself. For example, if we want to createa a directory that houses a helper function used in other methods across other directories, but do not intend on exposing this directory as part of the library, given how the build works now, we will need to experiment with how to implement this. 
+2.  Currently within the CI, we require Chromatic visual approvals of changes to components. 
 
-1. Adjust the npm registry either within your local config or in a repository `.npmrc` file. To check your local config, run `npm config ls`. The regsitry should be the following:
-   `registry = "https://registry.npmjs.org/"`.
-2. If adjusting the registry does not resolve the issue, there may be an authorization step you must take. This should not be the case right now as the package access is public for now (to avoid the friction of these auth steps) and it is no longer hosted as a github package, but in the off chance this is the issue please refer to [this](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-with-a-personal-access-token) document.
+## Other resources
 
-## In progress improvements:
+[Storybook](https://storybook.js.org/docs/react/get-started/why-storybook)
+[Chromatic](https://www.chromatic.com/)
+[Semantic Release](https://semantic-release.gitbook.io/semantic-release/)
 
-1. Adjusting Chromatic approval process per team feedback and use. How do we want to compare diffs, and visual changes, and how do we want this to reflect within the PR build and approval process?
-
-## Storybook
-
-[Documentation](https://storybook.js.org/docs/react/get-started/why-storybook)
