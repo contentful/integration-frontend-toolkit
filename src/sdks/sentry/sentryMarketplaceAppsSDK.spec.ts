@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/react';
 import { KnownAppSDK } from '@contentful/app-sdk';
-import { sentryMarketplaceAppsSDK } from './fake';
+import { sentryMarketplaceAppsSDK } from './sentryMarketplaceAppsSDK';
 
 jest.mock('@sentry/react', () => ({
   init: jest.fn(),
@@ -12,7 +12,7 @@ jest.mock('@sentry/react', () => ({
   }),
 }));
 
-describe('sentryMarketplaceAppSdk', () => {
+describe('sentryMarketplaceAppsSDK', () => {
   it('can initialize Sentry', () => {
     const initSpy = jest.spyOn(Sentry, 'init');
     const browserTracingSpy = jest.spyOn(Sentry, 'BrowserTracing');
