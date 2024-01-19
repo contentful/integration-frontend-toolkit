@@ -66,16 +66,18 @@ import { HyperLink } from "@contentful/integration-frontend-toolkit/components"
 import { sentryMarketplaceAppsSDK } from "@contentful/integration-frontend-toolkit/sdks" 
 ```
 
-When creating a new directory, you will need to add the directory name to the package.json "files" section in order for it to be exposed as a submodule.  
+IMPORTANT: When creating a new directory, you will need to add the directory name to the package.json "files" section in order for it to be exposed as a submodule.  
 
 ### Expectations of development
 
 1. Each new entity added to this library should be housed in its own directory
-2. Each new entity should be accompanied by a spec. file.
-3. Each new component created should be accompanied by a stories. file. Keep in mind the various iterations of an entity. Questions to ask: if it might be useful to create a story for each iteration? and if the story is self-explantory to other developers? Sometimes it is useful to add details, actions, decorators to describe the story and component.
-4. Each new entity needs to be added to the respective parent directory index.ts file. 
+2. Each new entity should be accompanied by a spec. file
+3. Each new component created should be accompanied by a stories. file. Keep in mind the various iterations of the components. Questions to ask: if it might be useful to create a story for each iteration? and if the story is self-explanatory to other developers? Sometimes it is useful to add details, actions, decorators to describe the story and component
+4. Each new entity needs to be added to the respective parent directory index.ts file
 5. Directories are lower-cased unless they house a set of files related to a React component
 6. File names are lower-cased unless they house a React component
+7. The code contribution should be TypeScript
+8. Please add JSDocs to methods that may need more context
 
 
 ## Commiting 
@@ -98,12 +100,14 @@ By default in this library right now, FIX is a patch release, FEATURE is a minor
 
 ## In progress improvements and known limitations:
 
-1. Currently it is challenging to create a directory that is just internal to the toolkit itself. For example, if we want to createa a directory that houses a helper function used in other methods across other directories, but do not intend on exposing this directory as part of the library, given how the build works now, we will need to experiment with how to implement this. 
-2.  Currently within the CI, we require Chromatic visual approvals of changes to components. 
+1. Currently it is challenging to create a directory that is just internal to the toolkit itself. For example, if we want to create a directory that houses a helper function used in other methods across other directories, but do not intend on exposing this directory as part of the library, given how the build works now, we will need to experiment with how to implement this
+2.  Currently within the CI, we require Chromatic visual approvals of changes to components. This deserves some fine-tuning, and there is a ticket open to complete this
+3. Package optimization of the build: there is a ticket open to remove unecessary artifacts in the built directories, such as stories and tests
+4. Feel free to create a ticket within the associated epic for new issues or improvements
 
 ## Other resources
 
-[Storybook](https://storybook.js.org/docs/react/get-started/why-storybook)
-[Chromatic](https://www.chromatic.com/)
-[Semantic Release](https://semantic-release.gitbook.io/semantic-release/)
+1. [Storybook](https://storybook.js.org/docs/react/get-started/why-storybook)
+2. [Chromatic](https://www.chromatic.com/)
+3. [Semantic Release](https://semantic-release.gitbook.io/semantic-release/)
 
