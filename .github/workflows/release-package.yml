@@ -37,6 +37,7 @@ jobs:
           exportEnv: false
           secrets: |
             secret/data/github/github_packages_read GITHUB_PACKAGES_READ_TOKEN | GITHUB_PACKAGES_READ_TOKEN
+            secret/data/github/github_packages_write GITHUB_PACKAGES_WRITE_TOKEN | GITHUB_PACKAGES_WRITE_TOKEN 
       - name: "Create GH .npmrc"
         shell: bash
         run: |
@@ -53,8 +54,8 @@ jobs:
         run: npm test
       - name: Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
+          NPM_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
         run: npx semantic-release
 
