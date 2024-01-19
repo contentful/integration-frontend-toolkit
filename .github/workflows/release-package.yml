@@ -57,6 +57,7 @@ jobs:
           GITHUB_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
           GH_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
         run: |
+          echo ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
           echo -e "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}\n@contentful:registry=https://npm.pkg.github.com\nalways-auth=true" > ~/.npmrc
           npx semantic-release
 
