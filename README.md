@@ -35,6 +35,12 @@ Option 1: Link the package using the global node module namespace
 npm link 
 ```
 
+and within the test application run 
+
+```sh 
+npm link @contentful/integration-frontend-toolkit
+```
+
 Option 2: Use npm pack to create a tgz file locally that mimics a fully packed library structure
 
 ```sh 
@@ -45,7 +51,7 @@ npm build
 npm pack --pack-destination ~
 ```
 
-import the packed file, i.e "file:~/integration-frontend-toolkit-0.0.0.tgz", into another library for testing
+import the packed file, i.e "file:~/contentful-integration-frontend-toolkit-0.0.0-semantic-release.tgz", into another library for testing
 
 and within the testing library run:
 
