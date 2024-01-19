@@ -24,7 +24,7 @@ jobs:
           path: github-actions
           exportEnv: false
           secrets: |
-            github/token/integration-frontend-toolkit-semantic-release GITHUB_PACKAGES_WRITE_TOKEN | GITHUB_PACKAGES_WRITE_TOKEN
+            secret/data/github/token/integration-frontend-toolkit-semantic-release GITHUB_PACKAGES_WRITE_TOKEN | GITHUB_PACKAGES_WRITE_TOKEN
       - name: "Create GH .npmrc"
         shell: bash
         run: |
