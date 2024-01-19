@@ -26,8 +26,19 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+      - name: "Retrieve GITHUB Token"
+        id: vault-github
+        uses: hashicorp/vault-action@v2.4.3
+        with:
+          url: ${{ secrets.VAULT_URL }}
+          role: ${{ github.event.repository.name }}-github-action
+          method: jwt
+          path: github-actions
+          exportEnv: false
+          secrets: |
+            secret/data/github/token/integration-frontend-toolkit-semantic-release GITHUB_TOKEN | GITHUB_TOKEN
       - name: "Retrieve NPM Token"
-        id: vault
+        id: vault-npm
         uses: hashicorp/vault-action@v2.4.3
         with:
           url: ${{ secrets.VAULT_URL }}
@@ -37,28 +48,28 @@ jobs:
           exportEnv: false
           secrets: |
             secret/data/github/token/integration-frontend-toolkit-semantic-release GITHUB_PACKAGES_WRITE_TOKEN | GITHUB_PACKAGES_WRITE_TOKEN
-            secret/data/github/token/integration-frontend-toolkit-semantic-release GITHUB_TOKEN | GITHUB_TOKEN
+
       - name: "Create GH .npmrc"
         shell: bash
         run: |
           echo -e "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}\n@contentful:registry=https://npm.pkg.github.com\nalways-auth=true" > ~/.npmrc
         env:
-          GITHUB_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.vault-npm.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
       - name: Install dependencies
         run: npm ci
         env:
-          GITHUB_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.vault-npm.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
       - name: Build
         run: npm run build
       - name: Test
         run: npm test
       - name: Release
         shell: bash
-        env:
-          GITHUB_TOKEN: ${{ steps.vault.outputs.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
-          GH_TOKEN: ${{ steps.vault.outputs.GITHUB_TOKEN }}
         run: |
           echo -e "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}\n@contentful:registry=https://npm.pkg.github.com\nalways-auth=true" > ~/.npmrc
           npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ steps.vault-github.outputs.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ steps.vault-npm.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
+          GH_TOKEN: ${{ steps.vault-github.outputs.GITHUB_TOKEN }}
 
