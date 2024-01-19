@@ -27,7 +27,7 @@ describe('sentryMarketplaceAppsSDK', () => {
     const getCurrentScopeSpy = jest.spyOn(Sentry, 'getCurrentScope');
     const sdkIds = { user: 1 } as unknown as KnownAppSDK['ids'];
     const sdkLocations = { is: () => 'SIDEBAR' } as unknown as KnownAppSDK['location'];
-    sentryMarketplaceAppsSDK.setContentfulSentryContext(sdkIds, sdkLocations);
+    sentryMarketplaceAppsSDK.setContentfulSentryContext(sdkIds, sdkLocations, 'appName');
 
     expect(getCurrentScopeSpy).toHaveBeenCalled();
   });
