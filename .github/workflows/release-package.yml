@@ -36,7 +36,8 @@ jobs:
           path: github-actions
           exportEnv: false
           secrets: |
-            secret/data/github/github_packages_write GITHUB_PACKAGES_WRITE_TOKEN | GITHUB_PACKAGES_WRITE_TOKEN
+            secret/data/github/token/integration-frontend-toolkit-semantic-release GITHUB_PACKAGES_WRITE_TOKEN | GITHUB_PACKAGES_WRITE_TOKEN
+            secret/data/github/token/integration-frontend-toolkit-semantic-release GITHUB__TOKEN | GITHUB_TOKEN
       - name: "Create GH .npmrc"
         shell: bash
         run: |
@@ -54,10 +55,10 @@ jobs:
       - name: Release
         shell: bash
         env:
-          GITHUB_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
-          GH_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.vault.outputs.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
+          GH_TOKEN: ${{ steps.vault.outputs.GITHUB_TOKEN }}
         run: |
-          echo ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
-          echo -e "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}\n@contentful:registry=https://npm.pkg.github.com\nalways-auth=true" > ~/.npmrc
+          echo -e "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}\n@contentful:registry=https://npm.pkg.github.com\nalways-auth=true" > ~/.npmrc
           npx semantic-release
 
