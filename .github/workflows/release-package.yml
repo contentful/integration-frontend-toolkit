@@ -26,17 +26,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: "Retrieve GITHUB Token"
-        id: vault-github
-        uses: hashicorp/vault-action@v2.4.3
-        with:
-          url: ${{ secrets.VAULT_URL }}
-          role: ${{ github.event.repository.name }}-github-action
-          method: jwt
-          path: github-actions
-          exportEnv: false
-          secrets: |
-            secret/data/github/token/integration-frontend-toolkit-semantic-release GITHUB_TOKEN | GITHUB_TOKEN
+      
       - name: "Retrieve NPM Token"
         id: vault-npm
         uses: hashicorp/vault-action@v2.4.3
@@ -48,6 +38,18 @@ jobs:
           exportEnv: false
           secrets: |
             secret/data/github/token/integration-frontend-toolkit-semantic-release GITHUB_PACKAGES_WRITE_TOKEN | GITHUB_PACKAGES_WRITE_TOKEN
+      
+      - name: "Retrieve GITHUB Token"
+        id: vault-github
+        uses: hashicorp/vault-action@v2.4.3
+        with:
+          url: ${{ secrets.VAULT_URL }}
+          role: ${{ github.event.repository.name }}-github-action
+          method: jwt
+          path: github-actions
+          exportEnv: false
+          secrets: |
+            secret/data/github/token/integration-frontend-toolkit-semantic-release GITHUB_TOKEN | GITHUB_TOKEN
 
       - name: "Create GH .npmrc"
         shell: bash
