@@ -13,8 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     # Job steps
     steps:
-      - uses: actions/checkout@v1
-       - name: "Retrieve NPM Token"
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: "Retrieve NPM Token"
         id: vault
         uses: hashicorp/vault-action@v2.4.3
         with:
@@ -25,6 +29,7 @@ jobs:
           exportEnv: false
           secrets: |
             secret/data/github/token/integration-frontend-toolkit-semantic-release GITHUB_PACKAGES_WRITE_TOKEN | GITHUB_PACKAGES_WRITE_TOKEN
+            
       - name: "Create GH .npmrc"
         shell: bash
         run: |
