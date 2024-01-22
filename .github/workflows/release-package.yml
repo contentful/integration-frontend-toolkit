@@ -41,6 +41,14 @@ jobs:
           node-version: 18
           registry-url: "https://npm.pkg.github.com"
           scope: '@contentful'
+          always-auth: true
+          
+      - name: "Create GH .npmrc"
+        shell: bash
+        run: |
+          echo -e "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}\n@contentful:registry=https://npm.pkg.github.com\nalways-auth=true" > .npmrc
+        env:
+          GITHUB_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
 
       - run: npm ci
         env:
