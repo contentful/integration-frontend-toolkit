@@ -61,6 +61,7 @@ jobs:
         shell: bash
         run: |
           echo -e "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}\n@contentful:registry=https://npm.pkg.github.com\nalways-auth=true" > .npmrc
+          cat .npmrc
           npx semantic-release
         env:
           GITHUB_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
