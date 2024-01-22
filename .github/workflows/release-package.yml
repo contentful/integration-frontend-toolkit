@@ -66,4 +66,5 @@ jobs:
           GITHUB_TOKEN: ${{ steps.vault.outputs.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
           GH_TOKEN: ${{ steps.vault.outputs.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
