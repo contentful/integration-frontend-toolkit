@@ -43,7 +43,7 @@ jobs:
       - name: "Create GH .npmrc"
         shell: bash
         run: |
-          echo -e "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}\n@contentful:registry=https://npm.pkg.github.com\nalways-auth=true" > ~/.npmrc
+          echo -e "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}\n@contentful:registry=https://npm.pkg.github.com\nalways-auth=true" > .npmrc
         env:
           GITHUB_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
 
@@ -60,7 +60,7 @@ jobs:
       - name: Release
         shell: bash
         run: |
-          echo -e "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}\n@contentful:registry=https://npm.pkg.github.com\nalways-auth=true" > ~/.npmrc
+          echo -e "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}\n@contentful:registry=https://npm.pkg.github.com\nalways-auth=true" > .npmrc
           npx semantic-release
         env:
           GITHUB_TOKEN: ${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}
