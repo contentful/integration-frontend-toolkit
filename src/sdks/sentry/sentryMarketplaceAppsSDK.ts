@@ -7,7 +7,8 @@ interface SentryMarketplaceAppSdk {
   init: (configOptions?: Sentry.BrowserOptions) => void;
   setContentfulSentryContext: (
     sdkIds: KnownAppSDK['ids'],
-    sdkLocation: KnownAppSDK['location']
+    sdkLocation: KnownAppSDK['location'],
+    appName?: string
   ) => void;
   client: typeof Sentry;
 }
@@ -30,15 +31,18 @@ const init = (configOptions?: Sentry.BrowserOptions) =>
 /**
  * Method to add Contentful specific details to the Sentry scope
  * @param {object} sdkIds - ids associated with app installation
- * @param {object} sdkLocation - locatio associated with app installation
+ * @param {object} sdkLocation - location associated with app installation
+ * @param {string} appName - name of app where sentry is initialized
  */
 
 const setContentfulSentryContext = (
   sdkIds: KnownAppSDK['ids'],
-  sdkLocation: KnownAppSDK['location']
+  sdkLocation: KnownAppSDK['location'],
+  appName?: string
 ) => {
   const scope = Sentry.getCurrentScope();
   if (sdkIds.user) scope.setUser({ id: sdkIds.user });
+  if (appName) scope.setTag('X-Contentful-App-Name', appName);
   for (const [key, value] of Object.entries(consolidateContentfulAppInfo(sdkIds, sdkLocation))) {
     if (value) scope.setTag(`X-Contentful-${upperFirst(key)}`, value);
   }
