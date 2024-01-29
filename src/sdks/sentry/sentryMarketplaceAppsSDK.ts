@@ -42,7 +42,7 @@ const setContentfulSentryContext = (
 ) => {
   const scope = Sentry.getCurrentScope();
   if (sdkIds.user) scope.setUser({ id: sdkIds.user });
-  if (appName) scope.setTag('contentfulAppName', appName);
+  if (appName) scope.setTag('X-Contentful-App-Name', appName);
   for (const [key, value] of Object.entries(consolidateContentfulAppInfo(sdkIds, sdkLocation))) {
     if (value) scope.setTag(`X-Contentful-${upperFirst(key)}`, value);
   }
