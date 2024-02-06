@@ -105,7 +105,9 @@
   },
   "peerDependencies": {
     "react": "16.8.0 || >=17.x",
-    "react-dom": "16.8.0 || >=17.x"
+    "react-dom": "16.8.0 || >=17.x",
+    "@contentful/app-sdk": "^4.0.0",
+    "@contentful/react-apps-toolkit": "^1.0.0"
   },
   "lint-staged": {
     "*.{t,j}s?(x)": [
