@@ -4,6 +4,7 @@ import { createContext, ReactNode } from 'react';
 
 import { getUserCookieConsent } from './utils/getUserCookieConsent';
 import { useSDK } from '@contentful/react-apps-toolkit';
+import { KeyValueMap } from '@contentful/app-sdk/dist/types/entities';
 
 //TODO: This will be typewriter -  import { SegmentEvent, SegmentEventData, SegmentIdentify } from '@configs/segment/segmentEvent';
 //TODO: This will be typewriter - import { SegmentEvents } from '@configs/segment/segmentEvent';
@@ -13,10 +14,7 @@ interface SegmentAnalyticsContextProps {
   trackEvent: (action: SegmentEvents, trackingData?: SegmentEventData) => void;
 }
 
-type PossibleSDK<T> =
-  | SidebarAppSDK<T>
-  | DialogAppSDK<T>
-  | ConfigAppSDK<T>;
+type PossibleSDK<T extends KeyValueMap> = SidebarAppSDK<T> | DialogAppSDK<T> | ConfigAppSDK<T>;
 
 const noop = () => {};
 
@@ -25,13 +23,15 @@ export const SegmentAnalyticsContext = createContext<SegmentAnalyticsContextProp
   trackEvent: noop,
 });
 
-interface SegmentAnalyticsProviderProps<TAppInstallParams> {
+interface SegmentAnalyticsProviderProps<TAppInstallParams extends KeyValueMap> {
   writeKey: string;
   getTrackedAppData: (sdk: PossibleSDK<TAppInstallParams>) => SegmentEventData;
   children: ReactNode;
 }
 
-export const SegmentAnalyticsProvider = <T>(props: SegmentAnalyticsProviderProps<T>) => {
+export const SegmentAnalyticsProvider = <T extends KeyValueMap>(
+  props: SegmentAnalyticsProviderProps<T>
+) => {
   const { writeKey, getTrackedAppData } = props;
   const sdk = useSDK<PossibleSDK<T>>();
 
