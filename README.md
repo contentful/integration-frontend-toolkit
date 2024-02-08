@@ -9,6 +9,15 @@ The library itself offers the Integrations team a place to develop components ou
 
 ## Local development
 
+Ensure that your global npmrc has the following, or if you prefer, create a local npmrc in this repository with the same information: 
+
+```sh
+//npm.pkg.github.com/:_authToken=<your token>
+@contentful:registry=https://npm.pkg.github.com
+```
+
+This will allow you to successfully install the node_modules. 
+
 To install or update the app locally:
 
 ```sh
