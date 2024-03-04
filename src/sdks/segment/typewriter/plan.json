@@ -1,0 +1,85 @@
+{
+	"createdAt": "2023-01-04T12:32:24.000Z",
+	"description": "description",
+	"id": "tp_2JrU9dFRdaHjoc4E818Dwa3YPB9",
+	"name": "create-contentful-app",
+	"resourceSchemaId": "rs_2JrU9Zm3QN482qPesqJAFbn3lU8",
+	"rules": [
+		{
+			"createdAt": "2023-01-17T16:52:38.000Z",
+			"deprecatedAt": "0001-01-01T00:00:00.000Z",
+			"jsonSchema": {
+				"$id": "app-cli-app-scripts",
+				"eventMetadata": {
+					"name": "app-cli-app-scripts",
+					"type": "TRACK"
+				},
+				"properties": {
+					"ci": {
+						"$id": "/properties/ci",
+						"description": "with the --ci flag",
+						"type": "string"
+					},
+					"command": {
+						"$id": "/properties/command",
+						"description": "command of the app-scripts call",
+						"type": "string"
+					}
+				},
+				"required": [
+					"command",
+					"ci"
+				],
+				"type": "object"
+			},
+			"key": "app-cli-app-scripts",
+			"type": "TRACK",
+			"updatedAt": "2023-08-18T16:18:34.000Z",
+			"version": 1
+		},
+		{
+			"createdAt": "2023-01-17T16:54:01.000Z",
+			"deprecatedAt": "0001-01-01T00:00:00.000Z",
+			"jsonSchema": {
+				"$id": "app-cli-cca-creation",
+				"eventMetadata": {
+					"name": "app-cli-cca-creation",
+					"type": "TRACK"
+				},
+				"properties": {
+					"interactive": {
+						"$id": "/properties/interactive",
+						"description": "values added by flag or with interactive mode",
+						"type": "boolean"
+					},
+					"manager": {
+						"$id": "/properties/manager",
+						"description": "npm or yarn",
+						"enum": [
+							"npm",
+							"yarn"
+						],
+						"type": "string"
+					},
+					"template": {
+						"$id": "/properties/template",
+						"description": "Template used by the cca call",
+						"type": "string"
+					}
+				},
+				"required": [
+					"interactive",
+					"manager"
+				],
+				"type": "object"
+			},
+			"key": "app-cli-cca-creation",
+			"type": "TRACK",
+			"updatedAt": "2023-08-18T16:18:34.000Z",
+			"version": 1
+		}
+	],
+	"slug": "",
+	"type": "LIVE",
+	"updatedAt": "2023-08-18T16:18:34.000Z"
+}
