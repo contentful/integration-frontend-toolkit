@@ -44,7 +44,6 @@ describe('SegmentAnalyticsProvider', () => {
         <button
           onClick={() => {
             trackEvent('appCLIAppScripts', { ci: 'test', command: 'hi' });
-            console.log('clicked');
           }}>
           Test Button
         </button>
@@ -75,7 +74,6 @@ describe('SegmentAnalyticsProvider', () => {
         <button
           onClick={() => {
             trackEvent('appCLIAppScripts', { ci: 'test', command: 'hi' });
-            console.log('clicked');
           }}>
           Test Button
         </button>
