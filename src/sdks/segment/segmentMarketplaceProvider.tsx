@@ -1,7 +1,7 @@
 import { AnalyticsBrowser } from '@segment/analytics-next';
 import { ReactNode, useEffect, useState } from 'react';
 
-import { getUserCookieConsent } from './utils/getUserCookieConsent';
+import getUserCookieConsent from './utils/getUserCookieConsent';
 import { useSDK } from '@contentful/react-apps-toolkit';
 import { KeyValueMap } from '@contentful/app-sdk/dist/types/entities';
 import typewriter from './typewriter/segment';
@@ -27,27 +27,26 @@ export const SegmentAnalyticsProvider = <T extends KeyValueMap>(
   const { writeKey } = props;
   const sdk = useSDK<PossibleSDK<T>>();
 
-  const [segmentAnalytics] = useState(() => {
-    console.log('segmentAnalytics');
-    if (getUserCookieConsent(sdk, 'ANALYTICS')) {
-      console.log('segmentAnalytics2');
-      return AnalyticsBrowser.load({
-        writeKey:
-          writeKey ||
-          (process.env.SEGMENT_WRITE_KEY as string) ||
-          (process.env.REACT_APP_SEGMENT_WRITE_KEY as string),
-      });
-    }
-    return null;
-  });
+  const [segmentAnalytics, setSegmentAnalytics] = useState<AnalyticsBrowser>();
 
   const init = () => {
-    if (segmentAnalytics != null) {
+    if (segmentAnalytics) {
       typewriter.setTypewriterOptions({
         analytics: segmentAnalytics,
       });
 
       identify();
+    } else {
+      if (getUserCookieConsent(sdk, 'ANALYTICS')) {
+        setSegmentAnalytics(
+          AnalyticsBrowser.load({
+            writeKey:
+              writeKey ||
+              (process.env.SEGMENT_WRITE_KEY as string) ||
+              (process.env.REACT_APP_SEGMENT_WRITE_KEY as string),
+          })
+        );
+      }
     }
   };
 
@@ -80,13 +79,9 @@ export const SegmentAnalyticsProvider = <T extends KeyValueMap>(
     segmentEvent: T,
     eventData: SegmentEventData<T> = {}
   ) => {
-    console.log('analytics');
-    console.log(JSON.stringify(segmentAnalytics));
-
     if (!segmentAnalytics) {
       return;
     }
-    console.log('madeit');
 
     (typewriter[segmentEvent] as (data: typeof eventData) => void)(eventData);
   };

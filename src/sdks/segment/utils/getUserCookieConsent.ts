@@ -21,7 +21,7 @@ export interface UserConsent {
   [key: string]: ConsentData;
 }
 
-export function getUserCookieConsent(sdk: BaseAppSDK, consentProperty: ConsentRecordKey) {
+export default function getUserCookieConsent(sdk: BaseAppSDK, consentProperty: ConsentRecordKey) {
   // TODO: remove ts-ignore once the SDK is updated with the new user consent types
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore

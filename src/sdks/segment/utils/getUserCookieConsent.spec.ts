@@ -1,4 +1,4 @@
-import { getUserCookieConsent } from './getUserCookieConsent';
+import getUserCookieConsent from './getUserCookieConsent';
 import { BaseAppSDK } from '@contentful/app-sdk';
 
 const sdk = {
