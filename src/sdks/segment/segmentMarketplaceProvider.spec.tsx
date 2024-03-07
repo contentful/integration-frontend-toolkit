@@ -56,12 +56,12 @@ describe('SegmentAnalyticsProvider', () => {
       </SegmentAnalyticsProvider>
     );
 
-    await waitFor(() => expect(AnalyticsBrowser.load).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(mockAnalytics.load).toHaveBeenCalledTimes(1));
 
     fireEvent.click(getByText('Test Button'));
 
     await waitFor(() =>
-      expect(typewriter.appCLIAppScripts).toHaveBeenCalledWith({ ci: 'test', command: 'hi' })
+      expect(mockTypewriter.appCLIAppScripts).toHaveBeenCalledWith({ ci: 'test', command: 'hi' })
     );
   });
 
@@ -86,10 +86,10 @@ describe('SegmentAnalyticsProvider', () => {
       </SegmentAnalyticsProvider>
     );
 
-    await waitFor(() => expect(AnalyticsBrowser.load).toHaveBeenCalledTimes(0));
+    await waitFor(() => expect(mockAnalytics.load).toHaveBeenCalledTimes(0));
 
     fireEvent.click(getByText('Test Button'));
 
-    await waitFor(() => expect(typewriter.appCLIAppScripts).not.toHaveBeenCalled());
+    await waitFor(() => expect(mockTypewriter.appCLIAppScripts).not.toHaveBeenCalled());
   });
 });
