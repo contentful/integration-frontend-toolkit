@@ -3,7 +3,7 @@ import { SegmentAnalyticsContext } from './segmentMarketplaceContext';
 import { SegmentAnalyticsProvider } from './segmentMarketplaceProvider';
 import { AnalyticsBrowser } from '@segment/analytics-next';
 import getUserCookieConsent from './utils/getUserCookieConsent';
-import typewriter from './typewriter/segment';
+import typewriter, { Action } from './typewriter/segment';
 import { useContext } from 'react';
 import { useSDK } from '@contentful/react-apps-toolkit';
 
@@ -43,7 +43,13 @@ describe('SegmentAnalyticsProvider', () => {
       return (
         <button
           onClick={() => {
-            trackEvent('configSaved', { ci: 'test', command: 'hi' });
+            trackEvent('configSaved', {
+              action: Action.Cancelled,
+              app_key: 'a',
+              environment_key: 'b',
+              organization_key: 'c',
+              space_key: 'd',
+            });
           }}>
           Test Button
         </button>
@@ -61,7 +67,13 @@ describe('SegmentAnalyticsProvider', () => {
     fireEvent.click(getByText('Test Button'));
 
     await waitFor(() =>
-      expect(mockTypewriter.configSaved).toHaveBeenCalledWith({ ci: 'test', command: 'hi' })
+      expect(mockTypewriter.configSaved).toHaveBeenCalledWith({
+        action: Action.Cancelled,
+        app_key: 'a',
+        environment_key: 'b',
+        organization_key: 'c',
+        space_key: 'd',
+      })
     );
   });
 
@@ -73,7 +85,13 @@ describe('SegmentAnalyticsProvider', () => {
       return (
         <button
           onClick={() => {
-            trackEvent('configSaved', { ci: 'test', command: 'hi' });
+            trackEvent('configSaved', {
+              action: Action.Cancelled,
+              app_key: 'a',
+              environment_key: 'b',
+              organization_key: 'c',
+              space_key: 'd',
+            });
           }}>
           Test Button
         </button>
