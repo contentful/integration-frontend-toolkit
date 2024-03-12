@@ -26,7 +26,7 @@ describe('SegmentAnalyticsProvider', () => {
       identify: jest.fn(),
     });
     mockGetUserCookieConsent.mockReturnValue(true);
-    mockTypewriter.appCLIAppScripts = jest.fn();
+    mockTypewriter.configSaved = jest.fn();
     mockUseSDK.mockReturnValue({
       ids: {
         environment: 'test',
@@ -43,7 +43,7 @@ describe('SegmentAnalyticsProvider', () => {
       return (
         <button
           onClick={() => {
-            trackEvent('appCLIAppScripts', { ci: 'test', command: 'hi' });
+            trackEvent('configSaved', { ci: 'test', command: 'hi' });
           }}>
           Test Button
         </button>
@@ -61,7 +61,7 @@ describe('SegmentAnalyticsProvider', () => {
     fireEvent.click(getByText('Test Button'));
 
     await waitFor(() =>
-      expect(mockTypewriter.appCLIAppScripts).toHaveBeenCalledWith({ ci: 'test', command: 'hi' })
+      expect(mockTypewriter.configSaved).toHaveBeenCalledWith({ ci: 'test', command: 'hi' })
     );
   });
 
@@ -73,7 +73,7 @@ describe('SegmentAnalyticsProvider', () => {
       return (
         <button
           onClick={() => {
-            trackEvent('appCLIAppScripts', { ci: 'test', command: 'hi' });
+            trackEvent('configSaved', { ci: 'test', command: 'hi' });
           }}>
           Test Button
         </button>
@@ -90,6 +90,6 @@ describe('SegmentAnalyticsProvider', () => {
 
     fireEvent.click(getByText('Test Button'));
 
-    await waitFor(() => expect(mockTypewriter.appCLIAppScripts).not.toHaveBeenCalled());
+    await waitFor(() => expect(mockTypewriter.configSaved).not.toHaveBeenCalled());
   });
 });
