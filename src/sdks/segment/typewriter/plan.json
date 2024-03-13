@@ -1,0 +1,634 @@
+{
+  "createdAt": "2024-03-01T09:17:29.000Z",
+  "description": "description",
+  "id": "tp_2d54Y5lpjVvDnu9XgM348MC8HWo",
+  "name": "marketplace-apps",
+  "resourceSchemaId": "rs_2d54Y2WVU1ChZR7wy3c6PcKCYTv",
+  "rules": [
+    {
+      "createdAt": "2024-03-08T16:08:00.000Z",
+      "deprecatedAt": "0001-01-01T00:00:00.000Z",
+      "jsonSchema": {
+        "$id": "config_saved",
+        "description": "Event used by Integrations for tracking a saved config",
+        "eventMetadata": {
+          "name": "config_saved",
+          "type": "TRACK"
+        },
+        "properties": {
+          "action": {
+            "$id": "/properties/action",
+            "description": "The action performed on the config page",
+            "enum": ["added", "cancelled", "deleted", "installed", "updated"],
+            "type": "string"
+          },
+          "app_key": {
+            "$id": "/properties/app_key",
+            "description": "Key of the app that the action was taken in.",
+            "type": "string"
+          },
+          "app_name": {
+            "$id": "/properties/app_name",
+            "description": "Name of the app that the action was taken in.",
+            "type": "string"
+          },
+          "environment_key": {
+            "$id": "/properties/environment_key",
+            "description": "The environment in which the app is used.",
+            "type": "string"
+          },
+          "metadata": {
+            "$id": "/properties/metadata",
+            "description": "Metadata of the event",
+            "type": "object"
+          },
+          "organization_key": {
+            "$id": "/properties/organization_key",
+            "description": "The organization owning the space in which the app is used.",
+            "type": "string"
+          },
+          "space_key": {
+            "$id": "/properties/space_key",
+            "description": "The space in which the app is used.",
+            "type": "string"
+          }
+        },
+        "required": ["action", "app_key", "environment_key", "organization_key", "space_key"],
+        "type": "object"
+      },
+      "key": "config_saved",
+      "type": "TRACK",
+      "updatedAt": "2024-03-12T15:32:40.000Z",
+      "version": 1
+    },
+    {
+      "createdAt": "2024-03-08T16:08:00.000Z",
+      "deprecatedAt": "0001-01-01T00:00:00.000Z",
+      "jsonSchema": {
+        "$id": "flow_start",
+        "description": "Event used by Integrations for tracking the start of a flow in the AI Content Generator",
+        "eventMetadata": {
+          "name": "flow_start",
+          "type": "TRACK"
+        },
+        "properties": {
+          "ai_model": {
+            "description": "AI model used for the action.",
+            "type": "string"
+          },
+          "ai_provider": {
+            "description": "Service provider of the AI model used for the action.",
+            "type": "string"
+          },
+          "app_key": {
+            "description": "Key of the app that the action was taken in.",
+            "type": "string"
+          },
+          "app_name": {
+            "description": "Name of the app that the action was taken in.",
+            "type": "string"
+          },
+          "config_options": {
+            "description": "Config options that have been filled out for the action.",
+            "properties": {
+              "has_additional": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_audience": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_exclude": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_include": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_profile": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_tone": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_values": {
+                "description": "",
+                "type": "boolean"
+              }
+            },
+            "type": "object"
+          },
+          "content_type_id": {
+            "description": "Content type ID for the entry currently being edited.",
+            "type": "string"
+          },
+          "entry_id": {
+            "description": "Entry ID for the entry currently being edited.",
+            "type": "string"
+          },
+          "environment_key": {
+            "description": "The environment in which the app is used.",
+            "type": "string"
+          },
+          "feature_id": {
+            "description": "The corresponding ID of the current feature. See https://github.com/contentful/apps/blob/master/apps/ai-content-generator/src/configs/features/featureConfig.tsx#L9",
+            "type": "string"
+          },
+          "organization_key": {
+            "description": "The organization owning the space in which the app is used.",
+            "type": "string"
+          },
+          "space_key": {
+            "description": "The space in which the app is used.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "app_key",
+          "environment_key",
+          "organization_key",
+          "space_key",
+          "content_type_id",
+          "entry_id",
+          "ai_model",
+          "ai_provider",
+          "feature_id",
+          "config_options"
+        ],
+        "type": "object"
+      },
+      "key": "flow_start",
+      "type": "TRACK",
+      "updatedAt": "2024-03-08T16:08:00.000Z",
+      "version": 1
+    },
+    {
+      "createdAt": "2024-03-08T16:08:00.000Z",
+      "deprecatedAt": "0001-01-01T00:00:00.000Z",
+      "jsonSchema": {
+        "$id": "generate_clicked",
+        "description": "Event used by Integrations for tracking clicks on the generate button",
+        "eventMetadata": {
+          "name": "generate_clicked",
+          "type": "TRACK"
+        },
+        "properties": {
+          "ai_model": {
+            "description": "AI model used for the action.",
+            "type": "string"
+          },
+          "ai_provider": {
+            "description": "Service provider of the AI model used for the action.",
+            "type": "string"
+          },
+          "app_key": {
+            "description": "Key of the app that the action was taken in.",
+            "type": "string"
+          },
+          "app_name": {
+            "description": "Name of the app that the action was taken in.",
+            "type": "string"
+          },
+          "config_options": {
+            "description": "Config options that have been filled out for the action.",
+            "properties": {
+              "has_additional": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_audience": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_exclude": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_include": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_profile": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_tone": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_values": {
+                "description": "",
+                "type": "boolean"
+              }
+            },
+            "type": "object"
+          },
+          "content_generation_prompt": {
+            "description": "The text of the prompt that was submitted. This will not include any text from a source field.",
+            "type": "string"
+          },
+          "content_type_id": {
+            "description": "Content type ID for the entry currently being edited.",
+            "type": "string"
+          },
+          "entry_id": {
+            "description": "Entry ID for the entry currently being edited.",
+            "type": "string"
+          },
+          "environment_key": {
+            "description": "The environment in which the app is used.",
+            "type": "string"
+          },
+          "feature_id": {
+            "description": "The corresponding ID of the current feature. See https://github.com/contentful/apps/blob/master/apps/ai-content-generator/src/configs/features/featureConfig.tsx#L9",
+            "type": "string"
+          },
+          "from_prompt": {
+            "description": "Whether the action was performed using a prompt instead of a source.",
+            "type": "boolean"
+          },
+          "organization_key": {
+            "description": "The organization owning the space in which the app is used.",
+            "type": "string"
+          },
+          "source_field": {
+            "description": "Name of source field.",
+            "type": "string"
+          },
+          "space_key": {
+            "description": "The space in which the app is used.",
+            "type": "string"
+          },
+          "target_locale": {
+            "description": "Target locale of the action.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "app_key",
+          "environment_key",
+          "organization_key",
+          "space_key",
+          "content_type_id",
+          "entry_id",
+          "ai_model",
+          "ai_provider",
+          "feature_id",
+          "config_options"
+        ],
+        "type": "object"
+      },
+      "key": "generate_clicked",
+      "type": "TRACK",
+      "updatedAt": "2024-03-08T16:08:00.000Z",
+      "version": 1
+    },
+    {
+      "createdAt": "2024-03-08T16:08:00.000Z",
+      "deprecatedAt": "0001-01-01T00:00:00.000Z",
+      "jsonSchema": {
+        "$id": "generated_content_edited",
+        "description": "Event used by Integrations for tracking when the user edits the generated content",
+        "eventMetadata": {
+          "name": "generated_content_edited",
+          "type": "TRACK"
+        },
+        "properties": {
+          "ai_model": {
+            "description": "AI model used for the action.",
+            "type": "string"
+          },
+          "ai_provider": {
+            "description": "Service provider of the AI model used for the action.",
+            "type": "string"
+          },
+          "app_key": {
+            "description": "Key of the app that the action was taken in.",
+            "type": "string"
+          },
+          "app_name": {
+            "description": "Name of the app that the action was taken in.",
+            "type": "string"
+          },
+          "config_options": {
+            "description": "Config options that have been filled out for the action.",
+            "properties": {
+              "has_additional": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_audience": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_exclude": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_include": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_profile": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_tone": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_values": {
+                "description": "",
+                "type": "boolean"
+              }
+            },
+            "type": "object"
+          },
+          "content_generation_prompt": {
+            "description": "The text of the prompt that was submitted. This will not include any text from a source field.",
+            "type": "string"
+          },
+          "content_type_id": {
+            "description": "Content type ID for the entry currently being edited.",
+            "type": "string"
+          },
+          "entry_id": {
+            "description": "Entry ID for the entry currently being edited.",
+            "type": "string"
+          },
+          "environment_key": {
+            "description": "The environment in which the app is used.",
+            "type": "string"
+          },
+          "feature_id": {
+            "description": "The corresponding ID of the current feature. See https://github.com/contentful/apps/blob/master/apps/ai-content-generator/src/configs/features/featureConfig.tsx#L9",
+            "type": "string"
+          },
+          "from_prompt": {
+            "description": "Whether the action was performed using a prompt instead of a source.",
+            "type": "boolean"
+          },
+          "organization_key": {
+            "description": "The organization owning the space in which the app is used.",
+            "type": "string"
+          },
+          "source_locale": {
+            "description": "Source locale of the action.",
+            "type": "string"
+          },
+          "space_key": {
+            "description": "The space in which the app is used.",
+            "type": "string"
+          },
+          "target_locale": {
+            "description": "Target locale of the action.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "app_key",
+          "environment_key",
+          "organization_key",
+          "space_key",
+          "content_type_id",
+          "entry_id",
+          "ai_model",
+          "ai_provider",
+          "feature_id",
+          "config_options"
+        ],
+        "type": "object"
+      },
+      "key": "generated_content_edited",
+      "type": "TRACK",
+      "updatedAt": "2024-03-08T16:08:00.000Z",
+      "version": 1
+    },
+    {
+      "createdAt": "2024-03-08T16:08:00.000Z",
+      "deprecatedAt": "0001-01-01T00:00:00.000Z",
+      "jsonSchema": {
+        "$id": "regeneration_clicked",
+        "description": "Event used by Integrations for tracking the regeneration of content",
+        "eventMetadata": {
+          "name": "regeneration_clicked",
+          "type": "TRACK"
+        },
+        "properties": {
+          "ai_model": {
+            "description": "AI model used for the action.",
+            "type": "string"
+          },
+          "ai_provider": {
+            "description": "Service provider of the AI model used for the action.",
+            "type": "string"
+          },
+          "app_key": {
+            "description": "Key of the app that the action was taken in.",
+            "type": "string"
+          },
+          "app_name": {
+            "description": "Name of the app that the action was taken in.",
+            "type": "string"
+          },
+          "config_options": {
+            "description": "Config options that have been filled out for the action.",
+            "properties": {
+              "has_additional": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_audience": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_exclude": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_include": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_profile": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_tone": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_values": {
+                "description": "",
+                "type": "boolean"
+              }
+            },
+            "type": "object"
+          },
+          "content_generation_prompt": {
+            "description": "The text of the prompt that was submitted. This will not include any text from a source field.",
+            "type": "string"
+          },
+          "content_type_id": {
+            "description": "Content type ID for the entry currently being edited.",
+            "type": "string"
+          },
+          "entry_id": {
+            "description": "Entry ID for the entry currently being edited.",
+            "type": "string"
+          },
+          "environment_key": {
+            "description": "The environment in which the app is used.",
+            "type": "string"
+          },
+          "feature_id": {
+            "description": "The corresponding ID of the current feature. See https://github.com/contentful/apps/blob/master/apps/ai-content-generator/src/configs/features/featureConfig.tsx#L9",
+            "type": "string"
+          },
+          "from_prompt": {
+            "description": "Whether the action was performed using a prompt instead of a source.",
+            "type": "boolean"
+          },
+          "organization_key": {
+            "description": "The organization owning the space in which the app is used.",
+            "type": "string"
+          },
+          "source_field": {
+            "description": "Name of source field.",
+            "type": "string"
+          },
+          "space_key": {
+            "description": "The space in which the app is used.",
+            "type": "string"
+          },
+          "target_locale": {
+            "description": "Target locale of the action.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "app_key",
+          "environment_key",
+          "organization_key",
+          "space_key",
+          "content_type_id",
+          "entry_id",
+          "ai_model",
+          "ai_provider"
+        ],
+        "type": "object"
+      },
+      "key": "regeneration_clicked",
+      "type": "TRACK",
+      "updatedAt": "2024-03-08T16:08:00.000Z",
+      "version": 1
+    },
+    {
+      "createdAt": "2024-03-08T16:08:00.000Z",
+      "deprecatedAt": "0001-01-01T00:00:00.000Z",
+      "jsonSchema": {
+        "$id": "sidebar_rendered",
+        "description": "Event used by Integrations for tracking when the sidebar renders",
+        "eventMetadata": {
+          "name": "sidebar_rendered",
+          "type": "TRACK"
+        },
+        "properties": {
+          "ai_model": {
+            "description": "AI model used for the action.",
+            "type": "string"
+          },
+          "ai_provider": {
+            "description": "Service provider of the AI model used for the action.",
+            "type": "string"
+          },
+          "app_key": {
+            "description": "Key of the app that the action was taken in.",
+            "type": "string"
+          },
+          "app_name": {
+            "description": "Name of the app that the action was taken in.",
+            "type": "string"
+          },
+          "config_options": {
+            "description": "Config options that have been filled out for the action.",
+            "properties": {
+              "has_additional": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_audience": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_exclude": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_include": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_profile": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_tone": {
+                "description": "",
+                "type": "boolean"
+              },
+              "has_values": {
+                "description": "",
+                "type": "boolean"
+              }
+            },
+            "type": "object"
+          },
+          "content_type_id": {
+            "description": "Content type ID for the entry currently being edited.",
+            "type": "string"
+          },
+          "entry_id": {
+            "description": "Entry ID for the entry currently being edited.",
+            "type": "string"
+          },
+          "environment_key": {
+            "description": "The environment in which the app is used.",
+            "type": "string"
+          },
+          "organization_key": {
+            "description": "The organization owning the space in which the app is used.",
+            "type": "string"
+          },
+          "space_key": {
+            "description": "The space in which the app is used.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "app_key",
+          "environment_key",
+          "organization_key",
+          "space_key",
+          "content_type_id",
+          "entry_id",
+          "ai_model",
+          "ai_provider",
+          "config_options"
+        ],
+        "type": "object"
+      },
+      "key": "sidebar_rendered",
+      "type": "TRACK",
+      "updatedAt": "2024-03-08T16:08:00.000Z",
+      "version": 1
+    }
+  ],
+  "slug": "",
+  "type": "LIVE",
+  "updatedAt": "2024-03-12T15:32:40.000Z"
+}
