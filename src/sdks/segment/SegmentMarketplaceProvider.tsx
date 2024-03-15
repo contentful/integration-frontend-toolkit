@@ -70,6 +70,15 @@ export const SegmentAnalyticsProvider = <T extends KeyValueMap>(
   };
 
   /**
+   * This function gets the app data to track with events.
+   */
+  const getTrackedAppData = () => ({
+    environment_key: sdk.ids.environmentAlias || sdk.ids.environment,
+    organization_key: sdk.ids.organization,
+    space_key: sdk.ids.space,
+  });
+
+  /**
    * This function tracks an event to Segment.
    * Using `getTrackedAppData` this function will get the app data and merge it with the event data.
    * @param segmentEvent The event to track
@@ -83,7 +92,12 @@ export const SegmentAnalyticsProvider = <T extends KeyValueMap>(
       return;
     }
 
-    (typewriter[segmentEvent] as (data: typeof eventData) => void)(eventData);
+    const trackedAppData = getTrackedAppData();
+
+    (typewriter[segmentEvent] as (data: typeof eventData) => void)({
+      ...trackedAppData,
+      ...eventData,
+    });
   };
 
   return (
