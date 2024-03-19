@@ -1,11 +1,12 @@
+import { useContext } from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
+import { AnalyticsBrowser } from '@segment/analytics-next';
+import { useSDK } from '@contentful/react-apps-toolkit';
+
 import { SegmentAnalyticsContext } from './segmentMarketplaceContext';
 import { SegmentAnalyticsProvider } from './SegmentMarketplaceProvider';
-import { AnalyticsBrowser } from '@segment/analytics-next';
 import getUserCookieConsent from './utils/getUserCookieConsent';
 import typewriter, { Action } from './typewriter/segment';
-import { useContext } from 'react';
-import { useSDK } from '@contentful/react-apps-toolkit';
 
 jest.mock('./utils/getUserCookieConsent');
 jest.mock('@contentful/react-apps-toolkit');

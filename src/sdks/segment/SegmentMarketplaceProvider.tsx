@@ -1,9 +1,9 @@
-import { AnalyticsBrowser } from '@segment/analytics-next';
 import { ReactNode, useEffect, useState } from 'react';
-
-import getUserCookieConsent from './utils/getUserCookieConsent';
+import { AnalyticsBrowser } from '@segment/analytics-next';
 import { useSDK } from '@contentful/react-apps-toolkit';
 import { KeyValueMap } from '@contentful/app-sdk/dist/types/entities';
+
+import getUserCookieConsent from './utils/getUserCookieConsent';
 import typewriter from './typewriter/segment';
 import { PossibleSDK, SegmentEvent, SegmentEventData } from './types';
 import { SegmentAnalyticsContext } from './segmentMarketplaceContext';
