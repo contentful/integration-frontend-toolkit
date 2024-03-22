@@ -4,7 +4,7 @@ import React, { ReactNode, useCallback, useEffect, useMemo, useState } from 'rea
 
 interface Props<T> {
   items: T[];
-  renderListItem: (item: T) => ReactNode;
+  renderListItem: (item: T) => ReactNode | JSX.Element;
   searchQuery: string;
   searchKeys: string[];
   pinnedItems?: T[];
@@ -16,7 +16,7 @@ interface Props<T> {
  * implementation of the search options, as well as the rendering of filtered items is left up to
  * the consumer of this component.
  */
-export const SearchableList = <T,>({
+const SearchableList = <T,>({
   items,
   pinnedItems = [],
   renderListItem,
@@ -67,3 +67,5 @@ export const SearchableList = <T,>({
     </>
   );
 };
+
+export default SearchableList;

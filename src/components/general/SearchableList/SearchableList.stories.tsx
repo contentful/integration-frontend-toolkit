@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Paragraph, Heading, Subheading } from '@contentful/f36-components';
-import { SearchableList } from './SearchableList';
-import { SearchBar } from '../SearchBar';
+import { Heading, Subheading } from '@contentful/f36-components';
+import SearchableList from './SearchableList';
 
 const meta: Meta<typeof SearchableList> = {
   title: 'General/SearchableList',
