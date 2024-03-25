@@ -1,4 +1,4 @@
-import { SearchableList } from './SearchableList';
+import SearchableList from './SearchableList';
 import { render, screen } from '@testing-library/react';
 
 describe('ContentTypeSelectionModal component', () => {

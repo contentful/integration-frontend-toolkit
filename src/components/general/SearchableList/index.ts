@@ -1,1 +1,1 @@
-export { SearchableList } from './SearchableList';
+export { default as SearchableList } from './SearchableList';
