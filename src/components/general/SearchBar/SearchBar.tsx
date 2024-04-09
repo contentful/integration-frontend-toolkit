@@ -12,6 +12,7 @@ export interface SearchBarProps {
   onSearch: (searchParams: SearchParams) => void;
   searchTitle?: string;
   placeholder?: string;
+  isDisabled?: boolean;
 }
 
 /**
@@ -22,7 +23,14 @@ export interface SearchBarProps {
  * Filter facets will be used to filter the search results by a specific facet
  */
 const SearchBar = (props: SearchBarProps) => {
-  const { groupFilters, filterFacets, onSearch, searchTitle, placeholder } = props;
+  const {
+    groupFilters,
+    filterFacets,
+    onSearch,
+    searchTitle,
+    placeholder,
+    isDisabled = false,
+  } = props;
 
   const initialState: SearchParams = {
     selectedGroupFilter: !!groupFilters?.length ? groupFilters[0].value : '',
@@ -42,6 +50,7 @@ const SearchBar = (props: SearchBarProps) => {
     <TextInput
       id="search-input"
       type="text"
+      isDisabled={isDisabled}
       value={searchState.searchValue}
       placeholder={placeholder || 'Search'}
       title={searchTitle || 'Search'}

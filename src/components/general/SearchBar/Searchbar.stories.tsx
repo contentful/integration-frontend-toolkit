@@ -32,6 +32,7 @@ Default.args = {
   },
   searchTitle: '',
   placeholder: 'Search Placeholder Text',
+  isDisabled: false,
 };
 
 export default meta;
