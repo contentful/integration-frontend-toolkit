@@ -74,4 +74,11 @@ describe('SearchBar', () => {
 
     jest.useRealTimers();
   });
+
+  it('accepts an optional prop of `isDisabled`', async () => {
+    const { getByLabelText } = render(<SearchBar {...defaultProps} isDisabled={true} />);
+    const searchInput = getByLabelText(defaultProps.searchTitle!) as HTMLInputElement;
+
+    expect(searchInput).toBeDisabled();
+  });
 });
