@@ -27,7 +27,7 @@ describe('SegmentAnalyticsProvider', () => {
       identify: jest.fn(),
     });
     mockGetUserCookieConsent.mockReturnValue(true);
-    mockTypewriter.configSaved = jest.fn();
+    mockTypewriter.configAction = jest.fn();
     mockUseSDK.mockReturnValue({
       ids: {
         environment: 'test',
@@ -68,7 +68,7 @@ describe('SegmentAnalyticsProvider', () => {
     fireEvent.click(getByText('Test Button'));
 
     await waitFor(() =>
-      expect(mockTypewriter.configSaved).toHaveBeenCalledWith({
+      expect(mockTypewriter.configAction).toHaveBeenCalledWith({
         action: Action.Cancelled,
         app_key: 'a',
         environment_key: 'b',
@@ -109,6 +109,6 @@ describe('SegmentAnalyticsProvider', () => {
 
     fireEvent.click(getByText('Test Button'));
 
-    await waitFor(() => expect(mockTypewriter.configSaved).not.toHaveBeenCalled());
+    await waitFor(() => expect(mockTypewriter.configAction).not.toHaveBeenCalled());
   });
 });
