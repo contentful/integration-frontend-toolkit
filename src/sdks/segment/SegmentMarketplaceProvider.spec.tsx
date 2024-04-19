@@ -6,7 +6,7 @@ import { useSDK } from '@contentful/react-apps-toolkit';
 import { SegmentAnalyticsContext } from './segmentMarketplaceContext';
 import { SegmentAnalyticsProvider } from './SegmentMarketplaceProvider';
 import getUserCookieConsent from './utils/getUserCookieConsent';
-import typewriter, { Action } from './typewriter/segment';
+import typewriter, { ConfigActionAction as Action } from './typewriter/segment';
 
 jest.mock('./utils/getUserCookieConsent');
 jest.mock('@contentful/react-apps-toolkit');
@@ -44,7 +44,7 @@ describe('SegmentAnalyticsProvider', () => {
       return (
         <button
           onClick={() => {
-            trackEvent('configSaved', {
+            trackEvent('configAction', {
               action: Action.Cancelled,
               app_key: 'a',
               environment_key: 'b',
@@ -86,7 +86,7 @@ describe('SegmentAnalyticsProvider', () => {
       return (
         <button
           onClick={() => {
-            trackEvent('configSaved', {
+            trackEvent('configAction', {
               action: Action.Cancelled,
               app_key: 'a',
               environment_key: 'b',
