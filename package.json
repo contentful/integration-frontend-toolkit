@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "vite",
-    "build": "tsc --p ./tsconfig.json && vite build",
+    "build": "tsc && vite build",
     "test": "react-scripts test --detectOpenHandles --forceExit",
     "test:ci": "CI=true react-scripts test",
     "lint": "eslint --max-warnings=0 .",
@@ -66,6 +66,8 @@
     ]
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "@storybook/addon-a11y": "^7.0.4",
     "@storybook/addon-essentials": "^7.0.2",
     "@storybook/addon-interactions": "^7.0.2",
@@ -121,11 +123,6 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
-  "release": {
-    "branches": [
-      "master"
-    ]
   },
   "repository": {
     "type": "git",
