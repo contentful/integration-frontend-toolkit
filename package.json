@@ -1,6 +1,6 @@
 {
   "name": "@contentful/integration-frontend-toolkit",
-  "version": "0.0.0-semantic-release",
+  "version": "1.7.1",
   "files": [
     "components",
     "sdks",
