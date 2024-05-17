@@ -5,15 +5,26 @@ import dts from 'vite-plugin-dts';
 import pkg from './package.json';
 
 export default defineConfig({
-  plugins: [react(), dts({ include: ['src'] })],
+  plugins: [dts({
+    exclude: ["lib/**/*.spec.ts", "test"],
+  })],
   build: {
+    ssr: true,
+    minify: false,
     lib: {
-      entry: resolve(__dirname, './src/index.ts'),
-      formats: ['es'],
-      fileName: () => 'index.es.js',
+      entry: {
+        "components": resolve(__dirname, 'lib/components/index.ts'),
+        "sdks": resolve(__dirname, 'lib/sdks/index.ts'),
+        "types": resolve(__dirname, 'lib/types/index.ts'),
+      },
+      formats: ['es', 'cjs']
     },
     rollupOptions: {
       external: [...Object.keys(pkg.peerDependencies)],
+      output: {
+        preserveModules: true,
+        preserveModulesRoot: 'lib',
+      },
     },
   },
 });
