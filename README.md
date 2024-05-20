@@ -113,7 +113,7 @@ By default in this library right now, FIX is a patch release, FEATURE is a minor
 
 ## In progress improvements and known limitations:
 
-1. Currently it is challenging to create a directory that is just internal to the toolkit itself. For example, if we want to createa a directory that houses a helper function used in other methods across other directories, but do not intend on exposing this directory as part of the library, given how the build works now, we will need to experiment with how to implement this. 
+1. Currently the packaging of the library is not following optimal practices in order to support submodule imports. There exits an open [PR](https://github.com/contentful/integration-frontend-toolkit/pull/74) to optimize packaging and please refer to [this](https://contentful.atlassian.net/wiki/spaces/ECO/pages/4655546433/Frontend+toolkit+package+optimizations) documentation for more information.
 2.  Currently within the CI, we require Chromatic visual approvals of changes to components. 
 
 ## Other resources
