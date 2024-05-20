@@ -5,7 +5,7 @@ import dts from 'vite-plugin-dts';
 import pkg from './package.json';
 
 export default defineConfig({
-  plugins: [dts({
+  plugins: [react(), dts({
     exclude: ["lib/**/*.spec.ts", "test"],
   })],
   build: {
