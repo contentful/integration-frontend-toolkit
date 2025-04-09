@@ -25,7 +25,6 @@ export interface SearchBarProps {
 const SearchBar = (props: SearchBarProps) => {
   const {
     groupFilters,
-    filterFacets,
     onSearch,
     searchTitle,
     placeholder,
