@@ -1,14 +1,31 @@
 {
   "name": "@contentful/integration-frontend-toolkit",
-  "version": "1.7.1",
+  "version":  "1.7.1",
+  "author": "Contentful",
+  "license": "MIT",
+  "description": "Contentful internal helper toolkit for Integrations",
+  "source": "./lib/index.ts",
+  "type": "module",
   "files": [
-    "components",
-    "sdks",
-    "types"
+    "dist"
   ],
-  "main": "./index.js",
-  "types": "./index.d.ts",
-  "private": false,
+  "exports": {
+    "./components": {
+      "import": "./dist/components.js",
+      "require": "./dist/components.cjs",
+      "types": "./dist/components/index.d.ts"
+    },
+    "./sdks": {
+      "import": "./dist/sdks.js",
+      "require": "./dist/sdks.cjs",
+      "types": "./dist/sdks/index.d.ts"
+    },
+    "./types": {
+      "import": "./dist/types.js",
+      "require": "./dist/types.cjs",
+      "types": "./dist/types/index.d.ts"
+    }
+  },
   "dependencies": {
     "@contentful/app-sdk": "^4.24.0",
     "@contentful/f36-components": "^4.35.0",
