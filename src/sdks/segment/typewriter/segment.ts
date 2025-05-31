@@ -5,11 +5,11 @@
 /**
  * Event used by Integrations for tracking a saved config
  */
-export interface ConfigSaved {
+export interface ConfigAction {
   /**
    * The action performed on the config page
    */
-  action: Action;
+  action: ConfigActionAction;
   /**
    * Key of the app that the action was taken in.
    */
@@ -40,12 +40,165 @@ export interface ConfigSaved {
 /**
  * The action performed on the config page
  */
-export enum Action {
+export enum ConfigActionAction {
   Added = 'added',
   Cancelled = 'cancelled',
   Deleted = 'deleted',
   Installed = 'installed',
   Updated = 'updated',
+}
+
+/**
+ * Event used by Integrations for tracking a saved config
+ */
+export interface ConfigSaved {
+  /**
+   * AI model used for the action.
+   */
+  ai_model: string;
+  /**
+   * Service provider of the AI model used for the action.
+   */
+  ai_provider?: string;
+  /**
+   * Key of the app that the action was taken in.
+   */
+  app_key: string;
+  /**
+   * Name of the app that the action was taken in.
+   */
+  app_name?: string;
+  /**
+   * Config options that have been filled out for the action.
+   */
+  config_options: ConfigSavedConfigOptions;
+  /**
+   * The environment in which the app is used.
+   */
+  environment_key: string;
+  /**
+   * The organization owning the space in which the app is used.
+   */
+  organization_key: string;
+  /**
+   * The space in which the app is used.
+   */
+  space_key: string;
+  [property: string]: any;
+}
+
+/**
+ * Config options that have been filled out for the action.
+ */
+export interface ConfigSavedConfigOptions {
+  has_additional?: boolean;
+  has_audience?: boolean;
+  has_exclude?: boolean;
+  has_include?: boolean;
+  has_profile?: boolean;
+  has_tone?: boolean;
+  has_values?: boolean;
+  [property: string]: any;
+}
+
+/**
+ * Event used by Integrations for tracking the end of a flow in the AI Content Generator
+ */
+export interface FlowEnd {
+  /**
+   * The action that was performed
+   */
+  action: FlowEndAction;
+  /**
+   * AI model used for the action.
+   */
+  ai_model: string;
+  /**
+   * Service provider of the AI model used for the action.
+   */
+  ai_provider?: string;
+  /**
+   * Key of the app that the action was taken in.
+   */
+  app_key: string;
+  /**
+   * Name of the app that the action was taken in.
+   */
+  app_name?: string;
+  /**
+   * Config options that have been filled out for the action.
+   */
+  config_options: FlowEndConfigOptions;
+  /**
+   * The text of the prompt that was submitted. This will not include any text from a source
+   * field.
+   */
+  content_generation_prompt?: string;
+  /**
+   * Content type ID for the entry currently being edited.
+   */
+  content_type_id: string;
+  /**
+   * Entry ID for the entry currently being edited.
+   */
+  entry_id: string;
+  /**
+   * The environment in which the app is used.
+   */
+  environment_key: string;
+  /**
+   * The corresponding ID of the current feature. See
+   * https://github.com/contentful/apps/blob/master/apps/ai-content-generator/src/configs/features/featureConfig.tsx#L9
+   */
+  feature_id: string;
+  /**
+   * Whether the action was performed using a prompt instead of a source.
+   */
+  from_prompt?: boolean;
+  /**
+   * The organization owning the space in which the app is used.
+   */
+  organization_key: string;
+  /**
+   * The input from the user's rewrite generation.
+   */
+  rewrite_prompt?: string;
+  /**
+   * Name of source field.
+   */
+  source_field?: string;
+  /**
+   * The space in which the app is used.
+   */
+  space_key: string;
+  /**
+   * Target locale of the action.
+   */
+  target_locale?: string;
+  [property: string]: any;
+}
+
+/**
+ * The action that was performed
+ */
+export enum FlowEndAction {
+  Applied = 'applied',
+  Canceled = 'canceled',
+  Copied = 'copied',
+}
+
+/**
+ * Config options that have been filled out for the action.
+ */
+export interface FlowEndConfigOptions {
+  has_additional?: boolean;
+  has_audience?: boolean;
+  has_exclude?: boolean;
+  has_include?: boolean;
+  has_profile?: boolean;
+  has_tone?: boolean;
+  has_values?: boolean;
+  [property: string]: any;
 }
 
 /**
@@ -560,6 +713,58 @@ function withTypewriterContext(message: Options = {}): Options {
 }
 
 /**
+ * Fires a 'ConfigAction' track call.
+ *
+ * @param ConfigAction props - The analytics properties that will be sent to Segment.
+ * @param {Object} [options] - A dictionary of options. For example, enable or disable specific destinations for the call.
+ * @param {Function} [callback] - An optional callback called after a short timeout after the analytics
+ * 	call is fired.
+ */
+export function configAction(props: ConfigAction, options?: Options, callback?: Callback): void {
+  const schema = {
+    $id: 'config_action',
+    description: 'Event used by Integrations for tracking a saved config',
+    properties: {
+      action: {
+        description: 'The action performed on the config page',
+        enum: ['added', 'cancelled', 'deleted', 'installed', 'updated'],
+        type: 'string',
+      },
+      app_key: { description: 'Key of the app that the action was taken in.', type: 'string' },
+      app_name: { description: 'Name of the app that the action was taken in.', type: 'string' },
+      environment_key: { description: 'The environment in which the app is used.', type: 'string' },
+      metadata: { description: 'Metadata of the event', type: 'object' },
+      organization_key: {
+        description: 'The organization owning the space in which the app is used.',
+        type: 'string',
+      },
+      space_key: { description: 'The space in which the app is used.', type: 'string' },
+    },
+    required: ['action', 'app_key', 'environment_key', 'organization_key', 'space_key'],
+    type: 'object',
+  };
+  validateAgainstSchema(props, schema);
+
+  const a = analytics();
+  if (a) {
+    a.track(
+      'config_action',
+      props || {},
+      {
+        ...options,
+        context: {
+          ...(options?.context || {}),
+          typewriter: {
+            language: 'typescript',
+            version: '',
+          },
+        },
+      },
+      callback
+    );
+  }
+}
+/**
  * Fires a 'ConfigSaved' track call.
  *
  * @param ConfigSaved props - The analytics properties that will be sent to Segment.
@@ -572,44 +777,41 @@ export function configSaved(props: ConfigSaved, options?: Options, callback?: Ca
     $id: 'config_saved',
     description: 'Event used by Integrations for tracking a saved config',
     properties: {
-      action: {
-        $id: '/properties/action',
-        description: 'The action performed on the config page',
-        enum: ['added', 'cancelled', 'deleted', 'installed', 'updated'],
+      ai_model: { description: 'AI model used for the action.', type: 'string' },
+      ai_provider: {
+        description: 'Service provider of the AI model used for the action.',
         type: 'string',
       },
-      app_key: {
-        $id: '/properties/app_key',
-        description: 'Key of the app that the action was taken in.',
-        type: 'string',
-      },
-      app_name: {
-        $id: '/properties/app_name',
-        description: 'Name of the app that the action was taken in.',
-        type: 'string',
-      },
-      environment_key: {
-        $id: '/properties/environment_key',
-        description: 'The environment in which the app is used.',
-        type: 'string',
-      },
-      metadata: {
-        $id: '/properties/metadata',
-        description: 'Metadata of the event',
+      app_key: { description: 'Key of the app that the action was taken in.', type: 'string' },
+      app_name: { description: 'Name of the app that the action was taken in.', type: 'string' },
+      config_options: {
+        description: 'Config options that have been filled out for the action.',
+        properties: {
+          has_additional: { description: '', type: 'boolean' },
+          has_audience: { description: '', type: 'boolean' },
+          has_exclude: { description: '', type: 'boolean' },
+          has_include: { description: '', type: 'boolean' },
+          has_profile: { description: '', type: 'boolean' },
+          has_tone: { description: '', type: 'boolean' },
+          has_values: { description: '', type: 'boolean' },
+        },
         type: 'object',
       },
+      environment_key: { description: 'The environment in which the app is used.', type: 'string' },
       organization_key: {
-        $id: '/properties/organization_key',
         description: 'The organization owning the space in which the app is used.',
         type: 'string',
       },
-      space_key: {
-        $id: '/properties/space_key',
-        description: 'The space in which the app is used.',
-        type: 'string',
-      },
+      space_key: { description: 'The space in which the app is used.', type: 'string' },
     },
-    required: ['action', 'app_key', 'environment_key', 'organization_key', 'space_key'],
+    required: [
+      'app_key',
+      'environment_key',
+      'organization_key',
+      'space_key',
+      'ai_model',
+      'config_options',
+    ],
     type: 'object',
   };
   validateAgainstSchema(props, schema);
@@ -618,6 +820,112 @@ export function configSaved(props: ConfigSaved, options?: Options, callback?: Ca
   if (a) {
     a.track(
       'config_saved',
+      props || {},
+      {
+        ...options,
+        context: {
+          ...(options?.context || {}),
+          typewriter: {
+            language: 'typescript',
+            version: '',
+          },
+        },
+      },
+      callback
+    );
+  }
+}
+/**
+ * Fires a 'FlowEnd' track call.
+ *
+ * @param FlowEnd props - The analytics properties that will be sent to Segment.
+ * @param {Object} [options] - A dictionary of options. For example, enable or disable specific destinations for the call.
+ * @param {Function} [callback] - An optional callback called after a short timeout after the analytics
+ * 	call is fired.
+ */
+export function flowEnd(props: FlowEnd, options?: Options, callback?: Callback): void {
+  const schema = {
+    $id: 'flow_end',
+    description:
+      'Event used by Integrations for tracking the end of a flow in the AI Content Generator',
+    properties: {
+      action: {
+        description: 'The action that was performed',
+        enum: ['copied', 'applied', 'canceled'],
+        type: 'string',
+      },
+      ai_model: { description: 'AI model used for the action.', type: 'string' },
+      ai_provider: {
+        description: 'Service provider of the AI model used for the action.',
+        type: 'string',
+      },
+      app_key: { description: 'Key of the app that the action was taken in.', type: 'string' },
+      app_name: { description: 'Name of the app that the action was taken in.', type: 'string' },
+      config_options: {
+        description: 'Config options that have been filled out for the action.',
+        properties: {
+          has_additional: { description: '', type: 'boolean' },
+          has_audience: { description: '', type: 'boolean' },
+          has_exclude: { description: '', type: 'boolean' },
+          has_include: { description: '', type: 'boolean' },
+          has_profile: { description: '', type: 'boolean' },
+          has_tone: { description: '', type: 'boolean' },
+          has_values: { description: '', type: 'boolean' },
+        },
+        type: 'object',
+      },
+      content_generation_prompt: {
+        description:
+          'The text of the prompt that was submitted. This will not include any text from a source field.',
+        type: 'string',
+      },
+      content_type_id: {
+        description: 'Content type ID for the entry currently being edited.',
+        type: 'string',
+      },
+      entry_id: { description: 'Entry ID for the entry currently being edited.', type: 'string' },
+      environment_key: { description: 'The environment in which the app is used.', type: 'string' },
+      feature_id: {
+        description:
+          'The corresponding ID of the current feature. See https://github.com/contentful/apps/blob/master/apps/ai-content-generator/src/configs/features/featureConfig.tsx#L9',
+        type: 'string',
+      },
+      from_prompt: {
+        description: 'Whether the action was performed using a prompt instead of a source.',
+        type: 'boolean',
+      },
+      organization_key: {
+        description: 'The organization owning the space in which the app is used.',
+        type: 'string',
+      },
+      rewrite_prompt: {
+        description: "The input from the user's rewrite generation.",
+        type: 'string',
+      },
+      source_field: { description: 'Name of source field.', type: 'string' },
+      space_key: { description: 'The space in which the app is used.', type: 'string' },
+      target_locale: { description: 'Target locale of the action.', type: 'string' },
+    },
+    required: [
+      'app_key',
+      'environment_key',
+      'organization_key',
+      'space_key',
+      'content_type_id',
+      'entry_id',
+      'ai_model',
+      'action',
+      'feature_id',
+      'config_options',
+    ],
+    type: 'object',
+  };
+  validateAgainstSchema(props, schema);
+
+  const a = analytics();
+  if (a) {
+    a.track(
+      'flow_end',
       props || {},
       {
         ...options,
@@ -1119,6 +1427,15 @@ const clientAPI = {
   setTypewriterOptions,
 
   /**
+   * Fires a 'ConfigAction' track call.
+   *
+   * @param ConfigAction props - The analytics properties that will be sent to Segment.
+   * @param {Object} [options] - A dictionary of options. For example, enable or disable specific destinations for the call.
+   * @param {Function} [callback] - An optional callback called after a short timeout after the analytics
+   * 	call is fired.
+   */
+  configAction,
+  /**
    * Fires a 'ConfigSaved' track call.
    *
    * @param ConfigSaved props - The analytics properties that will be sent to Segment.
@@ -1127,6 +1444,15 @@ const clientAPI = {
    * 	call is fired.
    */
   configSaved,
+  /**
+   * Fires a 'FlowEnd' track call.
+   *
+   * @param FlowEnd props - The analytics properties that will be sent to Segment.
+   * @param {Object} [options] - A dictionary of options. For example, enable or disable specific destinations for the call.
+   * @param {Function} [callback] - An optional callback called after a short timeout after the analytics
+   * 	call is fired.
+   */
+  flowEnd,
   /**
    * Fires a 'FlowStart' track call.
    *
