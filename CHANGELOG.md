@@ -1,3 +1,11 @@
+## [1.7.2](https://github.com/contentful/integration-frontend-toolkit/compare/v1.7.1...v1.7.2) (2026-01-07)
+
+
+### Bug Fixes
+
+* **chromatic:** Add GitHub Packages authentication for npm install ([1c57e7f](https://github.com/contentful/integration-frontend-toolkit/commit/1c57e7f964eaa56ec3e5a0df8168614e12f268fa))
+* **chromatic:** Add permissions block to workflow to resolve security alert ([1ad9ebc](https://github.com/contentful/integration-frontend-toolkit/commit/1ad9ebcaa791473d9771a5408760f9a145f577cb))
+
 ## [1.7.1](https://github.com/contentful/integration-frontend-toolkit/compare/v1.7.0...v1.7.1) (2024-05-13)
 
 
