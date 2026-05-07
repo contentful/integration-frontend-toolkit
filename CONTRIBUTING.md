@@ -4,7 +4,7 @@
 
 | Tool | Version |
 |------|---------|
-| Node.js | 19.6.0 (`.nvmrc`) |
+| Node.js | see `.nvmrc` |
 | npm | bundled with Node |
 
 ## Setup
