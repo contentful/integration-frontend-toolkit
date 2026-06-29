@@ -1,3 +1,17 @@
+## [1.7.3](https://github.com/contentful/integration-frontend-toolkit/compare/v1.7.2...v1.7.3) (2026-06-29)
+
+
+### Bug Fixes
+
+* **ci:** add NODE_AUTH_TOKEN to Chromatic npm install step ([e9f706f](https://github.com/contentful/integration-frontend-toolkit/commit/e9f706f35e626b11df1a57abd4420d839e528563))
+* **ci:** fetch full git history for Chromatic baseline comparison ([ea27d4a](https://github.com/contentful/integration-frontend-toolkit/commit/ea27d4a77fd384980fe18e4f16ed2862bb51fe8a))
+* **security:** patch form-data CVE-2025-7783 (CVSS 9.4) ([234f03f](https://github.com/contentful/integration-frontend-toolkit/commit/234f03f9c063141d59fd4e87e1fd70ac88c87922))
+
+
+### Reverts
+
+* restore chromatic.yml to original state ([01d55e6](https://github.com/contentful/integration-frontend-toolkit/commit/01d55e6ae503bb2cec83c623a643bc1fc057f407))
+
 ## [1.7.2](https://github.com/contentful/integration-frontend-toolkit/compare/v1.7.1...v1.7.2) (2026-01-07)
 
 
