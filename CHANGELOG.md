@@ -1,3 +1,10 @@
+## [1.7.4](https://github.com/contentful/integration-frontend-toolkit/compare/v1.7.3...v1.7.4) (2026-07-20)
+
+
+### Bug Fixes
+
+* migrate CODEOWNERS org handles to group-applied-ai-solutions [AIS-66] ([fd63853](https://github.com/contentful/integration-frontend-toolkit/commit/fd638530baa6625879bea5449ad1035442222327))
+
 ## [1.7.3](https://github.com/contentful/integration-frontend-toolkit/compare/v1.7.2...v1.7.3) (2026-06-29)
 
 
