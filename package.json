@@ -119,7 +119,7 @@
     }
   },
   "peerDependencies": {
-    "@contentful/react-apps-toolkit": "^1.0.0",
+    "@contentful/react-apps-toolkit": "^2.0.0",
     "react": "16.8.0 || >=17.x",
     "react-dom": "16.8.0 || >=17.x"
   },
