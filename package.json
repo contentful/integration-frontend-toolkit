@@ -88,7 +88,7 @@
     "babel-plugin-named-exports-order": "^0.0.2",
     "chromatic": "^18.0.0",
     "eslint": "^10.0.0",
-    "husky": "^8.0.3",
+    "husky": "^9.0.0",
     "prettier": "^3.0.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
