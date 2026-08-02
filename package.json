@@ -66,8 +66,8 @@
     ]
   },
   "devDependencies": {
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/changelog": "^7.0.0",
+    "@semantic-release/git": "^11.0.0",
     "@storybook/addon-a11y": "^7.0.4",
     "@storybook/addon-essentials": "^7.0.2",
     "@storybook/addon-interactions": "^7.0.2",
@@ -94,7 +94,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-scripts": "5.0.1",
-    "semantic-release": "^21.0.2",
+    "semantic-release": "^25.0.0",
     "storybook": "^7.0.2",
     "typescript": "^7.0.0",
     "typewriter": "^9.1.0",
