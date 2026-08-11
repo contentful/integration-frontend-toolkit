@@ -98,7 +98,7 @@
     "storybook": "^10.0.0",
     "typescript": "^7.0.0",
     "typewriter": "^9.1.0",
-    "vite": "^4.2.0",
+    "vite": "^8.0.0",
     "vite-plugin-dts": "^5.0.0",
     "vite-plugin-linter": "^4.0.0",
     "vite-tsconfig-paths": "^6.0.0",
