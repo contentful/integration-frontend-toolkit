@@ -6,7 +6,7 @@ A shared React component library and SDK wrapper library for Contentful marketpl
 Currently used by the `microsoft-teams` app in `contentful/apps`.
 
 ## Ownership
-`@contentful/team-marketplace` (full, sole owner)
+`@contentful/group-applied-ai-solutions` (full, sole owner)
 
 ## Structure
 
