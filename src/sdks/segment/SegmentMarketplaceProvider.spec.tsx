@@ -6,7 +6,7 @@ import { useSDK } from '@contentful/react-apps-toolkit';
 import { SegmentAnalyticsContext } from './segmentMarketplaceContext';
 import { SegmentAnalyticsProvider } from './SegmentMarketplaceProvider';
 import getUserCookieConsent from './utils/getUserCookieConsent';
-import typewriter, { Action } from './typewriter/segment';
+import typewriter, { ConfigActionAction as Action } from './typewriter/segment';
 
 jest.mock('./utils/getUserCookieConsent');
 jest.mock('@contentful/react-apps-toolkit');
@@ -27,7 +27,7 @@ describe('SegmentAnalyticsProvider', () => {
       identify: jest.fn(),
     });
     mockGetUserCookieConsent.mockReturnValue(true);
-    mockTypewriter.configSaved = jest.fn();
+    mockTypewriter.configAction = jest.fn();
     mockUseSDK.mockReturnValue({
       ids: {
         environment: 'test',
@@ -44,7 +44,7 @@ describe('SegmentAnalyticsProvider', () => {
       return (
         <button
           onClick={() => {
-            trackEvent('configSaved', {
+            trackEvent('configAction', {
               action: Action.Cancelled,
               app_key: 'a',
               environment_key: 'b',
@@ -68,7 +68,7 @@ describe('SegmentAnalyticsProvider', () => {
     fireEvent.click(getByText('Test Button'));
 
     await waitFor(() =>
-      expect(mockTypewriter.configSaved).toHaveBeenCalledWith({
+      expect(mockTypewriter.configAction).toHaveBeenCalledWith({
         action: Action.Cancelled,
         app_key: 'a',
         environment_key: 'b',
@@ -86,7 +86,7 @@ describe('SegmentAnalyticsProvider', () => {
       return (
         <button
           onClick={() => {
-            trackEvent('configSaved', {
+            trackEvent('configAction', {
               action: Action.Cancelled,
               app_key: 'a',
               environment_key: 'b',
@@ -109,6 +109,6 @@ describe('SegmentAnalyticsProvider', () => {
 
     fireEvent.click(getByText('Test Button'));
 
-    await waitFor(() => expect(mockTypewriter.configSaved).not.toHaveBeenCalled());
+    await waitFor(() => expect(mockTypewriter.configAction).not.toHaveBeenCalled());
   });
 });
