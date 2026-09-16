@@ -1,6 +1,6 @@
 {
   "name": "@contentful/integration-frontend-toolkit",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "files": [
     "components",
     "sdks",

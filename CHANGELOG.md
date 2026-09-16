@@ -1,3 +1,16 @@
+## [1.7.5](https://github.com/contentful/integration-frontend-toolkit/compare/v1.7.4...v1.7.5) (2026-09-16)
+
+
+### Bug Fixes
+
+* **ci:** use release automation identity for semantic-release pushes ([#146](https://github.com/contentful/integration-frontend-toolkit/issues/146)) ([1e397a0](https://github.com/contentful/integration-frontend-toolkit/commit/1e397a0f5a8ba756f407564609ac0955d58afdc2))
+* **deps:** bump @contentful/f36-components and f36-tokens to v6 [AIS-432] ([1613fc8](https://github.com/contentful/integration-frontend-toolkit/commit/1613fc8631f315187f75b1cc5719ec647381384f))
+* **deps:** finish Storybook v10 migration, revert other broken batch bumps [AIS-432] ([0a513bf](https://github.com/contentful/integration-frontend-toolkit/commit/0a513bf717c4d2fec0c915d02f5166c62da1cb2f)), closes [#119](https://github.com/contentful/integration-frontend-toolkit/issues/119)
+* **deps:** update dependency @contentful/f36-components to v6 ([#122](https://github.com/contentful/integration-frontend-toolkit/issues/122)) ([4a2ba97](https://github.com/contentful/integration-frontend-toolkit/commit/4a2ba97482b6cc6159988a34875307186706ede4))
+* **deps:** update dependency @contentful/f36-tokens to v6 ([#123](https://github.com/contentful/integration-frontend-toolkit/issues/123)) ([bba0c5b](https://github.com/contentful/integration-frontend-toolkit/commit/bba0c5b2a6a7d06923a4cfb264b81faa7ccf6323))
+* **deps:** update dependency @sentry/react to v10 ([#124](https://github.com/contentful/integration-frontend-toolkit/issues/124)) ([cf6efae](https://github.com/contentful/integration-frontend-toolkit/commit/cf6efaec4e23fea919cf21a74cee5d655c5a0b80))
+* **deps:** update dependency usehooks-ts to v3 ([#125](https://github.com/contentful/integration-frontend-toolkit/issues/125)) ([c840840](https://github.com/contentful/integration-frontend-toolkit/commit/c840840dabc29fc2af9bb1ffd0185dd4ee47b280))
+
 ## [1.7.4](https://github.com/contentful/integration-frontend-toolkit/compare/v1.7.3...v1.7.4) (2026-07-20)
 
 
