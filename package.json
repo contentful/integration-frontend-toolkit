@@ -113,7 +113,7 @@
       "form-data": "4.0.6"
     },
     "jsdom": {
-      "form-data": "3.0.5"
+      "form-data": "4.0.6"
     },
     "@radix-ui/primitive": "1.0.1",
     "@radix-ui/react-roving-focus": "1.0.4",
